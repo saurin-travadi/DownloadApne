@@ -1,0 +1,6 @@
+D:\Projects\DownloadApne\DownloadWcfService\bin\MyTVService.dll.config
+D:\Projects\DownloadApne\DownloadWcfService\bin\MyTVService.dll
+D:\Projects\DownloadApne\DownloadWcfService\bin\MyTVService.pdb
+D:\Projects\DownloadApne\DownloadWcfService\obj\Debug\MyTVService.csprojResolveAssemblyReference.cache
+D:\Projects\DownloadApne\DownloadWcfService\obj\Debug\MyTVService.dll
+D:\Projects\DownloadApne\DownloadWcfService\obj\Debug\MyTVService.pdb

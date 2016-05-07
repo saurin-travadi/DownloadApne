@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0AE296C9-BD47-412C-8F66-8DF735EB1216}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyTVWeb</RootNamespace>
+    <AssemblyName>MyTVWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/6671bdba-e016-48de-a0c6-f11042a8031b/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/MyTVWeb</ApplicationInsightsResourceId>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DownloadWcfService\bin\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\MyTVWeb.pubxml" />
+    <Content Include="assets\-Tamanna.jpg" />
+    <Content Include="assets\Aaj-Ki-Raat-Hai-Zindagi.jpg" />
+    <Content Include="assets\Adhuri Kahani Hamari.jpg" />
+    <Content Include="assets\Agent Raghav - Crime Branch.jpg" />
+    <Content Include="assets\AndTV.jpg" />
+    <Content Include="assets\Baal Veer.jpg" />
+    <Content Include="assets\Badi-Door-Se-Aaye-Hai.jpg" />
+    <Content Include="assets\Balika-Vadhu.jpg" />
+    <Content Include="assets\Begusarai.jpg" />
+    <Content Include="assets\Bhabi Ji Ghar Par Hai.jpg" />
+    <Content Include="assets\C.I.D.jpg" />
+    <Content Include="assets\calendar.png" />
+    <Content Include="assets\Chakravartin-Ashoka-Samrat.jpg" />
+    <Content Include="assets\Chalti Ka Naam Gaadi.jpg" />
+    <Content Include="assets\Chhoti Anandi.jpg" />
+    <Content Include="assets\Chidiya Ghar.jpg" />
+    <Content Include="assets\colors.jpg" />
+    <Content Include="assets\Comedy Nights Bachao.jpg" />
+    <Content Include="assets\Comedy Nights Live.jpg" />
+    <Content Include="assets\comedy-classes.jpg" />
+    <Content Include="assets\comedy-nights-with-kapil.jpg" />
+    <Content Include="assets\crime-patrol.jpg" />
+    <Content Include="assets\Darr Sabko Lagta Hai.jpg" />
+    <Content Include="assets\Diya-Aur-Baati-Hum.jpg" />
+    <Content Include="assets\Dream Girl.jpg" />
+    <Content Include="assets\Ek-Tha-Raja-Ek-Thi-Rani.jpg" />
+    <Content Include="assets\Fear Files Har Mod Pe Darr.jpg" />
+    <Content Include="assets\Gangaa.jpg" />
+    <Content Include="assets\Hum Ne Li Hai Shapath.jpg" />
+    <Content Include="assets\Indias Best Dramebaaz.jpg" />
+    <Content Include="assets\Ishq Ka Rang Safed.jpg" />
+    <Content Include="assets\Jaane Kya Hoga Rama Re.jpg" />
+    <Content Include="assets\jamai-raja.jpg" />
+    <Content Include="assets\Janbaaz-Sindbad.jpg" />
+    <Content Include="assets\Kaala Teeka.jpg" />
+    <Content Include="assets\kalash.jpg" />
+    <Content Include="assets\khatron ke khiladi season 7.jpg" />
+    <Content Include="assets\Krishnadasi.jpg" />
+    <Content Include="assets\Kuch Rang Pyar Ke Aise Bhi.jpg" />
+    <Content Include="assets\Kumkum Bhagya.jpeg" />
+    <Content Include="assets\Lajwanti.jpg" />
+    <Content Include="assets\life_ok.jpg" />
+    <Content Include="assets\Mere-Angne-Mein.jpg" />
+    <Content Include="assets\Meri Aashiqui Tumse Hi.jpg" />
+    <Content Include="assets\Meri-Sasu-Maa.jpg" />
+    <Content Include="assets\Mission Sapne 2.jpg" />
+    <Content Include="assets\Mohi.jpg" />
+    <Content Include="assets\Naagin.jpg" />
+    <Content Include="assets\Neeli-Chatri-Wale.jpg" />
+    <Content Include="assets\parvarish.jpg" />
+    <Content Include="assets\Piya Rangrezz.jpg" />
+    <Content Include="assets\Police-Factory.jpg" />
+    <Content Include="assets\pyar-ko-ho-janne-do.jpg" />
+    <Content Include="assets\Qubool Hai.jpg" />
+    <Content Include="assets\Saath Nibhaana Saathiya.jpg" />
+    <Content Include="assets\Saath-Nibhaana-Saathiya.jpg" />
+    <Content Include="assets\sab_tv.jpg" />
+    <Content Include="assets\Saheb-Biwi-aur-Boss.jpg" />
+    <Content Include="assets\Sankat-Mochan-Mahabali-Hanumaan.jpg" />
+    <Content Include="assets\Santoshi Maa.jpg" />
+    <Content Include="assets\Sarojini.jpg" />
+    <Content Include="assets\Sasural Simar Ka.jpg" />
+    <Content Include="assets\Satrangee-Sasural.jpg" />
+    <Content Include="assets\Saubhaghyalakshmi.jpg" />
+    <Content Include="assets\Savdhan India At 11 Crime Alert.jpg" />
+    <Content Include="assets\Silsila Pyaar Ka.jpg" />
+    <Content Include="assets\siya-ke-ram.jpg" />
+    <Content Include="assets\sony_tv.jpg" />
+    <Content Include="assets\star_plus.jpg" />
+    <Content Include="assets\Suhani Si Ek Ladki.jpg" />
+    <Content Include="assets\Sumit Sambhal Lega.jpg" />
+    <Content Include="assets\Suryaputra-Karn.jpg" />
+    <Content Include="assets\Swaragini.jpg" />
+    <Content Include="assets\Taarak-Mehta-Ka-Ooltah.jpg" />
+    <Content Include="assets\Tashan-e-Ishq.jpg" />
+    <Content Include="assets\Thapki Pyaar Ki.jpg" />
+    <Content Include="assets\Udaan Sapnon Ki.jpg" />
+    <Content Include="assets\Wah Wah Kya Baat Hai.jpg" />
+    <Content Include="assets\Woh Teri Bhabhi Hai Paglein.jpg" />
+    <Content Include="assets\Yam Hain Hum.jpg" />
+    <Content Include="assets\Yeh Hai Mohabbatein.jpg" />
+    <Content Include="assets\Yeh Kahan Aagaye Hum.jpg" />
+    <Content Include="assets\Yeh Vaada Raha.jpg" />
+    <Content Include="assets\yeh-rishta-kya-kehlata-hai.jpg" />
+    <Content Include="assets\zee_tv.jpg" />
+    <Content Include="assets\Zindagi Abhi Baaki Hai Mere Ghost.jpg" />
+    <Content Include="serials.js" />
+    <Content Include="channels.js" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Script.rjs" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GetDate.cs" />
+    <Compile Include="GetURL.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>33647</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:33619/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

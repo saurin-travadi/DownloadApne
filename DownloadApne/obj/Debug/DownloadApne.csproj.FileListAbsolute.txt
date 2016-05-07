@@ -1,0 +1,5 @@
+D:\Projects\DownloadApne\DownloadApne\bin\Debug\DownloadApne.exe
+D:\Projects\DownloadApne\DownloadApne\bin\Debug\DownloadApne.pdb
+D:\Projects\DownloadApne\DownloadApne\obj\Debug\DownloadApne.csprojResolveAssemblyReference.cache
+D:\Projects\DownloadApne\DownloadApne\obj\Debug\DownloadApne.exe
+D:\Projects\DownloadApne\DownloadApne\obj\Debug\DownloadApne.pdb
