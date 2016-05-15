@@ -1,9 +1,0 @@
-﻿
-function MyVINScript() {
-    this.vin = "%VIN%";
-}
-var myVINScript = new MyVINScript();
-
-
-
-

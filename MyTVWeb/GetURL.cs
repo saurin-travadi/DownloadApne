@@ -66,7 +66,7 @@ namespace MyTVWeb
                     var videoPageURL = date.Attributes["href"].Value;
                     
                     //Read MP4
-                    returnURL = ReadSerialPage(videoPageURL,"download");
+                    returnURL = ReadSerialPage(videoPageURL,"savebox");
 
                     if (returnURL.Count==0 || returnURL[0].ToLower().Contains("amazon.com"))
                     {

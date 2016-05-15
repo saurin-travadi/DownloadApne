@@ -1,0 +1,9 @@
+﻿
+function MyTVScript() {
+    this.movies = %MOVIE%;
+}
+var myTVScript = new MyTVScript();
+
+
+
+

@@ -11,8 +11,6 @@ namespace MyTVWeb
 {
     public class GetDate : IHttpHandler
     {
-        const string RootURL = "http://apne.tv/Hindi-Serial";
-
         public bool IsReusable
         {
             get
@@ -23,10 +21,13 @@ namespace MyTVWeb
 
         public void ProcessRequest(HttpContext context)
         {
-            var dates = GetDates(context.Request.QueryString["s"]);
+            var show = context.Request.QueryString["s"];
+            var url = context.Request.QueryString["url"];
 
-            context.Response.AddHeader("Content-Type", "application/json\n\n");
-            context.Response.Buffer = true;
+            if(string.IsNullOrEmpty(url))
+                url = string.Format("http://apne.tv/Hindi-Serial/{0}", show);
+
+            var dates = GetDates(url);
 
             var scriptFile = Path.Combine(context.Server.MapPath("."), "script.rjs");
             var data = File.ReadAllText(scriptFile);
@@ -34,29 +35,30 @@ namespace MyTVWeb
             data = data.Replace("%SHOWS%", "'" + context.Request.QueryString["s"] + "'");
             data = data.Replace("%CHANNELS%", "");
             data = data.Replace("%DATES%", string.Join(",", dates.ToArray()));
-            data = data.Replace("%URL%",  "" );
-            data = data.Replace("%ISDM%",  "" );
-            
+            data = data.Replace("%URL%", "");
+            data = data.Replace("%ISDM%", "");
+
+            context.Response.AddHeader("Content-Type", "application/json\n\n");
+            context.Response.Buffer = true;
             context.Response.Write(data);
             context.Response.Flush();
         }
 
-        private List<string> GetDates(string serial)
+        private List<string> GetDates(string pageUrl)
         {
-            var pageURL = string.Format("{0}/{1}", RootURL, serial);
 
             var doc = new HtmlDocument();
-            doc.LoadHtml(GetWebContent(pageURL).ToString());
-            var dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'date_episodes')]");
+            doc.LoadHtml(GetWebContent(pageUrl).ToString());
+            var dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'date_episodes')]");      //apne
+            if (dates != null)
+                return dates.ToList().ConvertAll(e => string.Format("'{0}'", e.SelectSingleNode("span").InnerHtml));
 
-            return dates.ToList().ConvertAll(e => string.Format("'{0}'", e.SelectSingleNode("span").InnerHtml));
+            dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'episode_date')]");      //bollystop
+            if(dates!=null)
+                return dates.ToList().ConvertAll(e => string.Format("'{0}'", e.SelectSingleNode("strong").InnerHtml));
 
-            //foreach (var date in dates)
-            //{
-            //    var d = date.SelectSingleNode("span").InnerHtml;
-            //}
+            return null;
 
-            //return "";
         }
 
         private StringBuilder GetWebContent(string url)

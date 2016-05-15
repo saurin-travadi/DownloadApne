@@ -159,8 +159,10 @@
     <Content Include="assets\yeh-rishta-kya-kehlata-hai.jpg" />
     <Content Include="assets\zee_tv.jpg" />
     <Content Include="assets\Zindagi Abhi Baaki Hai Mere Ghost.jpg" />
+    <Content Include="indx.js" />
     <Content Include="serials.js" />
     <Content Include="channels.js" />
+    <Content Include="movie.rjs" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -177,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GetDate.cs" />
+    <Compile Include="GetMovies.cs" />
     <Compile Include="GetURL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
