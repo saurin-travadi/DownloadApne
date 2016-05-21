@@ -38,7 +38,7 @@ namespace MyTVWeb
             data = data.Replace("%CHANNELS%", "");
             data = data.Replace("%DATES%", "");
             data = data.Replace("%URL%", url[0].Trim());
-            if(url.Count>1)
+            if (url.Count > 1)
                 data = data.Replace("%URL1%", url[1].Trim());
             else
                 data = data.Replace("%URL1%", "");
@@ -64,18 +64,28 @@ namespace MyTVWeb
                 if (day.Equals(d))
                 {
                     var videoPageURL = date.Attributes["href"].Value;
-                    
-                    //Read MP4
-                    returnURL = ReadSerialPage(videoPageURL,"savebox");
 
-                    if (returnURL.Count==0 || returnURL[0].ToLower().Contains("amazon.com"))
+                    //Read MP4
+                    returnURL = ReadSerialPage(videoPageURL);
+                    if (returnURL == null || returnURL.Count == 0)
+                        returnURL = ReadSerialPage(videoPageURL, "savebox");
+
+                    if (returnURL==null || returnURL.Count == 0 || returnURL[0].ToLower().Contains("amazon.com"))
                     {
+                        IsDM = "true";
+                     
                         //Read Flash
-                        returnURL = ReadSerialPage(videoPageURL, "telly");
+                        returnURL = ReadSerialPage(videoPageURL, "watchapne");
                         var tempURL = returnURL[0];
                         returnURL.Clear();
-                        returnURL.Add(ReadSerialAltPage(tempURL));
-                        IsDM = "true";
+                        returnURL.Add(ReadWatchApnePage(tempURL));
+                        if (returnURL != null && returnURL.Count != 0)
+                            return returnURL;
+
+                        returnURL = ReadSerialPage(videoPageURL, "telly");
+                        tempURL = returnURL[0];
+                        returnURL.Clear();
+                        returnURL.Add(ReadTellyPage(tempURL));
                     }
                     else
                     {
@@ -87,13 +97,12 @@ namespace MyTVWeb
             return returnURL;
         }
 
-        private string ReadSerialAltPage(string url)
+        private string ReadTellyPage(string url)
         {
-            //var url = "http://apne.tv/redirector.php?r=http://myapne.com/Hindi-Serial/discussions/C.I.D&s=735911";
             GetWebContent(url);
 
             var strHTML = GetWebContent(url.Replace("http://apne.tv/redirector.php?r=", ""), url);
-            
+
             Regex regex = new Regex(@".m3u8", RegexOptions.Multiline);
             var end = regex.Match(strHTML.ToString()).Index;
 
@@ -105,7 +114,19 @@ namespace MyTVWeb
             return finalText.Replace("file:", "").Replace("\"", "") + ".m3u8";
         }
 
-        private List<string> ReadSerialPage(string pageURL, string type= "download")
+        private string ReadWatchApnePage(string url)
+        {
+            GetWebContent(url);
+
+            var strHTML = GetWebContent(url.Replace("http://apne.tv/redirector.php?r=", ""), url);
+
+            Regex regex = new Regex(@"<iframe src='.*html'", RegexOptions.IgnoreCase);
+            var text = regex.Match(strHTML.ToString()).Value;
+            return text.ToLower().Replace("<iframe src=", "").Replace("'", "");
+        }
+
+
+        private List<string> ReadSerialPage(string pageURL, string type = "download")
         {
             var doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(GetWebContent(pageURL).ToString());
@@ -124,18 +145,21 @@ namespace MyTVWeb
                 }
             }
 
+            if ((type == "download" || type == "savebox") && !IsMediaMP4(url))
+                return null;
+
             return url;
         }
 
         CookieContainer ckContainer = null;
-        private StringBuilder GetWebContent(string url, string referer ="")
+        private StringBuilder GetWebContent(string url, string referer = "")
         {
             HttpWebRequest req = WebRequest.CreateHttp(url);
             if (ckContainer != null)
                 req.CookieContainer = ckContainer;
 
-            if(referer!="")
-            req.Referer = referer;
+            if (referer != "")
+                req.Referer = referer;
 
             HttpWebResponse res = req.GetResponse() as HttpWebResponse;
             if (ckContainer == null) ckContainer = new CookieContainer();
@@ -148,12 +172,36 @@ namespace MyTVWeb
             }
         }
 
-        private StringBuilder GetWebContent1(string url)
+
+        private bool IsMediaMP4(List<string> url)
         {
-            using (var web = new WebClient())
+            HttpWebResponse response = null;
+            var isMediaMP4 = true;
+
+            url.ForEach(e =>
             {
-                return new StringBuilder(web.DownloadString(url));
-            }
+                var request = (HttpWebRequest)WebRequest.Create(e);
+                request.Method = "HEAD";
+                try
+                {
+                    response = (HttpWebResponse)request.GetResponse();
+                    if(isMediaMP4)
+                        isMediaMP4 = response.ContentType.ToLower().Contains("mp4");
+                }
+                catch
+                {
+                    isMediaMP4 = false;
+                }
+                finally
+                {
+                    if (response != null)
+                    {
+                        response.Close();
+                    }
+                }
+            });
+
+            return isMediaMP4;
         }
 
     }
