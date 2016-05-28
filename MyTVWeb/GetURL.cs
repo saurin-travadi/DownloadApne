@@ -1,7 +1,5 @@
-﻿using HtmlAgilityPack;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -11,8 +9,8 @@ namespace MyTVWeb
 {
     public class GetURL : IHttpHandler
     {
-        const string RootURL = "http://apne.tv/Hindi-Serial";
-        //const string RootURL = "http://bollystop.com";
+        const string Apne = "http://apne.tv/Hindi-Serial";
+        const string BollyStop = "http://bollystop.com";
 
         public bool IsReusable
         {
@@ -26,7 +24,15 @@ namespace MyTVWeb
 
         public void ProcessRequest(HttpContext context)
         {
-            var url = ReadDatePage(context.Request.QueryString["s"], context.Request.QueryString["d"]);
+            var serial = context.Request.QueryString["s"];
+            var day = context.Request.QueryString["d"];
+            var url = context.Request.QueryString["url"];
+            var format = context.Request.QueryString["f"];
+            var source = context.Request.QueryString["source"];
+            if (string.IsNullOrEmpty(source)) source = "Apne";
+
+            var rootURL = source == "Apne" ? string.Format("{0}/{1}", Apne, serial) : url;
+            var urls = ReadDatePage(rootURL, day, format);
 
             context.Response.AddHeader("Content-Type", "application/json\n\n");
             context.Response.Buffer = true;
@@ -34,14 +40,22 @@ namespace MyTVWeb
             var scriptFile = Path.Combine(context.Server.MapPath("."), "script.rjs");
             var data = File.ReadAllText(scriptFile);
 
-            data = data.Replace("%SHOWS%", "'" + context.Request.QueryString["s"] + "'");
+            data = data.Replace("%SHOWS%", "'" + HttpUtility.UrlDecode(context.Request.QueryString["s"]) + "'");
             data = data.Replace("%CHANNELS%", "");
             data = data.Replace("%DATES%", "");
-            data = data.Replace("%URL%", url[0].Trim());
-            if (url.Count > 1)
-                data = data.Replace("%URL1%", url[1].Trim());
+            if (urls != null && urls.Count>0)
+            {
+                data = data.Replace("%URL%", urls[0].Trim());
+                if (urls.Count > 1)
+                    data = data.Replace("%URL1%", urls[1].Trim());
+                else
+                    data = data.Replace("%URL1%", "");
+            }
             else
+            {
+                data = data.Replace("%URL%", "");
                 data = data.Replace("%URL1%", "");
+            }
 
             data = data.Replace("%ISDM%", IsDM);
 
@@ -49,11 +63,8 @@ namespace MyTVWeb
             context.Response.Flush();
         }
 
-        private List<string> ReadDatePage(string serial, string day)
+        private List<string> ReadDatePage(string pageURL, string day, string format)
         {
-            var returnURL = new List<string>();
-            var pageURL = string.Format("{0}/{1}", RootURL, serial);
-
             var doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(GetWebContent(pageURL).ToString());
             var dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'date_episodes')]");
@@ -64,37 +75,49 @@ namespace MyTVWeb
                 if (day.Equals(d))
                 {
                     var videoPageURL = date.Attributes["href"].Value;
-
-                    //Read MP4
-                    returnURL = ReadSerialPage(videoPageURL);
-                    if (returnURL == null || returnURL.Count == 0)
-                        returnURL = ReadSerialPage(videoPageURL, "savebox");
-
-                    if (returnURL==null || returnURL.Count == 0 || returnURL[0].ToLower().Contains("amazon.com"))
-                    {
-                        IsDM = "true";
-                     
-                        //Read Flash
-                        returnURL = ReadSerialPage(videoPageURL, "watchapne");
-                        var tempURL = returnURL[0];
-                        returnURL.Clear();
-                        returnURL.Add(ReadWatchApnePage(tempURL));
-                        if (returnURL != null && returnURL.Count != 0)
-                            return returnURL;
-
-                        returnURL = ReadSerialPage(videoPageURL, "telly");
-                        tempURL = returnURL[0];
-                        returnURL.Clear();
-                        returnURL.Add(ReadTellyPage(tempURL));
-                    }
-                    else
-                    {
-                        IsDM = "false";
-                    }
+                    return ReadURL(videoPageURL, format.ToLower());
                 }
             }
 
-            return returnURL;
+            return null;
+        }
+
+        private List<string> ReadURL(string videoPageURL, string format)
+        {
+            //Read MP4
+            if (format == "video")
+                return ReadDownloadLink(videoPageURL);
+
+            if (format == "savebox")
+                return ReadSerialPage(videoPageURL, "savebox");
+
+
+            IsDM = "true";
+            if (format == "watchapne") {
+                var returnURL = ReadSerialPage(videoPageURL, "watchapne");
+                var tempURL = returnURL[0];
+                returnURL.Clear();
+                returnURL.Add(ReadWatchApnePage(tempURL));
+                if (returnURL != null && returnURL.Count != 0)
+                    return returnURL;
+            }
+
+            if (format == "telly")
+            {
+                var returnURL = ReadSerialPage(videoPageURL, "telly");
+                var tempURL = returnURL[0];
+                returnURL.Clear();
+                returnURL.Add(ReadTellyPage(tempURL));
+                if (returnURL != null && returnURL.Count != 0)
+                    return returnURL;
+            }
+
+            return null;
+        }
+
+        private List<string> ReadDownloadLink(string url)
+        {
+            return ReadSerialPage(url,"download");
         }
 
         private string ReadTellyPage(string url)
@@ -126,7 +149,7 @@ namespace MyTVWeb
         }
 
 
-        private List<string> ReadSerialPage(string pageURL, string type = "download")
+        private List<string> ReadSerialPage(string pageURL, string type)
         {
             var doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(GetWebContent(pageURL).ToString());
@@ -144,9 +167,6 @@ namespace MyTVWeb
                     }
                 }
             }
-
-            if ((type == "download" || type == "savebox") && !IsMediaMP4(url))
-                return null;
 
             return url;
         }
@@ -185,7 +205,7 @@ namespace MyTVWeb
                 try
                 {
                     response = (HttpWebResponse)request.GetResponse();
-                    if(isMediaMP4)
+                    if (isMediaMP4)
                         isMediaMP4 = response.ContentType.ToLower().Contains("mp4");
                 }
                 catch
