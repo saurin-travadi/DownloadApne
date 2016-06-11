@@ -32,7 +32,7 @@ namespace MyTVWeb
             var scriptFile = Path.Combine(context.Server.MapPath("."), "script.rjs");
             var data = File.ReadAllText(scriptFile);
 
-            data = data.Replace("%SHOWS%", "'" + context.Request.QueryString["s"] + "'");
+            data = data.Replace("'%SHOWS%'", "'" + context.Request.QueryString["s"] + "'");
             data = data.Replace("%CHANNELS%", "");
             data = data.Replace("%DATES%", string.Join(",", dates.ToArray()));
             data = data.Replace("%URL%", "");

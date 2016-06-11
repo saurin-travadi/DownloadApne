@@ -40,3 +40,4 @@ D:\Projects\GitHub\DownloadApne\MyTVWeb\bin\Microsoft.CodeDom.Providers.DotNetCo
 D:\Projects\GitHub\DownloadApne\MyTVWeb\obj\Release\MyTVWeb.csprojResolveAssemblyReference.cache
 D:\Projects\GitHub\DownloadApne\MyTVWeb\obj\Release\MyTVWeb.dll
 D:\Projects\GitHub\DownloadApne\MyTVWeb\obj\Release\MyTVWeb.pdb
+D:\Projects\GitHub\DownloadApne\MyTVWeb\bin\Jurassic.dll

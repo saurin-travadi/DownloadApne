@@ -1,7 +1,7 @@
 ﻿
 function MyTVScript() {
-    this.channels = [ %CHANNELS% ];
-    this.serials = [ %SHOWS% ];
+    this.channels = '%CHANNELS%';
+    this.serials = '%SHOWS%';
     this.dates = [ %DATES% ];
     this.url = "%URL%";
 	this.url1 = "%URL1%";

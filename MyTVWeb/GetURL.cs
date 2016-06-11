@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Jurassic.Library;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web;
+using System.Windows.Forms;
 
 namespace MyTVWeb
 {
@@ -40,10 +44,10 @@ namespace MyTVWeb
             var scriptFile = Path.Combine(context.Server.MapPath("."), "script.rjs");
             var data = File.ReadAllText(scriptFile);
 
-            data = data.Replace("%SHOWS%", "'" + HttpUtility.UrlDecode(context.Request.QueryString["s"]) + "'");
+            data = data.Replace("'%SHOWS%'", "'" + HttpUtility.UrlDecode(context.Request.QueryString["s"]) + "'");
             data = data.Replace("%CHANNELS%", "");
             data = data.Replace("%DATES%", "");
-            if (urls != null && urls.Count>0)
+            if (urls != null && urls.Count > 0)
             {
                 data = data.Replace("%URL%", urls[0].Trim());
                 if (urls.Count > 1)
@@ -89,11 +93,11 @@ namespace MyTVWeb
                 return ReadDownloadLink(videoPageURL);
 
             if (format == "savebox")
-                return ReadSerialPage(videoPageURL, "savebox");
-
+                return ReadSaveBox(videoPageURL);
 
             IsDM = "true";
-            if (format == "watchapne") {
+            if (format == "watchapne")
+            {
                 var returnURL = ReadSerialPage(videoPageURL, "watchapne");
                 var tempURL = returnURL[0];
                 returnURL.Clear();
@@ -117,7 +121,7 @@ namespace MyTVWeb
 
         private List<string> ReadDownloadLink(string url)
         {
-            return ReadSerialPage(url,"download");
+            return ReadSerialPage(url, "download");
         }
 
         private string ReadTellyPage(string url)
@@ -148,6 +152,70 @@ namespace MyTVWeb
             return text.ToLower().Replace("<iframe src=", "").Replace("'", "");
         }
 
+        private List<string> ReadSaveBox(string url)
+        {
+            var urls = ReadSerialPage(url, "savebox");
+            if (urls != null && urls.Count > 0)
+            {
+                if (IsMediaMP4(urls[0]))
+                    return urls;
+
+                else
+                {
+                    Thread thread = new Thread(delegate ()
+                    {
+                        using (WebBrowser browser = new WebBrowser())
+                        {
+                            browser.ScriptErrorsSuppressed = true;
+                            browser.ScrollBarsEnabled = false;
+                            browser.AllowNavigation = true;
+                            browser.Navigate(urls[0]);
+                            browser.Width = 1024;
+                            browser.Height = 768;
+                            //browser.DocumentCompleted += Browser_DocumentCompleted;
+                            while (browser.ReadyState != WebBrowserReadyState.Complete)
+                            {
+                                System.Windows.Forms.Application.DoEvents();
+                            }
+                            var result = browser.Document.InvokeScript("window.xdmdhuA");
+                            result = browser.Document.InvokeScript("x67ajvA");
+                            result = browser.Document.InvokeScript("eval", new object[] { "x67ajvA" });
+
+                        }
+                    });
+                    thread.SetApartmentState(ApartmentState.STA);
+                    thread.Start();
+                    thread.Join();
+
+
+                    //var doc = new HtmlAgilityPack.HtmlDocument();
+                    //doc.LoadHtml(GetWebContent(urls[0]).ToString());
+
+                    //var scripts = doc.DocumentNode.Descendants().Where(n => n.Name == "script");
+
+                    //// Return the data of spect and stringify it into a proper JSON object
+                    //var scriptText = "";
+                    //scripts.ToList().ForEach(script =>
+                    //{
+                    //    scriptText += script.InnerHtml;
+                    //});
+
+                    //var engine = new Jurassic.ScriptEngine();
+                    //var result = engine.Evaluate("(function() { " + scriptText + " if(x67ajvA!=null) return x67ajvA; })()");
+                    //var json = JSONObject.Stringify(engine, result);
+
+                }
+            }
+
+            return null;
+        }
+
+        private void Browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            var browser = sender as WebBrowser;
+            var result = browser.Document.InvokeScript("eval", new object[] { "x67ajvA" });
+            //var val = (sender as WebBrowser).Document.InvokeScript("x67ajvA");
+        }
 
         private List<string> ReadSerialPage(string pageURL, string type)
         {
@@ -193,36 +261,34 @@ namespace MyTVWeb
         }
 
 
-        private bool IsMediaMP4(List<string> url)
+        private bool IsMediaMP4(string url)
         {
             HttpWebResponse response = null;
             var isMediaMP4 = true;
 
-            url.ForEach(e =>
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "HEAD";
+            try
             {
-                var request = (HttpWebRequest)WebRequest.Create(e);
-                request.Method = "HEAD";
-                try
+                response = (HttpWebResponse)request.GetResponse();
+                if (isMediaMP4)
+                    isMediaMP4 = response.ContentType.ToLower().Contains("mp4");
+            }
+            catch
+            {
+                isMediaMP4 = false;
+            }
+            finally
+            {
+                if (response != null)
                 {
-                    response = (HttpWebResponse)request.GetResponse();
-                    if (isMediaMP4)
-                        isMediaMP4 = response.ContentType.ToLower().Contains("mp4");
+                    response.Close();
                 }
-                catch
-                {
-                    isMediaMP4 = false;
-                }
-                finally
-                {
-                    if (response != null)
-                    {
-                        response.Close();
-                    }
-                }
-            });
+            }
 
             return isMediaMP4;
         }
 
     }
+
 }
