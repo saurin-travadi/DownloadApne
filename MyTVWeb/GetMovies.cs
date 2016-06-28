@@ -30,11 +30,13 @@ namespace MyTVWeb
             if (string.IsNullOrEmpty(context.Request.QueryString["m"]))
             {
                 data = new Join4Films().GetMovies();
-                json = json.Replace("%MOVIE%", new JavaScriptSerializer().Serialize(data));
+                json = json.Replace("'%MOVIE%'", new JavaScriptSerializer().Serialize(data));
+                json = json.Replace("%COOKIE%", "");
             }
             else {
-                var url = new Join4Films().GerMovie(context.Request.QueryString["m"]);
-                json = json.Replace("%MOVIE%", "'" + url + "'");
+                var movie = new Join4Films().GerMovie(context.Request.QueryString["m"]);
+                json = json.Replace("%MOVIE%", movie.MovieURL);
+                json = json.Replace("%COOKIE%", movie.CookieString);
             }
 
             context.Response.AddHeader("Content-Type", "application/json\n\n");
@@ -49,17 +51,24 @@ namespace MyTVWeb
     {
         public string MovieName { get; set; }
         public string MovieURL { get; set; }
+        public string CookieString { get; set; }
     }
 
     public class Join4Films
     {
+        private string RootURL
+        {
+            get
+            {
+                return "http://www.join4films.com/category/bollywood/";
+            }
+        }
+
         public List<Movie> GetMovies()
         {
             var _movies = new List<Movie>();
-            var url = "http://www.join4films.com/category/bollywood/";
-
             var doc = new HtmlDocument();
-            doc.LoadHtml(Helper.GetWebContent(url).ToString());
+            doc.LoadHtml(new Helper().GetWebContent(RootURL).ToString());
             var thumbs = doc.DocumentNode.SelectNodes("//*[contains(@class,'postthumb')]");
             if (thumbs != null)
             {
@@ -77,13 +86,14 @@ namespace MyTVWeb
             return _movies;
         }
 
-        public string GerMovie(string url)
+        public Movie GerMovie(string url)
         {
             try
             {
-                var _movies = new List<Movie>();
+                var helper = new Helper();
+                helper.GetWebContent(RootURL);
 
-                var data = Helper.GetWebContent(url).ToString();
+                var data = helper.GetWebContent(url).ToString();
                 var regex = new Regex(@"file: ""http://", RegexOptions.Multiline);
                 var start = regex.Match(data.ToString()).Index;
 
@@ -93,22 +103,45 @@ namespace MyTVWeb
                 var finalText = data.ToString().Substring(start, end - start);
                 finalText = finalText.Replace(@"file: """, "").Trim() + ".mp4";
 
-                return finalText;
+                var cookies = helper.CkContainer.GetCookies(new Uri(RootURL));
+                var cookieString = "";
+                for (int i = 0; i < cookies.Count; i++)
+                {
+                    if (cookieString != "")
+                        cookieString += "^";
+                    cookieString += string.Format("{0}={1};expires={2};path={3}", cookies[0].Name, cookies[0].Value, cookies[0].Expires, cookies[0].Path);
+                }
+
+                return new Movie() { MovieURL = finalText, CookieString = cookieString };
             }
             catch
             {
-                return "";
+                return null;
             }
         }
     }
 
-    public static class Helper
+    public class Helper
     {
-        public static StringBuilder GetWebContent(string url)
+
+        public CookieContainer CkContainer { get; set; }
+
+        public StringBuilder GetWebContent(string url)
         {
-            using (var web = new WebClient())
+            HttpWebRequest req = WebRequest.CreateHttp(url);
+
+            if (CkContainer == null)
+                CkContainer = new CookieContainer();
+
+            req.CookieContainer = CkContainer;
+
+            HttpWebResponse res = req.GetResponse() as HttpWebResponse;
+            CkContainer.Add(res.Cookies);
+
+            using (Stream stream = res.GetResponseStream())
             {
-                return new StringBuilder(web.DownloadString(url));
+                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                return new StringBuilder(reader.ReadToEnd());
             }
         }
     }

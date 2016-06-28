@@ -46,7 +46,8 @@ namespace MyTVWeb
     {
         public Serial GetShows()
         {
-            return GetShows("http://apne.tv/Hindi-Serials", "http://apne.tv");
+            //return GetShows("http://apne.tv/Hindi-Serials", "http://apne.tv");
+            return GetShows("http://apne.tv", "http://apne.tv");
         }
 
         public Serial GetShows(string pageUrl, string referer)
@@ -62,14 +63,17 @@ namespace MyTVWeb
             var objChannel = new List<Channel>();
             foreach (var node in list)
             {
-                var channel = new Channel();
-                channel.Shows = new List<Show>();
-                channel.Name = node.InnerText;
-                node.SelectNodes("following::ul[1]/li").ToList().ForEach(each =>
+                if (!node.InnerText.ToLower().Contains("select channel"))
                 {
-                    channel.Shows.Add(new Show() { Name = each.InnerText, URL = each.SelectSingleNode("a").Attributes["href"].Value });
-                });
-                objChannel.Add(channel);
+                    var channel = new Channel();
+                    channel.Shows = new List<Show>();
+                    channel.Name = node.InnerText;
+                    node.SelectNodes("following::ul[1]/li").ToList().ForEach(each =>
+                    {
+                        channel.Shows.Add(new Show() { Name = each.InnerText, URL = each.SelectSingleNode("a").Attributes["href"].Value });
+                    });
+                    objChannel.Add(channel);
+                }
             }
             serial.Channel = objChannel;
 

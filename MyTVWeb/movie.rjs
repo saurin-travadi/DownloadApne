@@ -1,6 +1,7 @@
 ﻿
 function MyTVScript() {
-    this.movies = %MOVIE%;
+    this.movies = '%MOVIE%';
+	this.cookieString = '%COOKIE%';
 }
 var myTVScript = new MyTVScript();
 

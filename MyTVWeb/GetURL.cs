@@ -121,6 +121,7 @@ namespace MyTVWeb
 
         private List<string> ReadDownloadLink(string url)
         {
+            IsDM = "false";
             return ReadSerialPage(url, "download");
         }
 
@@ -143,6 +144,7 @@ namespace MyTVWeb
 
         private string ReadWatchApnePage(string url)
         {
+            IsDM = "true";
             GetWebContent(url);
 
             var strHTML = GetWebContent(url.Replace("http://apne.tv/redirector.php?r=", ""), url);
@@ -154,9 +156,13 @@ namespace MyTVWeb
 
         private List<string> ReadSaveBox(string url)
         {
+            IsDM = "false";
             var urls = ReadSerialPage(url, "savebox");
             if (urls != null && urls.Count > 0)
             {
+                return urls;
+
+                /*
                 if (IsMediaMP4(urls[0]))
                     return urls;
 
@@ -205,6 +211,7 @@ namespace MyTVWeb
                     //var json = JSONObject.Stringify(engine, result);
 
                 }
+                */
             }
 
             return null;
