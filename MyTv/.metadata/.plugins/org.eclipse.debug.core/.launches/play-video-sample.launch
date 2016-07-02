@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.webos.ide.launcher.ui.enyoLaunchConfigurationType">
+<stringAttribute key="Application" value="play-video-sample"/>
+<stringAttribute key="DebugPackageType" value="non-minify"/>
+<stringAttribute key="RunPackageType" value="minify"/>
+<stringAttribute key="Target" value="emulator"/>
+</launchConfiguration>

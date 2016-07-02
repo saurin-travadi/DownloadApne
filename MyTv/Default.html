@@ -1,0 +1,153 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My TV</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="/scripts/common.js"></script>
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet">
+
+    <style>
+        .scroll-pane {
+            overflow-x: auto;
+            overflow-y:hidden;
+            width: 90%;
+            float: left;
+        }
+
+        .scroll-content {
+            float: left;
+            width:2440px;
+        }
+
+        .scroll-content-item {
+            width: 150px;
+            height: 100px;
+            float: left;
+            margin: 10px;
+            text-align: center;
+            font-size:20px;
+        }
+
+        .scroll-bar-wrap {
+            clear: left;
+            padding: 0 4px 0 2px;
+            margin: 0 -1px -1px -1px;
+        }
+
+            .scroll-bar-wrap .ui-slider {
+                background: none;
+                border: 0;
+                height: 2em;
+                margin: 0 auto;
+            }
+
+            .scroll-bar-wrap .ui-handle-helper-parent {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                margin: 0 auto;
+            }
+
+            .scroll-bar-wrap .ui-slider-handle {
+                top: .2em;
+                height: 1.5em;
+            }
+
+                .scroll-bar-wrap .ui-slider-handle .ui-icon {
+                    margin: -8px auto 0;
+                    position: relative;
+                    top: 50%;
+                }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <span style="float:right"><a href="ndtv24x7.html">News</a><a href="Radio.html">Radio</a><a href="movies.html">Movies</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
+    </div>
+    <div class="header1">
+        <span><select onchange="var url = '/?source='+$(this).val(); window.location = url;"><option>Apne</option></select> </span>
+    </div>
+    <br />
+    <br />
+    <div class="center" id="content">
+        <div id="accordion">
+
+        </div>     
+    </div>
+
+    <script>
+        $(function () {
+
+            getChannel1();
+        });
+
+
+        $.event.special.hoverintent = {
+            setup: function () {
+                $(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
+            },
+            teardown: function () {
+                $(this).unbind("mouseover", jQuery.event.special.hoverintent.handler);
+            },
+            handler: function (event) {
+                var currentX, currentY, timeout,
+                  args = arguments,
+                  target = $(event.target),
+                  previousX = event.pageX,
+                  previousY = event.pageY;
+
+                function track(event) {
+                    currentX = event.pageX;
+                    currentY = event.pageY;
+                };
+
+                function clear() {
+                    target
+                      .unbind("mousemove", track)
+                      .unbind("mouseout", clear);
+                    clearTimeout(timeout);
+                }
+
+                function handler() {
+                    var prop,
+                      orig = event;
+
+                    if ((Math.abs(previousX - currentX) +
+                        Math.abs(previousY - currentY)) < 7) {
+                        clear();
+
+                        event = $.Event("hoverintent");
+                        for (prop in orig) {
+                            if (!(prop in event)) {
+                                event[prop] = orig[prop];
+                            }
+                        }
+                        // Prevent accessing the original event since the new event
+                        // is fired asynchronously and the old event is no longer
+                        // usable (#6028)
+                        delete event.originalEvent;
+
+                        target.trigger(event);
+                    } else {
+                        previousX = currentX;
+                        previousY = currentY;
+                        timeout = setTimeout(handler, 100);
+                    }
+                }
+
+                timeout = setTimeout(handler, 100);
+                target.bind({
+                    mousemove: track,
+                    mouseout: clear
+                });
+            }
+        };
+
+
+    </script>
+</body>
+</html>

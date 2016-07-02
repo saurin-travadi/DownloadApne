@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="installedFeatures">
+		<item value="com.webos.ide.package.smarttv.feature:2.0.0.20150106-1053"/>
+		<item value="org.eclipse.emf.common:2.10.0.v20140514-1158"/>
+		<item value="org.eclipse.emf.ecore:2.10.0.v20140514-1158"/>
+		<item value="org.eclipse.epp.mpc:1.3.0.v20140529-2031"/>
+		<item value="org.eclipse.help:2.0.102.v20140606-1215"/>
+		<item value="org.eclipse.platform:4.4.0.v20140606-1558"/>
+		<item value="org.eclipse.rcp:4.4.0.v20140606-1445"/>
+		<item value="org.eclipse.wst.xml_ui.feature:3.6.0.v201405062148-7H7NFm0DxumWv9-7bhgNooiVMQ_TBruLpRz012TF"/>
+	</list>
+</section>

@@ -1,0 +1,13 @@
+var videoURL = 'assets/big_buck_bunny.mp4';
+
+enyo.kind({
+	name: "Tutorial.Develop.PlayVideo.MainView",
+	kind: "moon.VideoPlayer",
+	//src: "assets/big_buck_bunny.mp4",
+	src: videoURL,
+	autoplay: true,
+	tap: function() {
+		this.showFSControls();
+		return true;
+	}
+});

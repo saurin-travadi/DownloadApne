@@ -1,0 +1,191 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>List of Shows</title>
+
+    <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/video.js"></script>
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet">
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet">
+    <link href="css/video.css" type="text/css" rel="stylesheet">
+
+    <script src="http://jwpsrv.com/library/DSW2ksigEeK0vhIxOQulpA.js"></script>
+    <script type="text/javascript">jwplayer.key = "YsYmmgxJ34h/Mv9ISqtlE2UskGltg3JTQeZgNl5aor5zeF+HRWe52DBrrKU=";</script>
+    <script type="text/javascript">
+        var TICKER_DELAY = 8;
+        var SLIDER_DELAY = 3000;
+        var SLIDER_SPEED = 500;
+    </script>
+
+    <style>
+        #outerdiv {
+            width: 790px;
+            height: 410px;
+            overflow: hidden;
+            position: relative;
+            margin: auto;
+        }
+
+        #inneriframe {
+            position: absolute;
+            top: -430px;
+            left: -80px;
+            width: 1280px;
+            height: 1200px;
+        }
+    </style>
+    <script>
+
+        function getData() {
+
+            ShowProgress('showvideoplayer');
+
+            var show = unescape(getUrlVars()["s"]);
+            var date = unescape(getUrlVars()["d"]);
+            var refurl = getUrlVars()["url"];
+            var source = getUrlVars()["source"];
+            var format = unescape(getUrlVars()["f"]);
+
+
+            var url = "http://mytvweb.azurewebsites.net/GetURL.aspx?s=" + show + "&d=" + date + "&source=" + source + "&url=" + refurl + "&f=" + format;
+
+            $.getScript(url, function (data, textStatus, jqxhr) {
+
+                HideProgress('showvideoplayer');
+
+                if (myTVScript == null || myTVScript.url == null || myTVScript.url == '')
+                    alert('No video found');
+                else {
+
+                    var h = screen.height-200;
+                    var w = screen.width-100;
+
+                    if (myTVScript.isDM == "true") {
+                        if (myTVScript.url.indexOf('html')) {
+                            $('#a_watchhtml').attr('href', myTVScript.url);
+                            $('#a_watchhtml').show();
+                        }
+                        else {
+                            jwplayer("showvideoplayer").setup({
+                                flashplayer: "http://assets-jpcust.jwpsrv.com/player/6/6124956/jwplayer.flash.swf",
+                                html5player: "http://assets-jpcust.jwpsrv.com/player/6/6124956/jwplayer.html5.js",
+                                file: myTVScript.url,
+                                autoStart: false,
+                                image: 'play.gif',
+                                width: w - 20,
+                                height: h - 20,
+                                title: "Click Play",
+                                primary: "html5"
+                            });
+                        }
+                    }
+                    else {
+
+                        if (myTVScript.url1 == '') {
+
+                            setupPlayer(myTVScript.url);
+                        }
+                        else {
+
+                            $('#lstLink').show();
+                            $('#lnk1').attr('src', myTVScript.url);
+                            $('#lnk1').attr('src', myTVScript.url1);
+
+                        }
+                    }
+                }
+            });
+        }
+
+        function show(p) {
+
+            setupPlayer(p == 1 ? myTVScript.url : myTVScript.url1);
+
+        }
+
+        var isVideoLoaded = false;
+        function setupPlayer(url) {
+
+
+            var h = screen.height - 200;
+            var w = screen.width - 100;
+
+            if (isVideoLoaded) {
+
+                var videocontainer = document.getElementById("video1");
+                videocontainer.pause();
+                videosource.setAttribute('src', url);
+                videocontainer.load();
+                videocontainer.play();
+
+            }
+            else {
+
+                $('#video-container').show();
+
+                $('#video1').append('<source id="videosource" type="video/mp4" src="' + url + '"></source>');
+                $('#video1').css('height', h);
+                $('#video1').css('width', w);
+                $('#video_controls_bar').css('left', (w - 1400) / 2);
+
+                init();
+                isVideoLoaded = true;
+            }
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <div class="header">
+        <span style="float:right"><a href="movies.html">Movies</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
+    </div>
+    <div class="header1">
+        <span>
+            <select onchange="var url = '/?source='+$(this).val(); window.location = url;"><option>Apne</option></select>
+            &nbsp;>&nbsp;
+            <a href="#" onclick="window.history.go(-4);">Channels</a>
+            &nbsp;>&nbsp;
+            <a href="#" onclick="window.history.go(-3);">Shows</a>
+            &nbsp;>&nbsp;
+            <a href="#" onclick="window.history.go(-2);">Dates</a>
+            &nbsp;>&nbsp;
+            <a href="#" onclick="window.history.go(-1);">Formats</a>
+        </span>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div id="lstLink" style="display:none;">
+        <a href="#" id="lnk1" onclick="show(1);">First Link</a>
+        <br />
+        <a href="#" id="lnk2" onclick="show(2);">Second Link</a>
+    </div>
+    <div id="video-container" style="display:none">
+        <video id="video1" controls></video>
+        <!--<div id="video_controls_bar">
+            <div><img id="play" src="play.gif" onclick="playPause()" /></div>
+            <div style="width:78%"><input id="seekslider" type="range" min="0" max="100" value="0" step="1" onchange="vidSeek()"></div>
+            <div style="height:60px;width: 12%; padding-top: 14px; color:#fff"><span id="curtimetext">00:00</span> / <span id="durtimetext">00:00</span></div>
+        </div>-->
+    </div>
+    <div id='showvideoplayer'></div>
+    <div>
+        <a href="" id="a_watchhtml" style="display:none" target="_blank">Click here</a>
+    </div>
+    <div id='outerdiv' style="display:none">
+        <iframe src="#" id='inneriframe' scrolling=no></iframe>
+    </div>
+    <script>
+        getData();
+    </script>
+
+</body>
+
+
+</html>

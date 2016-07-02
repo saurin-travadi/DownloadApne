@@ -1,0 +1,15 @@
+
+// source\models\models.js
+
+
+// source\controllers\controllers.js
+
+
+// source\views\main.js
+enyo.kind({name:"Tutorial.Develop.PlayVideo.MainView",kind:"moon.VideoPlayer",src:"assets/big_buck_bunny.mp4",autoplay:!0,tap:function(){return this.showFSControls(),!0}});
+
+// source\apps\app.js
+enyo.kind({name:"Tutorial.Develop.PlayVideo.Application",kind:"enyo.Application",view:"Tutorial.Develop.PlayVideo.MainView"});
+
+// source\start.js
+enyo.ready(function(){new Tutorial.Develop.PlayVideo.Application({name:"app"})});

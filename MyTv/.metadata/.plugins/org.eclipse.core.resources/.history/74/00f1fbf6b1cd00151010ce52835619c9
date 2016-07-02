@@ -1,0 +1,48 @@
+
+
+
+
+
+(function() {
+		var videoURL = 'assets/big_buck_bunny.mp4';
+
+        var show = unescape(getUrlVars()["s"]);
+        var date = unescape(getUrlVars()["d"]);
+
+
+        var url = "http://mytvweb.azurewebsites.net/GetURL.aspx?s=" + show + "&d=" + date;
+
+        $.getScript(url, function (data, textStatus, jqxhr) {
+
+            if (myTVScript == null || myTVScript.url == null || myTVScript.url == '')
+                alert('No video found');
+            else {
+
+                var h = screen.height;
+                var w = screen.width;
+
+                videoURL = myTVScript.url
+            	enyo.kind({
+            		name: "Tutorial.Develop.PlayVideo.MainView",
+            		kind: "moon.VideoPlayer",
+            		//src: "assets/big_buck_bunny.mp4",
+            		src: videoURL,
+            		autoplay: true,
+            		tap: function() {
+            			this.showFSControls();
+            			return true;
+            		}
+            	});
+                
+
+            }
+        });
+
+	
+	
+	
+	
+
+
+})();
+

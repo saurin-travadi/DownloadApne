@@ -1,0 +1,52 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>List of Shows</title>
+
+    <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/video.js"></script>
+    <link href="css/video.css" type="text/css" rel="stylesheet">
+
+    <script>
+
+        function getData() {
+
+            var show = unescape(getUrlVars()["s"]);
+            var date = unescape(getUrlVars()["d"]);
+
+            var url = "http://mytvweb.azurewebsites.net/GetURL.aspx?s=" + show + "&d=" + date;
+            $.getScript(url, function (data, textStatus, jqxhr) {
+
+                    var h = screen.height;
+                    var w = screen.width;
+
+                    $('#video_container').show();
+
+                    $('#video1').append('<source type="video/mp4" src="' + myTVScript.url + '"></source>');
+                    $('#video1').css('height', h);
+                    $('#video1').css('width', w);
+                    $('#video_controls_bar').css('left', (w - 1400) / 2);
+
+                    init();
+            });
+        }
+    </script>
+
+
+</head>
+<body onload="return getData();">
+    <div id="video-container" style="display:none">
+        <video id="video1"></video>
+        <div id="video_controls_bar">
+            <div><img id="play" src="play.gif" onclick="playPause()" /></div>
+            <div style="width:78%"><input id="seekslider" type="range" min="0" max="100" value="0" step="1" onchange="vidSeek()"></div>
+            <div style="height:60px;width: 12%; padding-top: 14px; color:#fff"><span id="curtimetext">00:00</span> / <span id="durtimetext">00:00</span></div>
+        </div>
+    </div>
+</body>
+
+</html>

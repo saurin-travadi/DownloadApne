@@ -1,0 +1,52 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Watch Show</title>
+
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="http://mytvweb.azurewebsites.net/indx.js"></script>
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet">
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ShowProgress('content');
+            var source = unescape(getUrlVars()["source"]);
+            $('select').val(source);
+
+            getFormat();
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <span style="float:right"><a href="movies.html">Movies</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
+    </div>
+    <div class="header1">
+        <span>
+            <select onchange="var url = '/?source='+$(this).val(); window.location = url;"><option>Apne</option></select>
+            &nbsp;>&nbsp;
+            <a href="#" onclick="window.history.go(-3);">Channels</a>
+            &nbsp;>&nbsp;
+            <a href="#" onclick="window.history.go(-2);">Shows</a>
+            &nbsp;>&nbsp;
+            <a href="#" onclick="window.history.go(-1);">Dates</a>
+        </span>
+    </div>
+    <br />
+    <br />
+    <div class="center" id="content">
+        <div class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" id="div-0">
+            <a class="ui-btn ui-btn-icon-right ui-corner-top ui-btn-up-z" id="a-0" href="/">
+                <span class="ui-btn-inner ui-corner-top">
+                    <span class="ui-btn-text" id="span-0">Loading</span>
+                    <span class="ui-icon-arrow-normal"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

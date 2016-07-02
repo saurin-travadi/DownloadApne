@@ -1,0 +1,16 @@
+{
+	"id": "in.intellcomm.MyTV",
+	"version": "1.0.0",
+	"uiRevision": 1,
+	"vendor": "IntellComm",
+	"type": "web",
+	"main": "index.html",
+	"title": "My Hindi TV",
+	"appDescription": "Hindi Serials - Hindi Serials, Dramas Online, Watch Hindi Shows",
+	"icon": "icon.png",
+	"largeIcon": "largeIcon.png",
+	"iconColor": "#EC9920",
+	"bgColor": "#1D7A99",
+	"splashBackground": "app_bg_1920x1080.png",
+	"bgImage": "app_bg2_1920x1080.png"
+}

@@ -1,0 +1,10 @@
+enyo.kind({
+	name: "Tutorial.Develop.PlayVideo.MainView",
+	kind: "moon.VideoPlayer",
+	src: "assets/big_buck_bunny.mp4",
+	autoplay: true,
+	tap: function() {
+		this.showFSControls();
+		return true;
+	}
+});

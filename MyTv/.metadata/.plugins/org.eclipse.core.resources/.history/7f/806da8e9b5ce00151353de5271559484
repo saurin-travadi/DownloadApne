@@ -1,0 +1,17 @@
+{
+	"id": "com.lgdev.playvideosample",
+	"version": "2.0.0",
+	"uiRevision": 2,
+	"vendor": "LG Developer",
+	"type": "web",
+	"main": "index.html",
+	"title": "Play Video Sample",
+	"appDescription": "Play Video Sample",
+	"icon": "icon.png",
+	"largeIcon": "largeIcon.png",
+	"iconColor": "#cc5500",
+	"bgColor": "black",
+	"bgImage": "app_bg_1920x1080.png",
+	"splashBackground": "app_bg2_1920x1080.png",
+	"enyoVersion": "2.3.0"
+}

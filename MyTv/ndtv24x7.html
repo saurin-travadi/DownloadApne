@@ -1,0 +1,56 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>List of Shows</title>
+
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="/scripts/common.js"></script>
+    <script src="http://jwpsrv.com/library/DSW2ksigEeK0vhIxOQulpA.js"></script>
+    <script type="text/javascript">jwplayer.key = "YsYmmgxJ34h/Mv9ISqtlE2UskGltg3JTQeZgNl5aor5zeF+HRWe52DBrrKU=";</script>
+    <script type="text/javascript">
+        var TICKER_DELAY = 8;
+        var SLIDER_DELAY = 3000;
+        var SLIDER_SPEED = 500;
+    </script>
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet" />
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            play(1);
+        });
+
+        function play(p) {
+            var videos = ['http://ndtvstream-lh.akamaihd.net/i/ndtv_24x7_1@300633/master.m3u8', 'http://ndtv.live-s.cdn.bitgravity.com/cdn-live-b7/_definst_/ndtv/live/ndtvindialive.smil/playlist.m3u8'];
+
+            var h = screen.height;
+            var w = screen.width;
+            jwplayer("showvideoplayer").setup({
+                file: videos[p-1],
+                autoStart: true,
+                width: w - 20,
+                height: h - 250,
+                title: "Click Play",
+                primary: "html5",
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <span style="float:right"><a href="Default.html">Shows</a><a href="Radio.html">Radio</a><a href="movies.html">Movies</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
+    </div>
+    <div class="header1">
+        <span><a href="#" onclick="play(1);">NDTV 24x7</a><a href="#" onclick="play(2);">NDTV India</a></span>
+    </div>
+    <br />
+    <br />
+
+    <div id='showvideoplayer'></div>
+
+</body>
+</html>
+

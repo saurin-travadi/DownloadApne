@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>List of Shows</title>
+
+    <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+    <script src="scripts/common.js"></script>
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet">
+
+    <script>
+
+        function getData() {
+
+            var show = getUrlVars()["s"];
+            var script = "http://mytvweb.azurewebsites.net/GetDate.aspx?s=" + show;
+
+            $.getScript(script, function (data, textStatus, jqxhr) {
+
+                $.each(myTVScript.dates, function (index, elem) {
+
+                    var url = 'url.html?s=' + show + '&d=' + elem;
+
+                    var iDiv = $('<div class="calText">' + elem + '</div>');
+                    $('<a href="' + url + '">')
+                        .append($('<div class="cal"  />').append(iDiv))
+                        .appendTo('#lstShow');
+                });
+            });
+        }
+
+    </script>
+
+</head>
+<body onload="return getData();">
+    <div class="header">
+        <span style="float:right"><a href="terms.html">Terms</a></span>
+    </div>
+    <br />
+    <br />
+
+    <div id="lstShow" style="font-size:30px;"></div>
+</body>
+</html>
