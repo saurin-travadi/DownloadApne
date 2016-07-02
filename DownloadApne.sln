@@ -5,25 +5,25 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTVWeb", "MyTVWeb\MyTVWeb.csproj", "{0AE296C9-BD47-412C-8F66-8DF735EB1216}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MyTv(1)", "C:\Users\saurin\webOS_SDK\SmartTVWorkspace\MyTv\", "{A3F9F1A6-4D1D-4E25-B6E7-64A349F940EB}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MyTv(1)", "D:\Projects\GitHub\DownloadApne\MyTv\", "{A3F9F1A6-4D1D-4E25-B6E7-64A349F940EB}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_6905"
-		Debug.AspNetCompiler.PhysicalPath = "C:\Users\saurin\webOS_SDK\SmartTVWorkspace\MyTv\"
+		Debug.AspNetCompiler.PhysicalPath = "D:\Projects\GitHub\DownloadApne\MyTv\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_6905\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_6905"
-		Release.AspNetCompiler.PhysicalPath = "C:\Users\saurin\webOS_SDK\SmartTVWorkspace\MyTv\"
+		Release.AspNetCompiler.PhysicalPath = "D:\Projects\GitHub\DownloadApne\MyTv\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_6905\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "6905"
-		SlnRelativePath = "C:\Users\saurin\webOS_SDK\SmartTVWorkspace\MyTv\"
+		SlnRelativePath = "D:\Projects\GitHub\DownloadApne\MyTv\"
 	EndProjectSection
 EndProject
 Global
