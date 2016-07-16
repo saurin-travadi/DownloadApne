@@ -12,14 +12,14 @@
     <style>
         .scroll-pane {
             overflow-x: auto;
-            overflow-y:hidden;
+            overflow-y: hidden;
             width: 90%;
             float: left;
         }
 
         .scroll-content {
             float: left;
-            width:2440px;
+            width: 2440px;
         }
 
         .scroll-content-item {
@@ -28,7 +28,7 @@
             float: left;
             margin: 10px;
             text-align: center;
-            font-size:20px;
+            font-size: 20px;
         }
 
         .scroll-bar-wrap {
@@ -69,14 +69,20 @@
         <span style="float:right"><a href="ndtv24x7.html">News</a><a href="Radio.html">Radio</a><a href="movies.html">Movies</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
     </div>
     <div class="header1">
-        <span><select onchange="var url = '/?source='+$(this).val(); window.location = url;"><option>Apne</option></select> </span>
+        <span>
+            <select onchange="var url = '/?source='+$(this).val(); window.location = url;">
+                <option>--Select--</option>
+                <option>GetBollyStop</option>
+                <option>GetApne</option>
+            </select>
+        </span>
     </div>
     <br />
     <br />
     <div class="center" id="content">
         <div id="accordion">
 
-        </div>     
+        </div>
     </div>
 
     <script>

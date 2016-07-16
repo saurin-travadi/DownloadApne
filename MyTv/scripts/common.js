@@ -1,5 +1,7 @@
 
-var source = "Apne";
+var source = "GetBollyStop";
+//var root = "http://localhost:33619/";
+var root="http://mytvweb.azurewebsites.net/";
 
 function getChannel() {
 
@@ -8,7 +10,7 @@ function getChannel() {
     if (getUrlVars()["source"] != null)
         source = unescape(getUrlVars()["source"]);
 
-    var script = "http://mytvweb.azurewebsites.net/GetShow.aspx";
+    var script = root + "GetShow.aspx?source=" + source;
     $.getScript(script, function (data, textStatus, jqxhr) {
         var obj = myTVScript.serials.filter(function (e) { return e.Source == source });
         var ch = obj[0].Channel;
@@ -39,7 +41,7 @@ function getChannel1() {
     if (getUrlVars()["source"] != null)
         source = unescape(getUrlVars()["source"]);
 
-    var script = "http://mytvweb.azurewebsites.net/GetShow.aspx";
+    var script = root + "GetShow.aspx?source=" + source;
     $.getScript(script, function (data, textStatus, jqxhr) {
         var obj = myTVScript.serials.filter(function (e) { return e.Source == source });
         var ch = obj[0].Channel;
@@ -84,7 +86,7 @@ function getShow() {
     source = unescape(getUrlVars()["source"]);
     var show = unescape(getUrlVars()["s"]);
 
-    var script = "http://mytvweb.azurewebsites.net/GetShow.aspx";
+    var script = root + "GetShow.aspx?source=" + source;
     $.getScript(script, function (data, textStatus, jqxhr) {
 
         var obj = myTVScript.serials.filter(function (e) { return e.Source == source });
@@ -117,7 +119,7 @@ function getDate() {
     var url = getUrlVars()["url"];
     source = getUrlVars()["source"];
 
-    var script = "http://mytvweb.azurewebsites.net/GetDate.aspx?s=" + show;
+    var script = root + "GetDate.aspx?s=" + show + "&url=" + url + "&source=" + source;
     $.getScript(script, function (data, textStatus, jqxhr) {
 
         $.each(myTVScript.dates, function (index, elem) {
@@ -167,11 +169,104 @@ function getFormat() {
     HideProgress('content');
 }
 
+function getData() {
+
+    ShowProgress('showvideoplayer');
+
+    var show = unescape(getUrlVars()["s"]);
+    var date = unescape(getUrlVars()["d"]);
+    var refurl = getUrlVars()["url"];
+    var source = getUrlVars()["source"];
+    var format = unescape(getUrlVars()["f"]);
+
+    var url = root + "GetURL.aspx?s=" + show + "&d=" + date + "&source=" + source + "&url=" + refurl + "&f=" + format;
+
+    $.getScript(url, function (data, textStatus, jqxhr) {
+
+        HideProgress('showvideoplayer');
+
+        if (myTVScript == null || myTVScript.url == null || myTVScript.url == '')
+            alert('No video found');
+        else {
+
+            var h = screen.height - 200;
+            var w = screen.width - 100;
+
+            if (myTVScript.isDM == "true") {
+                if (myTVScript.url.indexOf('html')) {
+                    $('#a_watchhtml').attr('href', myTVScript.url);
+                    $('#a_watchhtml').show();
+                }
+                else {
+                    jwplayer("showvideoplayer").setup({
+                        flashplayer: "http://assets-jpcust.jwpsrv.com/player/6/6124956/jwplayer.flash.swf",
+                        html5player: "http://assets-jpcust.jwpsrv.com/player/6/6124956/jwplayer.html5.js",
+                        file: myTVScript.url,
+                        autoStart: false,
+                        image: 'play.gif',
+                        width: w - 20,
+                        height: h - 20,
+                        title: "Click Play",
+                        primary: "html5"
+                    });
+                }
+            }
+            else {
+
+                if (myTVScript.url1 == '') {
+
+                    setupPlayer(myTVScript.url);
+                }
+                else {
+
+                    $('#lstLink').show();
+                    $('#lnk1').attr('src', myTVScript.url);
+                    $('#lnk1').attr('src', myTVScript.url1);
+
+                }
+            }
+        }
+    });
+}
+
+function show(p) {
+    setupPlayer(p == 1 ? myTVScript.url : myTVScript.url1);
+}
+
+var isVideoLoaded = false;
+function setupPlayer(url) {
+
+    var h = screen.height - 200;
+    var w = screen.width - 100;
+
+    if (isVideoLoaded) {
+
+        var videocontainer = document.getElementById("video1");
+        videocontainer.pause();
+        videosource.setAttribute('src', url);
+        videocontainer.load();
+        videocontainer.play();
+
+    }
+    else {
+
+        $('#video-container').show();
+
+        $('#video1').append('<source id="videosource" type="video/mp4" src="' + url + '"></source>');
+        $('#video1').css('height', h);
+        $('#video1').css('width', w);
+        $('#video_controls_bar').css('left', (w - 1400) / 2);
+
+        init();
+        isVideoLoaded = true;
+    }
+}
+
 function getMovie() {
 
     setContentDiv();
 
-    var script = "http://mytvweb.azurewebsites.net/GetMovies.aspx";
+    var script = root + "GetMovies.aspx";
     $.getScript(script, function (data, textStatus, jqxhr) {
         $.each(myTVScript.movies, function (index, elem) {
 
@@ -184,8 +279,7 @@ function getMovie() {
 
                 $(od).parent().append(cd);
             }
-
-            $('#a-' + index).attr('href', 'movieurl.html?m=' + escape(elem.MovieURL));
+            $('#a-' + index).attr('href', elem.MovieURL).attr('target', '_blank');
             $('#span-' + index).html(elem.MovieName);
         });
     });
@@ -193,7 +287,7 @@ function getMovie() {
 
 function playMovie() {
     var m = getUrlVars()["m"];
-    var url = "http://mytvweb.azurewebsites.net/GetMovies.aspx?m=" + m;
+    var url = root + "GetMovies.aspx?m=" + m;
     $.getScript(url, function (data, textStatus, jqxhr) {
 
         if (myTVScript == null || myTVScript.movies == null || myTVScript.movies == '')
@@ -203,8 +297,7 @@ function playMovie() {
             var h = screen.height;
             var w = screen.width;
             var cookies = myTVScript.cookieString.split('^');
-            for (p in cookies)
-            {
+            for (p in cookies) {
                 document.cookie = p;
             }
 
@@ -213,7 +306,7 @@ function playMovie() {
                 autostart: 'true',
                 width: '100%',
                 aspectratio: '16:9',
-                primary:'html5'
+                primary: 'html5'
             });
         }
     });

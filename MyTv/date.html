@@ -27,7 +27,11 @@
     </div>
     <div class="header1">
         <span>
-            <select onchange="var url = '/?source='+$(this).val(); window.location = url;"><option>Apne</option></select>
+            <select onchange="var url = '/?source='+$(this).val(); window.location = url;">
+                <option>--Select--</option>
+                <option>GetBollyStop</option>
+                <option>GetApne</option>
+            </select>
             &nbsp;>&nbsp;
             <a href="#" onclick="window.history.go(-2);">Channels</a>
             &nbsp;>&nbsp;

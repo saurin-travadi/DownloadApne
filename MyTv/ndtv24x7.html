@@ -24,12 +24,14 @@
         });
 
         function play(p) {
-            var videos = ['http://ndtvstream-lh.akamaihd.net/i/ndtv_24x7_1@300633/master.m3u8', 'http://ndtv.live-s.cdn.bitgravity.com/cdn-live-b7/_definst_/ndtv/live/ndtvindialive.smil/playlist.m3u8'];
+            var videos = ['http://ndtvstream-lh.akamaihd.net/i/ndtv_24x7_1@300633/master.m3u8',
+                'http://ndtvstream-lh.akamaihd.net/i/ndtv_india_1@300634/master.m3u8',
+                'http://zeeapp-lh.akamaihd.net/i/zeenews_1@336222/index_500_av-p.m3u8'];
 
             var h = screen.height;
             var w = screen.width;
             jwplayer("showvideoplayer").setup({
-                file: videos[p-1],
+                file: videos[p - 1],
                 autoStart: true,
                 width: w - 20,
                 height: h - 250,
@@ -44,7 +46,7 @@
         <span style="float:right"><a href="Default.html">Shows</a><a href="Radio.html">Radio</a><a href="movies.html">Movies</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
     </div>
     <div class="header1">
-        <span><a href="#" onclick="play(1);">NDTV 24x7</a><a href="#" onclick="play(2);">NDTV India</a></span>
+        <span><a href="#" onclick="play(1);">NDTV 24x7</a><a href="#" onclick="play(2);">NDTV India</a><a href="#" onclick="play(3);">Zee News</a></span>
     </div>
     <br />
     <br />
@@ -53,4 +55,3 @@
 
 </body>
 </html>
-
