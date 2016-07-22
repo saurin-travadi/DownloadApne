@@ -188,6 +188,7 @@
     <Compile Include="GetDate.cs" />
     <Compile Include="GetMovies.cs" />
     <Compile Include="GetURL.cs" />
+    <Compile Include="Common.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

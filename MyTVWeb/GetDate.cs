@@ -21,13 +21,17 @@ namespace MyTVWeb
 
         public void ProcessRequest(HttpContext context)
         {
-            var show = context.Request.QueryString["s"];
+            BaseClass myObj = new GetApne();
+
             var url = context.Request.QueryString["url"];
+            var show = context.Request.QueryString["source"] ?? "GetBollyStop";
+            if (show.Equals("GetBollyStop"))
+                myObj = new GetBollyStop();
 
             if(string.IsNullOrEmpty(url))
                 url = string.Format("http://apne.tv/Hindi-Serial/{0}", show);
 
-            var dates = GetDates(url);
+            var dates = myObj.GetDates(url);
 
             var scriptFile = Path.Combine(context.Server.MapPath("."), "script.rjs");
             var data = File.ReadAllText(scriptFile);
@@ -44,30 +48,7 @@ namespace MyTVWeb
             context.Response.Flush();
         }
 
-        private List<string> GetDates(string pageUrl)
-        {
-
-            var doc = new HtmlDocument();
-            doc.LoadHtml(GetWebContent(pageUrl).ToString());
-            var dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'date_episodes')]");      //apne
-            if (dates != null)
-                return dates.ToList().ConvertAll(e => string.Format("'{0}'", e.SelectSingleNode("span").InnerHtml));
-
-            dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'episode_date')]");      //bollystop
-            if(dates!=null)
-                return dates.ToList().ConvertAll(e => string.Format("'{0}'", e.SelectSingleNode("strong").InnerHtml));
-
-            return null;
-
-        }
-
-        private StringBuilder GetWebContent(string url)
-        {
-            using (var web = new WebClient())
-            {
-                return new StringBuilder(web.DownloadString(url));
-            }
-        }
+    
 
     }
 }

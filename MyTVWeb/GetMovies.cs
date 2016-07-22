@@ -29,7 +29,7 @@ namespace MyTVWeb
 
             if (string.IsNullOrEmpty(context.Request.QueryString["m"]))
             {
-                data = new Join4Films().GetMovies();
+                data = new Bolly2Tolly().GetMovies();
                 json = json.Replace("'%MOVIE%'", new JavaScriptSerializer().Serialize(data));
                 json = json.Replace("%COOKIE%", "");
             }
@@ -44,7 +44,6 @@ namespace MyTVWeb
             context.Response.Write(json);
             context.Response.Flush();
         }
-
     }
 
     public class Movie
@@ -68,7 +67,7 @@ namespace MyTVWeb
         {
             var _movies = new List<Movie>();
             var doc = new HtmlDocument();
-            doc.LoadHtml(new Helper().GetWebContent(RootURL).ToString());
+            doc.LoadHtml(new Common().GetData(RootURL).ToString());
             var thumbs = doc.DocumentNode.SelectNodes("//*[contains(@class,'postthumb')]");
             if (thumbs != null)
             {
@@ -78,7 +77,7 @@ namespace MyTVWeb
                     _movies.Add(new Movie()
                     {
                         MovieName = aEle.SelectSingleNode("img").Attributes["alt"].Value,
-                        MovieURL = aEle.Attributes["href"].Value
+                        MovieURL = aEle.Attributes["href"].Value,
                     });
                 });
             }
@@ -90,10 +89,10 @@ namespace MyTVWeb
         {
             try
             {
-                var helper = new Helper();
-                helper.GetWebContent(RootURL);
+                var helper = new Common();
+                helper.GetData(RootURL);
 
-                var data = helper.GetWebContent(url).ToString();
+                var data = helper.GetData(url).ToString();
                 var regex = new Regex(@"file: ""http://", RegexOptions.Multiline);
                 var start = regex.Match(data.ToString()).Index;
 
@@ -103,7 +102,7 @@ namespace MyTVWeb
                 var finalText = data.ToString().Substring(start, end - start);
                 finalText = finalText.Replace(@"file: """, "").Trim() + ".mp4";
 
-                var cookies = helper.CkContainer.GetCookies(new Uri(RootURL));
+                var cookies = helper.ckContainer.GetCookies(new Uri(RootURL));
                 var cookieString = "";
                 for (int i = 0; i < cookies.Count; i++)
                 {
@@ -121,28 +120,82 @@ namespace MyTVWeb
         }
     }
 
-    public class Helper
+    public class Bolly2Tolly
     {
-
-        public CookieContainer CkContainer { get; set; }
-
-        public StringBuilder GetWebContent(string url)
+        private string RootURL
         {
-            HttpWebRequest req = WebRequest.CreateHttp(url);
-
-            if (CkContainer == null)
-                CkContainer = new CookieContainer();
-
-            req.CookieContainer = CkContainer;
-
-            HttpWebResponse res = req.GetResponse() as HttpWebResponse;
-            CkContainer.Add(res.Cookies);
-
-            using (Stream stream = res.GetResponseStream())
+            get
             {
-                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-                return new StringBuilder(reader.ReadToEnd());
+                return "http://www.bolly2tolly.com/search/label/Hindi%20Movies";
             }
         }
+
+        public List<Movie> GetMovies()
+        {
+            var _movies = new List<Movie>();
+            var doc = new HtmlDocument();
+            while (true)
+            {
+                doc.LoadHtml(new Common().GetData(RootURL).ToString());
+                var thumbs = doc.DocumentNode.SelectNodes("//*[contains(@class,'post-body')]");
+                if (thumbs != null)
+                {
+                    
+                    thumbs.ToList().ForEach(e =>
+                    {
+                        var iframe = e.SelectSingleNode("following::iframe");
+                        var name = e.SelectSingleNode("following::h2");
+                        if (!e.SelectSingleNode("following::h2").InnerText.ToLower().Contains("quick links"))
+                        {
+                            _movies.Add(new Movie()
+                            {
+                                MovieName = name.InnerText,
+                                MovieURL = iframe.Attributes["src"].Value,
+                            });
+                        }
+                    });
+                }
+
+                break;
+            }
+
+            return _movies;
+        }
+
+        public Movie GerMovie(string url)
+        {
+            try
+            {
+                var helper = new Common();
+                helper.GetData(RootURL);
+
+                var data = helper.GetData(url).ToString();
+                var regex = new Regex(@"file: ""http://", RegexOptions.Multiline);
+                var start = regex.Match(data.ToString()).Index;
+
+                regex = new Regex(".mp4", RegexOptions.Multiline);
+                var end = regex.Match(data.ToString()).Index;
+
+                var finalText = data.ToString().Substring(start, end - start);
+                finalText = finalText.Replace(@"file: """, "").Trim() + ".mp4";
+
+                var cookies = helper.ckContainer.GetCookies(new Uri(RootURL));
+                var cookieString = "";
+                for (int i = 0; i < cookies.Count; i++)
+                {
+                    if (cookieString != "")
+                        cookieString += "^";
+                    cookieString += string.Format("{0}={1};expires={2};path={3}", cookies[0].Name, cookies[0].Value, cookies[0].Expires, cookies[0].Path);
+                }
+
+                return new Movie() { MovieURL = finalText, CookieString = cookieString };
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
+
 }
