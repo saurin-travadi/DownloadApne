@@ -1,7 +1,7 @@
 
 var source = "GetBollyStop";
 //var root = "http://localhost:33619/";
-var root="http://mytvweb.azurewebsites.net/";
+var root = "http://mytvweb.azurewebsites.net/";
 
 function getChannel() {
 
@@ -169,7 +169,7 @@ function getFormat() {
     HideProgress('content');
 }
 
-function getData() {
+function getVideo() {
 
     ShowProgress('showvideoplayer');
 
@@ -193,7 +193,7 @@ function getData() {
             var w = screen.width - 100;
 
             if (myTVScript.isDM == "true") {
-                if (myTVScript.url.indexOf('html')) {
+                if (myTVScript.url.indexOf('html') >= 0 || myTVScript.url.indexOf('openload') >= 0) {
                     $('#a_watchhtml').attr('href', myTVScript.url);
                     $('#a_watchhtml').show();
                 }
@@ -265,8 +265,8 @@ function setupPlayer(url) {
 function getMovie() {
 
     setContentDiv();
-
     var script = root + "GetMovies.aspx";
+
     $.getScript(script, function (data, textStatus, jqxhr) {
         $.each(myTVScript.movies, function (index, elem) {
 
@@ -279,9 +279,10 @@ function getMovie() {
 
                 $(od).parent().append(cd);
             }
-            $('#a-' + index).attr('href', elem.MovieURL).attr('target', '_blank');
+            $('#a-' + index).attr('href', 'url1.html?m=' + elem.MovieURL).attr("target", "_blank");
             $('#span-' + index).html(elem.MovieName);
         });
+
     });
 }
 
@@ -367,4 +368,20 @@ function ShowProgress(elementId) {
 
 function HideProgress(elementId) {
     $("#" + elementId).find(".progress-bar").remove();
+}
+
+function getSite() {
+    var url = getUrlVars()["m"];
+
+    $.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent(url) + '&callback=?', function (data) {
+        data = data.contents;
+        var reg = new RegExp("https://openload.co/embed/.+scrolling");
+        var matches = data.match(reg);
+
+        var str = matches[0];
+        str = str.substring(0, str.length).replace('/"', '').replace('scrolling', '');
+        window.location=str;
+    });
+
+    return false;
 }
