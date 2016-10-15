@@ -12,7 +12,7 @@ function getChannel() {
 
     var script = root + "GetShow.aspx?source=" + source;
     $.getScript(script, function (data, textStatus, jqxhr) {
-        var obj = myTVScript.serials.filter(function (e) { return e.Source == source });
+        var obj = myTVScript.serials.filter(function (e) { return e.Source.toLowerCase() == source.toLowerCase() });
         var ch = obj[0].Channel;
         $.each(ch, function (i, c) {
 
@@ -43,7 +43,7 @@ function getChannel1() {
 
     var script = root + "GetShow.aspx?source=" + source;
     $.getScript(script, function (data, textStatus, jqxhr) {
-        var obj = myTVScript.serials.filter(function (e) { return e.Source == source });
+        var obj = myTVScript.serials.filter(function (e) { return e.Source.toLowerCase() == source.toLowerCase() });
         var ch = obj[0].Channel;
         $.each(ch, function (i, c) {
 
@@ -57,7 +57,13 @@ function getChannel1() {
             var d2 = $('<div class="scroll-content">');
             $.each(c.Shows, function (j, s) {
 
-                var a = $('<a href="date.html?source=' + source + '&s=' + escape(s.Name) + '&url=' + escape(s.URL) + '">' + s.Name + '</a>');
+                var a = '';
+                if (source == 'GetYoDesi') {
+                    a = $('<a href="yodesi.html?url=' + escape(s.URL) + '">' + s.Name + '</a>');
+                }
+                else {
+                    a = $('<a href="date.html?source=' + source + '&s=' + escape(s.Name) + '&url=' + escape(s.URL) + '">' + s.Name + '</a>');
+                }
                 var show = $('<div class="scroll-content-item ui-widget-header">');
                 $(show).append(a);
                 $(d2).append(show);
@@ -89,7 +95,7 @@ function getShow() {
     var script = root + "GetShow.aspx?source=" + source;
     $.getScript(script, function (data, textStatus, jqxhr) {
 
-        var obj = myTVScript.serials.filter(function (e) { return e.Source == source });
+        var obj = myTVScript.serials.filter(function (e) { return e.Source.toLowerCase() == source.toLowerCase() });
         var sh = obj[0].Channel.filter(function (e) { return e.Name == show });
 
         $.each(sh[0].Shows, function (i, s) {
@@ -198,17 +204,11 @@ function getVideo() {
                     $('#a_watchhtml').show();
                 }
                 else {
-                    jwplayer("showvideoplayer").setup({
-                        flashplayer: "http://assets-jpcust.jwpsrv.com/player/6/6124956/jwplayer.flash.swf",
-                        html5player: "http://assets-jpcust.jwpsrv.com/player/6/6124956/jwplayer.html5.js",
-                        file: myTVScript.url,
-                        autoStart: false,
-                        image: 'play.gif',
-                        width: w - 20,
-                        height: h - 20,
-                        title: "Click Play",
-                        primary: "html5"
-                    });
+
+                    $('#lstLink').show();
+                    $('#lnk1').attr('src', myTVScript.url);
+                    $('#lnk2').attr('src', myTVScript.url1);
+                    show(1);
                 }
             }
             else {
@@ -221,7 +221,7 @@ function getVideo() {
 
                     $('#lstLink').show();
                     $('#lnk1').attr('src', myTVScript.url);
-                    $('#lnk1').attr('src', myTVScript.url1);
+                    $('#lnk2').attr('src', myTVScript.url1);
 
                 }
             }
@@ -229,8 +229,37 @@ function getVideo() {
     });
 }
 
+function getYoDesiVideo() {
+
+    ShowProgress('showvideoplayer');
+
+    var url = getUrlVars()["url"];
+
+    $.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent(unescape(url)) + '&callback=?', function (data) {
+        data = data.contents;
+        data = data.replace(/(\r\n|\n|\r)/gm, "");
+
+        var reg = reg = /<div class="buttons btn_green"><span class="single-heading">Dailymotion 720p HD Videos.*<\/a><\/p><div class="buttons btn_green"><span class="single-heading">WatchVideo 720p HD Videos/;
+        var matches = data.match(reg);
+
+        var str = matches[0];
+        str = str.replace('<div class="buttons btn_green"><span class="single-heading">Dailymotion 720p HD Videos</span></div>', '');
+        str = str.replace('<div class="buttons btn_green"><span class="single-heading">WatchVideo 720p HD Videos', '');
+
+        alert(str);
+        //window.location = str;
+    });
+}
+
 function show(p) {
-    setupPlayer(p == 1 ? myTVScript.url : myTVScript.url1);
+
+    var format = unescape(getUrlVars()["f"]);
+    if (format == 'Telly' || format == 'Telly#') {
+        setupJWPlayer(p == 1 ? myTVScript.url : myTVScript.url1);
+    }
+    else {
+        setupPlayer(p == 1 ? myTVScript.url : myTVScript.url1);
+    }
 }
 
 var isVideoLoaded = false;
@@ -260,6 +289,24 @@ function setupPlayer(url) {
         init();
         isVideoLoaded = true;
     }
+}
+
+function setupJWPlayer(url) {
+
+    if ($('#showvideoplayer_wrapper').length != 0) {
+        $('#showvideoplayer_wrapper').remove();
+        $("<div id='showvideoplayer' />").appendTo('body');
+    }
+    jwplayer("showvideoplayer").setup({
+        flashplayer: "http://assets-jpcust.jwpsrv.com/player/6/6124956/jwplayer.flash.swf",
+        html5player: "http://assets-jpcust.jwpsrv.com/player/6/6124956/jwplayer.html5.js",
+        file: url,
+        image: 'play.gif',
+        width: 900,
+        height: 600,
+        title: "Click Play",
+        primary: "html5"
+    });
 }
 
 function getMovie() {
@@ -380,7 +427,7 @@ function getSite() {
 
         var str = matches[0];
         str = str.substring(0, str.length).replace('/"', '').replace('scrolling', '');
-        window.location=str;
+        window.location = str;
     });
 
     return false;

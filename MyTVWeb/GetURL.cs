@@ -28,6 +28,8 @@ namespace MyTVWeb
 
         public void ProcessRequest(HttpContext context)
         {
+            List<string> urls=new List<string>();
+
             var serial = context.Request.QueryString["s"];
             var day = context.Request.QueryString["d"];
             var url = context.Request.QueryString["url"];
@@ -39,9 +41,17 @@ namespace MyTVWeb
             if (show.Equals("GetBollyStop"))
                 myObj = new GetBollyStop();
 
-            var rootURL = show == "GetApne" ? string.Format("{0}/{1}", Apne, serial) : url;
-            var urls = myObj.ReadDatePage(rootURL, day, format);
-            IsDM = myObj.IsDM;
+            if (show.Equals("GetYoDesi"))
+            {
+                new GetYoDesi().ReadURL(url,format);
+                IsDM = myObj.IsDM;
+            }
+            else
+            {
+                var rootURL = show == "GetApne" ? string.Format("{0}/{1}", Apne, serial) : url;
+                urls = myObj.ReadDatePage(rootURL, day, format);
+                IsDM = myObj.IsDM;
+            }
 
             context.Response.AddHeader("Content-Type", "application/json\n\n");
             context.Response.Buffer = true;
