@@ -54,6 +54,18 @@ img {
     z-index: 1;
 }
 
+
+input[type="button"] {
+    height: 40px;
+    margin: 5px;
+    width: 120px;
+}
+
+input[type="text"] {
+    height: 30px;
+    width: 300px;
+}
+
 select {
     font-size: xx-large;
 }
@@ -80,8 +92,8 @@ span {
     background-color: black;
     margin: auto;
     opacity: 0.45;
-    position: absolute;
-    width: 90%;
+    position: fixed;
+    width: 100%;
     z-index: 100;
 }
 
@@ -90,4 +102,6 @@ span {
     background-repeat: no-repeat;
     height: 400px;
     width: 400px;
+    padding: 0;
+    margin: auto;
 }

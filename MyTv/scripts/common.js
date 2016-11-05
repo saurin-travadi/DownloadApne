@@ -309,12 +309,30 @@ function setupJWPlayer(url) {
     });
 }
 
-function getMovie() {
+function getMovie(p) {
+    
+    var page = $('#hdnPage').val();
+    var search = $('input[type="text"]').val();
+
+    if (p == undefined)
+        page = "1";
+    else
+        page = eval(page) + p;
+
+    var script = root + "GetMovies.aspx?page=" + page;
+    if (p == 0) {
+        script = root + "GetMovies.aspx?search=" + search;
+    }
+
+    $('#hdnPage').val(page);
 
     setContentDiv();
-    var script = root + "GetMovies.aspx";
 
+    ShowProgress('list');
     $.getScript(script, function (data, textStatus, jqxhr) {
+
+        $('#list').find('div:not("#div-0")').remove();
+
         $.each(myTVScript.movies, function (index, elem) {
 
             if (index != 0) {
@@ -327,9 +345,15 @@ function getMovie() {
                 $(od).parent().append(cd);
             }
             $('#a-' + index).attr('href', 'url1.html?m=' + elem.MovieURL).attr("target", "_blank");
-            $('#span-' + index).html(elem.MovieName);
+
+            var name = elem.MovieName;
+            var reg = new RegExp("Full Movie.+$");
+            var search = name.match(reg);
+            name=name.replace(search, '')
+            $('#span-' + index).html(name);
         });
 
+        HideProgress('list');
     });
 }
 
@@ -420,13 +444,37 @@ function HideProgress(elementId) {
 function getSite() {
     var url = getUrlVars()["m"];
 
+    //$.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent(url) + '&callback=?', function (data) {
+    //    data = data.contents;
+    //    var reg = new RegExp("https://openload.co/embed/.+scrolling");
+    //    var matches = data.match(reg);
+
+    //    var str = matches[0];
+    //    str = str.substring(0, str.length).replace('/"', '').replace('scrolling', '');
+    //    window.location = str;
+    //});
+
     $.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent(url) + '&callback=?', function (data) {
+        debugger;
+
+        var arr = new Array();
+
         data = data.contents;
         var reg = new RegExp("https://openload.co/embed/.+scrolling");
         var matches = data.match(reg);
 
         var str = matches[0];
         str = str.substring(0, str.length).replace('/"', '').replace('scrolling', '');
+        arr.push(str);
+
+        //reg = new RegExp("http://watchvideo5.us/.?html");
+        //var matches = data.match(reg);
+
+        //var str = matches[0];
+        //str = str.substring(0, str.length).replace('/"', '').replace('html', '');
+        //arr.push(str);
+
+
         window.location = str;
     });
 

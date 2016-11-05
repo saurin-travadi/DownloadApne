@@ -27,14 +27,18 @@ namespace MyTVWeb
             var scriptFile = Path.Combine(context.Server.MapPath("."), "movie.rjs");
             var json = File.ReadAllText(scriptFile);
 
+            WatchOnlineMovies objMovie = new WatchOnlineMovies();
             if (string.IsNullOrEmpty(context.Request.QueryString["m"]))
             {
-                data = new WatchOnlineMovies().GetMovies();
+                objMovie.Search = context.Request.QueryString["search"];
+                objMovie.PageNumber = context.Request.QueryString["page"];
+
+                data = objMovie.GetMovies();
                 json = json.Replace("'%MOVIE%'", new JavaScriptSerializer().Serialize(data));
                 json = json.Replace("%COOKIE%", "");
             }
             else {
-                var movie = new WatchOnlineMovies().GerMovie(context.Request.QueryString["m"]);
+                var movie = objMovie.GerMovie(context.Request.QueryString["m"]);
                 json = json.Replace("%MOVIE%", movie.MovieURL);
                 json = json.Replace("%COOKIE%", movie.CookieString);
             }
@@ -55,28 +59,40 @@ namespace MyTVWeb
 
     public class WatchOnlineMovies : MoviesBase
     {
-        private string RootURL
+        public WatchOnlineMovies()
         {
-            get
-            {
-                return "http://www.watchonlinemovies.com.pk/";
-            }
+            RootURL = "http://www.watchonlinemovies.com.pk/";
         }
+
 
         public new List<Movie> GetMovies()
         {
             var _movies = new List<Movie>();
             var doc = new HtmlDocument();
-            doc.LoadHtml(new Common().GetData(RootURL).ToString());
+            var url= RootURL + "page/" + PageNumber + "/";
+            var skipFirstXFound = 9;
+            if (!string.IsNullOrEmpty(Search))
+            {
+                url = RootURL + "/?s=" + Search;
+                skipFirstXFound = 0;
+            }
+
+            doc.LoadHtml(new Common().GetData(url).ToString());
+            if (PageNumber== "1")
+            {
+                //var last = doc.DocumentNode.SelectSingleNode("//*[contains(@class,'last')]").Attributes["href"].Value;
+                //var cnt = last.Split(new char[] { '/' }).Reverse().ElementAt(1);
+            }
+
             var thumbs = doc.DocumentNode.SelectNodes("//*[contains(@class,'boxtitle')]");
             if (thumbs != null)
             {
-                thumbs.ToList().ForEach(e =>
+                thumbs.ToList().Skip(skipFirstXFound).ToList().ForEach(e =>
                 {
                     var aEle = e.SelectSingleNode("h2/a");
                     _movies.Add(new Movie()
                     {
-                        MovieName = aEle.Attributes["title"].Value.Replace(" Hindi Dubbed Full Movie Watch Online HD Print Free Download",""),
+                        MovieName = aEle.Attributes["title"].Value.Replace(" Hindi Dubbed Full Movie Watch Online HD Print Free Download", ""),
                         MovieURL = aEle.Attributes["href"].Value,
                     });
                 });
@@ -91,7 +107,7 @@ namespace MyTVWeb
             {
                 var helper = new Common();
                 helper.GetData(this.RootURL);
-                var src = helper.GetData(url, "http://www.watchonlinemovies.com.pk/","",this.RootURL).ToString();
+                var src = helper.GetData(url, "http://www.watchonlinemovies.com.pk/", "", this.RootURL).ToString();
 
                 var regexSrc = new Regex(@"IFRAME SRC = *.html", RegexOptions.Multiline);
                 //regexSrc.Match(src).Value
@@ -214,7 +230,7 @@ namespace MyTVWeb
                 var thumbs = doc.DocumentNode.SelectNodes("//*[contains(@class,'post-body')]");
                 if (thumbs != null)
                 {
-                    
+
                     thumbs.ToList().ForEach(e =>
                     {
                         var iframe = e.SelectSingleNode("following::iframe");
@@ -274,7 +290,9 @@ namespace MyTVWeb
 
     public class MoviesBase
     {
-        private string RootURL { get; set; }
+        public string RootURL { get; set; }
+        public string PageNumber { get; set; }
+        public string Search { get; set; }
         public List<Movie> GetMovies() { return null; }
 
         public Movie GerMovie(string url) { return null; }

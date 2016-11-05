@@ -6,21 +6,42 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>List of Shows</title>
 
-    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="scripts/slider.js"></script>
     <script src="scripts/common.js"></script>
     <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet">
+
     <link media="screen" type="text/css" href="css/app.css" rel="stylesheet">
+    <style>
+
+       </style>
+    <script>
+        $(function () {
+            
+        });
+    </script>
 
 </head>
 <body onload="return getMovie();">
     <div class="header">
         <span style="float:right"><a href="index.html">Shows</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
     </div>
+    <div class="header1">
+        <input type="hidden" value="1" id="hdnPage" />
+        <div style="float:left"><input type="button" value="Previous" onclick="return getMovie(-1);" /></div>
+        <div style="float:right">
+            <input value="" type="text"><input type="image" src="search.png" style="width:25px;vertical-align: middle;padding-left:5px; font-size: large;" onclick="return getMovie(0);" />
+            <input type="button" value="Next" onclick="return getMovie(1);" />
+        </div>
+    </div>
     <br />
     <br />
-    <div style="clear:both">
-        <div class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" id="div-0">
+
+    
+
+    <div style="clear:both" id="list">
+        <div class="corner-all ui-corner-all ui-controlgroup ui-controlgroup-vertical" id="div-0">
             <a class="ui-btn ui-btn-icon-right ui-corner-top ui-btn-up-z" id="a-0" href="/">
                 <span class="ui-btn-inner ui-corner-top">
                     <span class="ui-btn-text" id="span-0">Upcoming</span>
@@ -29,5 +50,6 @@
             </a>
         </div>
     </div>
+
 </body>
 </html>
