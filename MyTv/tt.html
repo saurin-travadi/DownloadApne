@@ -1,21 +1,40 @@
-<html>
+﻿<html>
 <head>
-    <link rel="pingback" href="http://www.join4films.com/xmlrpc.php" />
-    <script src="http://jwpsrv.com/library/SCdfcDs9EeK+xSIACp8kUw.js"></script>
-    <script type="text/javascript" src="http://www.join4films.com/wp-content/themes/geomovies-v1/player/jwplayer.js"></script>
-    <script type='text/javascript' src='http://www.join4films.com/wp-includes/js/wp-embed.min.js?ver=4.5.2'></script>
-    <script type="text/javascript">jwplayer.key="7a+ZKCicWSff7uEn+U1wZ/nkEPQyW/oINZGdiQ==";</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>List of Shows</title>
+
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="/scripts/common.js"></script>
+<script src="http://jwpsrv.com/library/DSW2ksigEeK0vhIxOQulpA.js"></script>
+<script type="text/javascript">jwplayer.key = "YsYmmgxJ34h/Mv9ISqtlE2UskGltg3JTQeZgNl5aor5zeF+HRWe52DBrrKU=";</script>
+<script type="text/javascript">
+        var TICKER_DELAY = 8;
+        var SLIDER_DELAY = 3000;
+        var SLIDER_SPEED = 500;
+</script>
+<link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet" />
+<link media="screen" type="text/css" href="css/app.css" rel="stylesheet" />
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            jwplayer("showvideoplayer").setup({
+                file: 'http://vodakm.zeenews.com/vod/1607_ZN_YB_AMARNATH_ACCI.mp4/index.m3u8',
+                hlshtml: true,
+                primary: 'html5',
+                cookies: true,
+                width: '100%',
+                aspectratio: '16:9',
+                autostart: 1
+            });
+
+        });
+
+</script>
 </head>
 <body>
-    <div id="videoplayer"></div>
-    <script>
-        jwplayer('videoplayer').setup({
-            autostart: false,
-            file: ' http://www.my4kvideo.info/allmovies/Sarbjit%20(2016).mp4',
-            width: '576',
-            height: '324',
-            primary: 'html5'
-        });
-    </script>
+    <div id="showvideoplayer"></div>
 </body>
 </html>

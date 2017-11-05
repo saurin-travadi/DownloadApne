@@ -33,29 +33,21 @@ namespace MyTVWeb
             else
                 myObj = new GetYoDesi();
 
-            var cachedFile = Path.Combine(context.Server.MapPath("."), show + ".txt");
             var data = "";
-            if (File.Exists(cachedFile))
-            {
-                data = File.ReadAllText(cachedFile);
-            }
-            else {
-                var objSerials = new List<Serial>();
-                var objShows = myObj.GetShows();
-                objShows.Source = show;
-                objSerials.Add(objShows);
+            var objSerials = new List<Serial>();
+            var objShows = myObj.GetShows();
+            objShows.Source = show;
+            objSerials.Add(objShows);
 
-                var scriptFile = Path.Combine(context.Server.MapPath("."), "script.rjs");
-                data = File.ReadAllText(scriptFile);
+            var scriptFile = Path.Combine(context.Server.MapPath("."), "script.rjs");
+            data = File.ReadAllText(scriptFile);
 
-                data = data.Replace("%CHANNELS%", "");
-                data = data.Replace("'%SHOWS%'", new JavaScriptSerializer().Serialize(objSerials));
-                data = data.Replace("%DATES%", "");
-                data = data.Replace("%URL%", "");
-                data = data.Replace("%ISDM%", "");
-
-                File.WriteAllText(cachedFile, data);
-            }
+            data = data.Replace("%CHANNELS%", "");
+            data = data.Replace("'%SHOWS%'", new JavaScriptSerializer().Serialize(objSerials));
+            data = data.Replace("%DATES%", "");
+            data = data.Replace("%URL%", "");
+            data = data.Replace("%URL1%", "");
+            data = data.Replace("%ISDM%", "");
 
             context.Response.AddHeader("Content-Type", "application/json\n\n");
             context.Response.Buffer = true;

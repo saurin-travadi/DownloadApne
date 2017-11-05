@@ -6,6 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>List of Shows</title>
 
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="scripts/common.js"></script>
     <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet">
@@ -19,71 +20,39 @@
         var SLIDER_DELAY = 3000;
         var SLIDER_SPEED = 500;
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            w3IncludeHTML();
+            $(document).on('mousedown', '.lnk', function (e) {
+                $('.lnk').removeClass('sel');
+                setJWPlayerWithURL($(this).attr('rel'), 0);
+                $(this).addClass('sel')
+            });
 
-    <style>
-        #outerdiv {
-            width: 790px;
-            height: 410px;
-            overflow: hidden;
-            position: relative;
-            margin: auto;
-        }
-
-        #inneriframe {
-            position: absolute;
-            top: -430px;
-            left: -80px;
-            width: 1280px;
-            height: 1200px;
-        }
-    </style>
-
+            getVideo();
+        });
+    </script>
 </head>
 <body>
-    <div class="header">
-        <span style="float:right"><a href="movies.html">Movies</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
-    </div>
+    <div w3-include-html="header.html"></div>
     <div class="header1">
         <span>
-            <select onchange="var url = '/?source='+$(this).val(); window.location = url;">
+            <select onchange="var url = 'index.html?source=' + $(this).val(); window.location = url;">
                 <option>--Select--</option>
                 <option>GetBollyStop</option>
                 <option>GetApne</option>
-                <option>GetYoDesi</option>
             </select>
-            &nbsp;>&nbsp;
-            <a href="#" onclick="window.history.go(-4);">Channels</a>
-            &nbsp;>&nbsp;
-            <a href="#" onclick="window.history.go(-3);">Shows</a>
-            &nbsp;>&nbsp;
-            <a href="#" onclick="window.history.go(-2);">Dates</a>
-            &nbsp;>&nbsp;
-            <a href="#" onclick="window.history.go(-1);">Formats</a>
         </span>
     </div>
-    <br />
-    <br />
-    <br />
-    <div id="lstLink" style="display:none;">
-        <a href="#" id="lnk1" onclick="show(1);">First Link</a>
-        <br />
-        <a href="#" id="lnk2" onclick="show(2);">Second Link</a>
-    </div>
-    <div id="video-container" style="display:none">
-        <video id="video1" controls></video>
+    <div style="float:right">
+        <img src="verticalbar.png" alt="" usemap="#Map" />
+        <map name="Map" id="Map">
+            <area alt="Pin to Start" title="Pin to Start" href="#" shape="rect" coords="10,13,59,61" onclick="return add2Fav();" />
+            <area alt="Previous Day" title="Previous Day" href="#" shape="rect" coords="11,76,62,122" onclick="goNext();" />
+            <area alt="Next Day" title="Next Day" href="#" shape="rect" coords="9,140,60,191" onclick="goPrev();" />
+
+        </map>
     </div>
     <div id='showvideoplayer'></div>
-    <div>
-        <a href="" id="a_watchhtml" style="display:none" target="_blank">Click here</a>
-    </div>
-    <div id='outerdiv' style="display:none">
-        <iframe src="#" id='inneriframe' scrolling=no></iframe>
-    </div>
-    <script>
-        getVideo();
-    </script>
-
 </body>
-
-
 </html>

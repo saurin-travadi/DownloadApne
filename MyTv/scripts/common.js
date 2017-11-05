@@ -3,6 +3,22 @@ var source = "GetBollyStop";
 //var root = "http://localhost:33619/";
 var root = "http://mytvweb.azurewebsites.net/";
 
+function menuClick() {
+    if ($('#menuspan').is(':visible')) {
+        $('.header').animate({ height: '60px' }, 2000);
+        $('#menuspan').hide(2000);
+    }
+    else {
+        $('.header').animate({ height: '100%' }, 2000);
+        $('#menuspan').show(2000);
+    }
+    return false;
+}
+
+function goHome() {
+    window.location = "Default.html";
+}
+
 function getChannel() {
 
     setContentDiv();
@@ -21,12 +37,13 @@ function getChannel() {
                 var cd = $(od).clone();
 
                 $(cd).attr('id', 'div-' + i);
-                cd.html(cd.html().replace('a-0', 'a-' + i).replace('span-0', 'span-' + i).replace('ui-btn-icon-right', '').replace('ui-corner-top', ''));
+                cd.html(cd.html().replace('a-0', 'a-' + i).replace('span-0', 'span-' + i).replace('img-0', 'img-' + i).replace('ui-btn-icon-right', ''));
 
                 $(od).parent().append(cd);
             }
 
             $('#a-' + i).attr('href', 'show.html?source=' + source + '&s=' + escape(c.Name));
+            $('#img-' + i).attr('src', c.ImageURL);
             $('#span-' + i).html(c.Name);
         });
 
@@ -105,12 +122,12 @@ function getShow() {
                 var cd = $(od).clone();
 
                 $(cd).attr('id', 'div-' + i);
-                cd.html(cd.html().replace('a-0', 'a-' + i).replace('span-0', 'span-' + i).replace('ui-btn-icon-right', '').replace('ui-corner-top', ''));
+                cd.html(cd.html().replace('a-0', 'a-' + i).replace('span-0', 'span-' + i).replace('ui-btn-icon-right', ''));
 
                 $(od).parent().append(cd);
             }
 
-            $('#a-' + i).attr('href', 'date.html?source=' + source + '&s=' + escape(s.Name) + '&url=' + escape(s.URL));
+            $('#a-' + i).attr('href', 'url.html?source=' + source + '&s=' + escape(s.Name) + '&url=' + escape(s.URL));
             $('#span-' + i).html(s.Name);
         });
         HideProgress('content');
@@ -135,7 +152,7 @@ function getDate() {
                 var cd = $(od).clone();
 
                 $(cd).attr('id', 'div-' + index);
-                cd.html(cd.html().replace('a-0', 'a-' + index).replace('span-0', 'span-' + index).replace('ui-btn-icon-right', '').replace('ui-corner-top', ''));
+                cd.html(cd.html().replace('a-0', 'a-' + index).replace('span-0', 'span-' + index).replace('ui-btn-icon-right', ''));
 
                 $(od).parent().append(cd);
             }
@@ -156,7 +173,7 @@ function getFormat() {
     var url = getUrlVars()["url"];
     source = getUrlVars()["source"];
 
-    var formates = ['SaveBox', 'Telly', 'WatchApne', 'Video'];
+    var formates = ['TuneLink', 'PlayApne', 'SaveBox', 'Telly', 'Speedwatch', 'Flash', 'WatchApne', 'Video'];
     $.each(formates, function (index, elem) {
 
         if (index != 0) {
@@ -164,7 +181,7 @@ function getFormat() {
             var cd = $(od).clone();
 
             $(cd).attr('id', 'div-' + index);
-            cd.html(cd.html().replace('a-0', 'a-' + index).replace('span-0', 'span-' + index).replace('ui-btn-icon-right', '').replace('ui-corner-top', ''));
+            cd.html(cd.html().replace('a-0', 'a-' + index).replace('span-0', 'span-' + index).replace('ui-btn-icon-right', ''));
 
             $(od).parent().append(cd);
         }
@@ -186,46 +203,38 @@ function getVideo() {
     var format = unescape(getUrlVars()["f"]);
 
     var url = root + "GetURL.aspx?s=" + show + "&d=" + date + "&source=" + source + "&url=" + refurl + "&f=" + format;
-
     $.getScript(url, function (data, textStatus, jqxhr) {
 
         HideProgress('showvideoplayer');
 
+        var sp = $('<span>').appendTo($('.header1'));
         if (myTVScript == null || myTVScript.url == null || myTVScript.url == '')
             alert('No video found');
         else {
 
-            var h = screen.height - 200;
-            var w = screen.width - 100;
+            var h = screen.height;
+            var w = screen.width;
 
-            if (myTVScript.isDM == "true") {
-                if (myTVScript.url.indexOf('html') >= 0 || myTVScript.url.indexOf('openload') >= 0) {
-                    $('#a_watchhtml').attr('href', myTVScript.url);
-                    $('#a_watchhtml').show();
+            var txt = ["Link 1", "Link 2", "Link 3", "Link 4", "Link 5", "Link 6", "Link 7", "Link 8"];
+            var cnt = 0;
+            $.each(myTVScript.url.split('|'), function (index, elem) {
+                var cls = 'vid';
+
+                if (myTVScript.url.split('|').length > 1) {
+
+                    var lnk = $("<a></a>").attr("class", "lnk " + cls + (index == 0 ? " sel" : "")).attr('href', '#lnk' + index).attr("rel", elem).text(txt[cnt++]);
+                    $(sp).append(lnk);
                 }
-                else {
 
-                    $('#lstLink').show();
-                    $('#lnk1').attr('src', myTVScript.url);
-                    $('#lnk2').attr('src', myTVScript.url1);
-                    show(1);
-                }
-            }
-            else {
-
-                if (myTVScript.url1 == '') {
-
-                    setupPlayer(myTVScript.url);
-                }
-                else {
-
-                    $('#lstLink').show();
-                    $('#lnk1').attr('src', myTVScript.url);
-                    $('#lnk2').attr('src', myTVScript.url1);
-
-                }
-            }
+                if (index == 0) setJWPlayerWithURL(elem, myTVScript.isDM == 'true' ? 1 : 0);
+            });
         }
+        var vAll = "date.html?s=" + show + "&url=" + refurl + "&source=" + source;
+        lnk = $("<a></a>").attr("class", "lnk").attr('href', vAll).text('View All');
+        $(sp).append(lnk);
+    })
+    .fail(function () {
+        HideProgress('showvideoplayer');
     });
 }
 
@@ -262,6 +271,47 @@ function show(p) {
     }
 }
 
+function getNewsChannle() {
+
+    setContentDiv();
+
+    var formates = ['NDTV 24x7', 'NDTV India', 'Zee News', 'Times NOW', 'India TV', 'Aaj Tak'];
+    $.each(formates, function (index, elem) {
+
+        if (index != 0) {
+            var od = $('#div-0');
+            var cd = $(od).clone();
+
+            $(cd).attr('id', 'div-' + index);
+            cd.html(cd.html().replace('a-0', 'a-' + index).replace('span-0', 'span-' + index).replace('ui-btn-icon-right', ''));
+
+            $(od).parent().append(cd);
+        }
+
+        $('#a-' + index).attr('href', 'newsvideo.html?source=' + elem.replace(' ', '_'));
+        $('#span-' + index).html(elem);
+    });
+    HideProgress('content');
+}
+
+function playNewsLive(p) {
+
+    $.getScript(root + "GetNews.aspx?source=Live", function (data, textStatus, jqxhr) {
+        var curVideo = myTVScript.movies.filter(function (element) { return element.MovieName == p });
+        if (p == 'Aaj_Tak_TEZ') {
+            document.getElementById('jwplayer').style.display = "none";
+            document.getElementById('id6').style.display = "block";
+            document.getElementById('id6').src = curVideo[0].MovieURL;
+        }
+        else {
+            document.getElementById('id6').style.display = "none";
+            document.getElementById('jwplayer').style.display = "block";
+            setJWPlayerWithURL(curVideo[0].MovieURL, 0);
+        }
+    });
+}
+
+
 var isVideoLoaded = false;
 function setupPlayer(url) {
 
@@ -297,35 +347,33 @@ function setupJWPlayer(url) {
         $('#showvideoplayer_wrapper').remove();
         $("<div id='showvideoplayer' />").appendTo('body');
     }
-    jwplayer("showvideoplayer").setup({
-        flashplayer: "http://assets-jpcust.jwpsrv.com/player/6/6124956/jwplayer.flash.swf",
-        html5player: "http://assets-jpcust.jwpsrv.com/player/6/6124956/jwplayer.html5.js",
-        file: url,
-        image: 'play.gif',
-        width: 900,
-        height: 600,
-        title: "Click Play",
-        primary: "html5"
-    });
+    setJWPlayerWithURL(url, 0);
 }
 
-function getMovie(p) {
-    
-    var page = $('#hdnPage').val();
-    var search = $('input[type="text"]').val();
+function getMovie(p, isMovie) {
 
-    if (p == undefined)
-        page = "1";
-    else
-        page = eval(page) + p;
+    var script = root;
+    if (isMovie == 0) script += "GetVideo.aspx?";
+    if (isMovie == 1) script += "GetMovies.aspx?"
+    if (isMovie == 2) script += "GetNews.aspx?";
+    if (isMovie == 3) script += "GetCricket.aspx?";
+    if (getUrlVars()["source"] != null) script += "source=" + getUrlVars()["source"] + "&";
+    if ($('#hdnShow').length > 0) script += "source=" + $('#hdnShow').val() + "&";
 
-    var script = root + "GetMovies.aspx?page=" + page;
+    var page = 1;
     if (p == 0) {
-        script = root + "GetMovies.aspx?search=" + search;
+        var search = $('input[type="text"]').val();
+        script += "search=" + search;
+    }
+    else {
+        if ($('#hdnPage').length > 0)
+            page = $('#hdnPage').val();
+
+        page = eval(page) + p;
+        script += "page=" + page;
     }
 
-    $('#hdnPage').val(page);
-
+    if ($('#hdnPage').length > 0) $('#hdnPage').val(page);
     setContentDiv();
 
     ShowProgress('list');
@@ -340,26 +388,44 @@ function getMovie(p) {
                 var cd = $(od).clone();
 
                 $(cd).attr('id', 'div-' + index);
-                cd.html(cd.html().replace('a-0', 'a-' + index).replace('span-0', 'span-' + index).replace('ui-btn-icon-right', '').replace('ui-corner-top', ''));
+                cd.html(cd.html().replace('a-0', 'a-' + index).replace('span-0', 'span-' + index).replace('img-0', 'img-' + index).replace('ui-btn-icon-right', ''));
 
                 $(od).parent().append(cd);
             }
-            $('#a-' + index).attr('href', 'url1.html?m=' + elem.MovieURL).attr("target", "_blank");
+
+            var href = '?m=' + elem.MovieURL;
+            if (getUrlVars()["source"] != null) href += "&source=" + getUrlVars()["source"];
+            //$('#a-' + index).attr('href', href).attr("onclick", "playMovieInModal('" + elem.MovieURL + "','" + getUrlVars()["source"] + "');return false;");
+            $('#a-' + index).attr('href', href);
 
             var name = elem.MovieName;
             var reg = new RegExp("Full Movie.+$");
             var search = name.match(reg);
-            name=name.replace(search, '')
+            name = name.replace(search, '')
             $('#span-' + index).html(name);
+            $('#img-' + index).attr('src', elem.MovieImage);
         });
 
+        HideProgress('list');
+    })
+    .fail(function () {
         HideProgress('list');
     });
 }
 
-function playMovie() {
+function playMovie(p) {
+
+    var source = getUrlVars()["source"];
+    if (source == undefined) source = $('#hdnShow').val();
+
     var m = getUrlVars()["m"];
-    var url = root + "GetMovies.aspx?m=" + m;
+    var url = root;
+    if (p == undefined) url += "GetMovies.aspx?m=";
+    if (p == 1) url += "GetNews.aspx?source=" + source + "&m=";
+    if (p == 3) url += "GetCricket.aspx?source=" + source + "&m=";
+    url += m;
+
+    ShowProgress('list');
     $.getScript(url, function (data, textStatus, jqxhr) {
 
         if (myTVScript == null || myTVScript.movies == null || myTVScript.movies == '')
@@ -373,15 +439,77 @@ function playMovie() {
                 document.cookie = p;
             }
 
-            jwplayer("videoplayer").setup({
-                file: myTVScript.movies,
-                autostart: 'true',
-                width: '100%',
-                aspectratio: '16:9',
-                primary: 'html5'
+            var txt = ["Link 1", "Link 2", "Link 3", "Link 4", "Link 5", "Link 6", "Link 7", "Link 8"];
+            var cnt = 0;
+            var sp = $('<span>').appendTo($('.header1'));
+            $.each(myTVScript.movies, function (index, elem) {
+                var cls = 'vid';
+
+                if (myTVScript.movies.length > 1) {
+                    if (elem.IsVideoURL == 0) cls = 'pge';
+
+                    if (!elem.Embed || elem.MovieURL.toLowerCase().indexOf('html') > 0) {
+                        var lnk = $("<a></a>").attr("class", "pop " + cls + (index == 0 ? " sel" : "")).attr('href', elem.MovieURL).attr('target', '_blank').text(txt[cnt++]);
+                        $(sp).append(lnk);
+                    }
+                    else {
+                        var lnk = $("<a></a>").attr("class", "lnk " + cls + (index == 0 ? " sel" : "")).attr('href', '#lnk' + index).attr("rel", elem.MovieURL).text(txt[cnt++]);
+                        $(sp).append(lnk);
+                    }
+                }
+
+                if (index == 0 && elem.Embed) setJWPlayerWithURL(myTVScript.movies[0].MovieURL, !elem.IsVideoURL);
             });
         }
+
+        HideProgress('list');
     });
+}
+
+function playMovieInModal(m, source) {
+    
+    var h = screen.height;
+    var w = screen.width;
+    if ($('.header1').is(':visible')) h = h - $('.header1').height();
+    if ($('.header').is(':visible')) h = h - $('.header').height();
+
+    $('<div id=openwindows>').appendTo($('#showvideoplayer'));
+    $('#openwindows').dialog({
+        modal: true,
+        height: h * 0.75,
+        width: w * 0.75
+    });
+    $('#openwindows').dialog('open');
+}
+
+function setJWPlayerWithURL(url, isPage) {
+
+    var h = screen.height;
+    var w = screen.width;
+    if ($('.header1').is(':visible')) h = h - $('.header1').height();
+    if ($('.header').is(':visible')) h = h - $('.header').height();
+
+    if (isPage == 1) {
+        $('#showvideoplayer iframe').remove();
+        $('<iframe src="' + url + '" Height="' + h * 0.75 + '" Width="' + w * 0.75 + '" frameborder="0" scrolling="no" allowfullscreen style="display:block;margin-left:auto;margin-right:auto;"></iframe>').appendTo('#showvideoplayer');
+    }
+    else {
+        var p = $('#showvideoplayer_wrapper').parent();
+        $(p).append('<div id="showvideoplayer"></div>');
+        $('#showvideoplayer_wrapper').remove();
+
+        jwplayer("showvideoplayer").setup({
+            file: url,
+            hlshtml: true,
+            autoStart: true,
+            primary: 'html5',
+            cookies: true,
+            width: w * 0.75,
+            height: h * 0.75,
+            aspectratio: "16:9",
+            title: "Click Play"
+        });
+    }
 }
 
 function getRadio() {
@@ -394,7 +522,7 @@ function getRadio() {
             var cd = $(od).clone();
 
             $(cd).attr('id', 'div-' + index);
-            cd.html(cd.html().replace('a-0', 'a-' + index).replace('span-0', 'span-' + index).replace('ui-btn-icon-right', '').replace('ui-corner-top', ''));
+            cd.html(cd.html().replace('a-0', 'a-' + index).replace('span-0', 'span-' + index).replace('ui-btn-icon-right', ''));
 
             $(od).parent().append(cd);
         }
@@ -479,4 +607,83 @@ function getSite() {
     });
 
     return false;
+}
+
+function showFav() {
+    var ck = getCookie('fav_shows');
+    if (ck != '') {
+        var obj = JSON.parse(ck);
+
+        if (obj.length == 0) {
+            $('#div-0').parent().append($('span').html('You have no favorites, add for quicker browsing...'))
+            $('#div-0').hide();
+        }
+        for (i = 0; i < obj.length; i++) {
+            if (i != 0) {
+                var od = $('#div-0');
+                var cd = $(od).clone();
+
+                $(cd).attr('id', 'div-' + i);
+                cd.html(cd.html().replace('a-0', 'a-' + i).replace('span-0', 'span-' + i).replace('ui-btn-icon-right', ''));
+
+                $(od).parent().append(cd);
+            }
+
+            $('#a-' + i).attr('href', 'url.html?' + obj[i].url);
+            $('#span-' + i).html(unescape(obj[i].name));
+        }
+    }
+}
+
+function add2Fav() {
+    var ck = getCookie('fav_shows');
+    var obj = [];
+    if (ck != '') {
+        obj = JSON.parse(ck);
+    }
+
+    obj.push({ name: getUrlVars()['s'], url: window.location.href.slice(window.location.href.indexOf('?') + 1) });
+    var strObj = JSON.stringify(obj);
+    setCookie('fav_shows', strObj, 365);
+}
+
+function resetFav(e) {
+    $(e).parent().parent().remove();
+    var d = $("div[id^='div-']");
+
+    var obj = [];
+    $("div[id^='div-']").each(function (i, e) {
+        var url = $(e).find('a').attr('href');
+        var txt = $(e).find('a span').text();
+        obj.push({ name: txt, url: url });
+    });
+    var strObj = JSON.stringify(obj);
+    setCookie('fav_shows', strObj, 365);
+}
+
+function goNext() { alert('Need to go Next day'); }
+
+function goPrev() { alert('Need to go Previous day'); }
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }

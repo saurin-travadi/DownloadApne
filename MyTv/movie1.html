@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>List of Shows</title>
+
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="/scripts/common.js"></script>
+    <script src="http://jwpsrv.com/library/DSW2ksigEeK0vhIxOQulpA.js"></script>
+    <script type="text/javascript">jwplayer.key = "YsYmmgxJ34h/Mv9ISqtlE2UskGltg3JTQeZgNl5aor5zeF+HRWe52DBrrKU=";</script>
+    <script type="text/javascript">
+        var TICKER_DELAY = 8;
+        var SLIDER_DELAY = 3000;
+        var SLIDER_SPEED = 500;
+    </script>
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet" />
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <span style="float:right"><a href="movie.html">Movie</a></span>
+    </div>
+    <div class="header1">
+    </div>
+    <br />
+    <br />
+
+    <div id="showvideoplayer"></div>
+
+    <script>
+
+        setJWPlayerWithURL(getUrlVars()["m"],0);
+
+    </script>
+</body>
+</html>

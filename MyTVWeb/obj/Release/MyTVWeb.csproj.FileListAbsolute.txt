@@ -37,7 +37,8 @@ D:\Projects\GitHub\DownloadApne\MyTVWeb\bin\MyTVWeb.pdb
 D:\Projects\GitHub\DownloadApne\MyTVWeb\bin\HtmlAgilityPack.dll
 D:\Projects\GitHub\DownloadApne\MyTVWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Projects\GitHub\DownloadApne\MyTVWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Projects\GitHub\DownloadApne\MyTVWeb\obj\Release\MyTVWeb.csprojResolveAssemblyReference.cache
 D:\Projects\GitHub\DownloadApne\MyTVWeb\obj\Release\MyTVWeb.dll
 D:\Projects\GitHub\DownloadApne\MyTVWeb\obj\Release\MyTVWeb.pdb
 D:\Projects\GitHub\DownloadApne\MyTVWeb\bin\Jurassic.dll
+D:\Projects\GitHub\DownloadApne\MyTVWeb\obj\Release\MyTVWeb.csprojResolveAssemblyReference.cache
+D:\Projects\GitHub\DownloadApne\MyTVWeb\bin\Newtonsoft.Json.dll

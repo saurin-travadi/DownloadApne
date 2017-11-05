@@ -12,6 +12,8 @@ namespace MyTVWeb
 {
     public abstract class BaseClass
     {
+        protected MyWebClient web = new MyWebClient();
+
         public string IsDM { get; set; }
 
         public virtual Serial GetShows() { return null; }
@@ -24,30 +26,7 @@ namespace MyTVWeb
 
         private bool IsMediaMP4(string url)
         {
-            HttpWebResponse response = null;
-            var isMediaMP4 = true;
-
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "HEAD";
-            try
-            {
-                response = (HttpWebResponse)request.GetResponse();
-                if (isMediaMP4)
-                    isMediaMP4 = response.ContentType.ToLower().Contains("mp4");
-            }
-            catch
-            {
-                isMediaMP4 = false;
-            }
-            finally
-            {
-                if (response != null)
-                {
-                    response.Close();
-                }
-            }
-
-            return isMediaMP4;
+            return new MyWebClient().IsMediaMP4(url);
         }
 
         public List<string> ReadURL(string videoPageURL, string format)
@@ -59,26 +38,34 @@ namespace MyTVWeb
             if (format == "savebox")
                 return ReadSaveBox(videoPageURL);
 
+            var returnURL = ReadSerialPage(videoPageURL, format);
+
             IsDM = "true";
-            if (format == "watchapne")
+            if (format == "watchapne" || format == "playapne" || format == "tunelink")
             {
-                var returnURL = ReadSerialPage(videoPageURL, "watchapne");
                 var tempURL = returnURL[0];
                 returnURL.Clear();
-                returnURL.Add(ReadWatchApnePage(tempURL));
+
+                if (format == "watchapne")
+                    returnURL.Add(ReadWatchApnePage(tempURL));
+                else if (format == "playapne")
+                    returnURL.Add(ReadApnePage(tempURL, videoPageURL));
+                else if (format == "tunelink")
+                    returnURL.Add(ReadTuneLink(tempURL, videoPageURL));
+
                 if (returnURL != null && returnURL.Count != 0)
                     return returnURL;
             }
-
-            if (format == "telly")
+            else
             {
-                var returnURL = ReadSerialPage(videoPageURL, "telly");
+                //telly, flash, daily
+                if (format == "telly") IsDM = "false";
+
                 var tempURL = new List<string>();
-                returnURL.ForEach(e=> tempURL.Add(ReadTellyPage(e)));
-                if (tempURL!= null && tempURL.Count != 0)
+                returnURL.ForEach(e => tempURL.Add(ReadTellyPage(e)));
+                if (tempURL != null && tempURL.Count != 0)
                     return tempURL;
             }
-
             return null;
         }
 
@@ -88,14 +75,16 @@ namespace MyTVWeb
             var urls = ReadSerialPage(url, "savebox");
             if (urls != null && urls.Count > 0)
             {
-                if (IsMediaMP4(urls[0]))
-                    return urls;
-                else
-                {
-                    IsDM = "true";
-                    var u2 = ReadOpenLoad(urls[0]);
-                    return new string[] { urls[0], u2 }.ToList();
-                }
+                IsDM = "true";
+                return urls;
+                //if (IsMediaMP4(urls[0]))
+                //    return urls;
+                //else
+                //{
+                //    IsDM = "true";
+                //    var u2 = ReadOpenLoad(urls[0]);
+                //    return new string[] { urls[0], u2 }.ToList();
+                //}
             }
 
             return null;
@@ -109,30 +98,46 @@ namespace MyTVWeb
 
         private string ReadTellyPage(string url)
         {
-            new Common().GetData(url);
+            var strHTML = web.GetData(url);
 
-            var strHTML = new Common().GetData(url.Replace("http://apne.tv/redirector.php?r=", ""), url);
-
-            Regex regex = new Regex(@".m3u8", RegexOptions.Multiline);
-            var end = regex.Match(strHTML.ToString()).Index;
-
-            regex = new Regex(@"file: ""http://", RegexOptions.Multiline);
-            var start = regex.Match(strHTML.ToString()).Index;
-
-            var finalText = strHTML.ToString().Substring(start, end - start);
-
-            return finalText.Replace("file:", "").Replace("\"", "") + ".m3u8";
+            strHTML = web.GetData(url.Replace("http://apne.tv/redirector.php?r=", ""), url);
+            var regex = new Regex(@"source.*m3u8", RegexOptions.Multiline);
+            return regex.Match(strHTML.ToString()).Value.Replace("source:", "").Replace("\"", "").Trim();
         }
+
 
         private string ReadWatchApnePage(string url)
         {
             IsDM = "true";
-            var strHTML = new Common().GetData(url);
+            var strHTML = web.GetData(url);
 
             Regex regex = new Regex(@"<iframe>.*</iframe>", RegexOptions.IgnoreCase);
             var text = regex.Match(strHTML.ToString()).Value;
             return text.ToLower().Replace("<iframe src=", "").Replace("'", "");
         }
+
+        private string ReadApnePage(string url, string refererPage)
+        {
+            IsDM = "true";
+            var strHTML = web.GetData(url, refererPage);
+
+            Regex regex = new Regex(@"http:.*mp4", RegexOptions.IgnoreCase);
+            var text = regex.Match(strHTML.ToString()).Value;
+            return text.ToLower().Replace("<iframe src=", "").Replace("'", "");
+        }
+
+        private string ReadTuneLink(string url, string refererPage)
+        {
+            IsDM = "true";
+            var strHTML = web.GetData(url, refererPage);
+
+            Regex regex = new Regex(@"iframe.*iframe", RegexOptions.IgnoreCase);
+            var text = regex.Match(strHTML.ToString()).Value;
+            text = text.Substring(text.IndexOf("src='") + 5, 100);
+            text = text.Substring(0, text.IndexOf("'"));
+            return text;
+        }
+
 
         private string ReadOpenLoad(string url)
         {
@@ -141,7 +146,7 @@ namespace MyTVWeb
 
 
             var doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(new Common().GetData(url).ToString());
+            doc.LoadHtml(new MyWebClient().GetData(url).ToString());
             var text = doc.DocumentNode.SelectSingleNode("//*[contains(@id,'hiddenurl')]").InnerText;
 
             /*
@@ -168,7 +173,7 @@ namespace MyTVWeb
         private List<string> ReadSerialPage(string pageURL, string type)
         {
             var doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(new Common().GetData(pageURL).ToString());
+            doc.LoadHtml(web.GetData(pageURL).ToString());
             var shows = doc.DocumentNode.SelectNodes("//*[contains(@class,'channel_cont')]");
 
             var url = new List<string>();
@@ -178,6 +183,14 @@ namespace MyTVWeb
                 {
                     var text = show.SelectSingleNode("div/h2").InnerHtml;
                     if (text.ToLower().Contains(type))
+                    {
+                        show.SelectNodes("ul/li/a").ToList().ForEach(e => url.Add(e.Attributes["href"].Value));
+                    }
+                }
+                else if (show.SelectSingleNode("div/h2/div/img") != null)
+                {
+                    var img = show.SelectSingleNode("div/h2/div/img").Attributes["src"].Value;
+                    if (img.ToLower().Contains("daily.jpg") && type == "Dailymotion")
                     {
                         show.SelectNodes("ul/li/a").ToList().ForEach(e => url.Add(e.Attributes["href"].Value));
                     }
@@ -200,6 +213,7 @@ namespace MyTVWeb
         public string Name { get; set; }
         public string ChannelURL { get; set; }
         public List<Show> Shows { get; set; }
+        public string ImageURL { get; set; }
     }
 
     public class Show
@@ -210,11 +224,11 @@ namespace MyTVWeb
 
     public class GetApne : BaseClass
     {
-        private Common web = new Common();
+        private MyWebClient web = new MyWebClient();
 
         public override Serial GetShows()
         {
-            web = new Common();
+            web = new MyWebClient();
             return GetShows("http://apne.tv", "http://apne.tv");
         }
 
@@ -262,7 +276,7 @@ namespace MyTVWeb
         public override List<string> ReadDatePage(string pageURL, string day, string format)
         {
             var doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(new Common().GetData(pageURL).ToString());
+            doc.LoadHtml(new MyWebClient().GetData(pageURL).ToString());
             var dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'date_episodes')]");
 
             foreach (var date in dates)
@@ -286,12 +300,11 @@ namespace MyTVWeb
 
     public class GetBollyStop : BaseClass
     {
-        private Common web = new Common();
 
         public override Serial GetShows()
         {
-            web = new Common();
-            return GetShows("http://bollystop.com/", "http://bollystop.com/");
+            web = new MyWebClient();
+            return GetShows("http://bollystop.tv/", "http://bollystop.tv/");
         }
 
         public override Serial GetShows(string pageUrl, string referer)
@@ -302,8 +315,7 @@ namespace MyTVWeb
             var doc = new HtmlDocument();
             var str = web.GetData(pageUrl, referer).ToString();
             doc.LoadHtml(str);
-            var list = doc.DocumentNode.SelectNodes("//h2");
-
+            var list = doc.DocumentNode.SelectNodes("//*[contains(@class,'tabscontent')]/h2");
             var objChannel = new List<Channel>();
             foreach (var node in list)
             {
@@ -318,6 +330,13 @@ namespace MyTVWeb
                         {
                             channel.Shows.Add(new Show() { Name = each.InnerText, URL = each.SelectSingleNode("a").Attributes["href"].Value });
                         });
+                        try
+                        {
+                            var img = doc.DocumentNode.SelectSingleNode("//*[contains(@class,'tabs')]/li[contains(.,'" + node.InnerText.Replace("Shows", "").Trim() + "')]");
+                            channel.ImageURL = img.SelectSingleNode("img").Attributes["src"].Value;
+                        }
+                        catch { }
+
                         objChannel.Add(channel);
                     }
                 }
@@ -325,6 +344,7 @@ namespace MyTVWeb
                 {
                 }
             }
+
             serial.Channel = objChannel;
 
             return serial;
@@ -346,14 +366,14 @@ namespace MyTVWeb
         public override List<string> ReadDatePage(string pageURL, string day, string format)
         {
             var doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(new Common().GetData(pageURL).ToString());
+            doc.LoadHtml(web.GetData(pageURL).ToString());
             var root = doc.DocumentNode.SelectSingleNode("//*[contains(@class,'recently_added')]");
             var dates = root.SelectNodes("ul/li/p").ToList();
             for (int i = 0; i < dates.Count; i = i + 2)
             {
                 var date = dates[i];
                 var d = date.InnerText;
-                if (day.Equals(d))
+                if (day.Equals(d) || (day.Equals("") && i == 0))
                 {
                     var videoPageURL = dates[i + 1].SelectSingleNode("a").Attributes["href"].Value;
                     return ReadURL(videoPageURL, format.ToLower());
@@ -364,13 +384,13 @@ namespace MyTVWeb
         }
     }
 
-    public class GetYoDesi: BaseClass
+    public class GetYoDesi : BaseClass
     {
-        private Common web = new Common();
+        private MyWebClient web = new MyWebClient();
 
         public override Serial GetShows()
         {
-            web = new Common();
+            web = new MyWebClient();
             return GetShows("http://www.yodesi.net", "");
         }
 
@@ -436,7 +456,7 @@ namespace MyTVWeb
         public override List<string> ReadDatePage(string pageURL, string day, string format)
         {
             var doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(new Common().GetData(pageURL).ToString());
+            doc.LoadHtml(new MyWebClient().GetData(pageURL).ToString());
             var dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'date_episodes')]");
 
             foreach (var date in dates)
@@ -463,9 +483,15 @@ namespace MyTVWeb
 
     }
 
-    public class Common
+    public class MyWebClient
     {
+        private string m_ResponseURL;
+        private string m_QueryAndPath;
+
         public CookieContainer ckContainer = null;
+        public String ResponseURL { get { return m_ResponseURL; } }
+        public String QueryNPath { get { return m_QueryAndPath; } }
+
         public StringBuilder GetData(string url, string referer = "", string postData = "", string host = "")
         {
             HttpWebRequest req = WebRequest.CreateHttp(url);
@@ -491,9 +517,12 @@ namespace MyTVWeb
 
             HttpWebResponse res = req.GetResponse() as HttpWebResponse;
             if (ckContainer == null) ckContainer = new CookieContainer();
-            ckContainer.Add(res.Cookies);
 
-            if(!string.IsNullOrEmpty(res.Headers["Transfer-Encoding"]) && res.Headers["Transfer-Encoding"]=="chunked")
+            ckContainer.Add(res.Cookies);
+            m_ResponseURL = res.ResponseUri.AbsoluteUri;
+            m_QueryAndPath = res.ResponseUri.PathAndQuery;
+
+            if (!string.IsNullOrEmpty(res.Headers["Transfer-Encoding"]) && res.Headers["Transfer-Encoding"] == "chunked")
             {
                 StringBuilder sb = new StringBuilder();
                 Byte[] buf = new byte[8192];
@@ -504,7 +533,7 @@ namespace MyTVWeb
                     count = resStream.Read(buf, 0, buf.Length);
                     if (count != 0)
                     {
-                        sb.Append(Encoding.UTF8.GetString(buf, 0, count)); 
+                        sb.Append(Encoding.UTF8.GetString(buf, 0, count));
                     }
                 } while (count > 0);
                 return sb;
@@ -516,5 +545,34 @@ namespace MyTVWeb
                 return new StringBuilder(reader.ReadToEnd());
             }
         }
+
+        public bool IsMediaMP4(string url)
+        {
+            HttpWebResponse response = null;
+            var isMediaMP4 = true;
+
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "HEAD";
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();
+                if (isMediaMP4)
+                    isMediaMP4 = response.ContentType.ToLower().Contains("mp4");
+            }
+            catch
+            {
+                isMediaMP4 = false;
+            }
+            finally
+            {
+                if (response != null)
+                {
+                    response.Close();
+                }
+            }
+
+            return isMediaMP4;
+        }
+
     }
 }

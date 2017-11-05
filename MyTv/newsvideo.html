@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>List of Shows</title>
+
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="http://jwpsrv.com/library/DSW2ksigEeK0vhIxOQulpA.js"></script>
+    <script type="text/javascript">jwplayer.key = "YsYmmgxJ34h/Mv9ISqtlE2UskGltg3JTQeZgNl5aor5zeF+HRWe52DBrrKU=";</script>
+    <script type="text/javascript">
+        var TICKER_DELAY = 8;
+        var SLIDER_DELAY = 3000;
+        var SLIDER_SPEED = 500;
+    </script>
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet">
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet">
+
+    <script>
+
+        $(document).on('mousedown', '.vid', function () {
+            setJWPlayerWithURL($(this).attr('rel'), 0);
+        });
+
+        $(document).ready(function () {
+            w3IncludeHTML();
+            $('.header1 span a').attr('href', 'newslive.html?n=' + getUrlVars()["source"]);
+
+            var m = getUrlVars()["m"];
+            if (m != undefined) {
+                $('#list').hide();
+                playMovie(1);
+            }
+            else {
+                getMovie(null, 2);
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <div w3-include-html="header.html"></div>
+    <div class="header1">
+        <span>
+            <a href="newslive.html">Live</a>
+        </span>
+    </div>
+
+    <div style="clear:both" id="list">
+        <div id="div-0" style="width:390px;margin:auto;float:left">
+            <a class="ui-btn ui-btn-icon-right ui-corner-top ui-btn-up-z" id="a-0" href="/">
+                <img id="img-0" src="" />
+                <span style="display:block">
+                    <span class="ui-btn-text" id="span-0"></span>
+                    <span class="ui-icon-arrow-normal"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+    <div id="showvideoplayer"></div>
+</body>
+</html>

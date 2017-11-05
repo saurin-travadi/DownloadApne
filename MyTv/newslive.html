@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>List of Shows</title>
+
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="/scripts/common.js"></script>
+    <script src="http://jwpsrv.com/library/DSW2ksigEeK0vhIxOQulpA.js"></script>
+    <script type="text/javascript">jwplayer.key = "YsYmmgxJ34h/Mv9ISqtlE2UskGltg3JTQeZgNl5aor5zeF+HRWe52DBrrKU=";</script>
+    <script type="text/javascript">
+        var TICKER_DELAY = 8;
+        var SLIDER_DELAY = 3000;
+        var SLIDER_SPEED = 500;
+    </script>
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet" />
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (getUrlVars()["n"] == undefined)
+                playNewsLive('NDTV_24x7');
+            else
+                playNewsLive(getUrlVars()["n"]);
+
+            w3IncludeHTML();
+        });
+
+    </script>
+</head>
+<body>
+    <div w3-include-html="header.html"></div>
+    <div class="header1">
+        <span>
+            <a href="#" onclick="playNewsLive('NDTV_24x7');">NDTV 24x7</a>
+            <a href="#" onclick="playNewsLive('NDTV_India');">NDTV India</a>
+            <a href="#" onclick="playNewsLive('Zee_News');">Zee News</a>
+            <a href="#" onclick="playNewsLive('Times_NOW');">Times NOW</a>
+            <a href="#" onclick="playNewsLive('India_TV');">India TV</a>
+            <a href="#" onclick="playNewsLive('Aaj_Tak');">Aaj Tak</a>
+            <a href="#" onclick="playNewsLive('Aaj_Tak_TEZ');">Aaj Tak TEZ</a>
+        </span>
+    </div>
+    <div id="jwplayer">
+        <div id='showvideoplayer'></div>
+    </div>
+    <iframe id='id6' src="#" frameborder="0" style="display:none;margin:0 auto;width:900px;height:600px" allowfullscreen></iframe>
+
+</body>
+</html>

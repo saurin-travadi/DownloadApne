@@ -2,12 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>List of Shows</title>
 
-    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="scripts/common.js"></script>
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet">
     <link media="screen" type="text/css" href="css/app.css" rel="stylesheet">
     
     <script>
+        $(document).ready(function () {
+            w3IncludeHTML();
+
+        });
         function load() {
             var h = screen.height - 250;
             var w = screen.width - 80;
@@ -19,28 +29,25 @@
 
 </head>
 <body onload="return load();" style="display:block;margin:0 auto">
-    <div class="header">
-        <span style="float:right"><a href="index.html">Home</a></span>
-    </div>
-    <br />
-    <br />
-    <div id="terms" style="font-size:20px; text-align:justify; overflow-y:no-display">
-        MyTV is not responsible for any of the content. MyTV is only a guide to web content for entertainment purposes. 
-        MyTV disclaims any and all responsibility or liability for the accuracy, content, completeness, legality, reliability, operability, 
-        or availability of information or material displayed, it disclaims any responsibility of information or material displayed 
-        and no statement should be relied upon as fact without independent investigation on your part to sufficiently satisfy yourself it is true. 
+    <div w3-include-html="header.html"></div>
+    <div class="header1"></div>
+    <div style="clear:both;padding:5px 25px;text-align: justify;" id="list">
+        MyTV is not responsible for any of the content. MyTV is only a guide to web content for entertainment purposes.
+        MyTV disclaims any and all responsibility or liability for the accuracy, content, completeness, legality, reliability, operability,
+        or availability of information or material displayed, it disclaims any responsibility of information or material displayed
+        and no statement should be relied upon as fact without independent investigation on your part to sufficiently satisfy yourself it is true.
         It disclaims any responsibility for any harm resulting from downloading or accessing any information or material.
-        It contain links to other Internet sites. These third party sites may also contain opinions and viewpoints of third parties that do not necessarily 
+        It contain links to other Internet sites. These third party sites may also contain opinions and viewpoints of third parties that do not necessarily
         coincide with our opinions and viewpoints. Those sites may also have private policy different than our own privacy policy.
-        By accessing MyTV content you hereby agree not to sue MyTV for its content, whether original or linked to or quoted from another source, 
+        By accessing MyTV content you hereby agree not to sue MyTV for its content, whether original or linked to or quoted from another source,
         in any court or by any legal procedure, on any grounds in law or equity whatsoever.
-        This website does NOT provide any legal advice in any manner, shape or form. We are not practicing law and any opinions or information published on this app 
-        should be considered to be exclusively for the purpose of entertainment. Please do not send any confidential information here as there is no client relationship 
+        This website does NOT provide any legal advice in any manner, shape or form. We are not practicing law and any opinions or information published on this app
+        should be considered to be exclusively for the purpose of entertainment. Please do not send any confidential information here as there is no client relationship
         and will not be considered privileged! The Channel Logos displayed on the pages belong to the respective channel, it is only intended to distinguish and identify the Channel.
-        We are simply embedding the code from a website, we dont have any right to property or ownership for these channels. This privacy notice is to announce some of the rules 
-        and regulations before you start using MyTV. We recommend you read and understand these rules. If in any case you do not agree with this policy you better close this app now. 
-        We have neither any commercial purpose of this section nor do we want you to miss use the copyright of the respected owner of the music. 
-        This is only to provide you the easiest way and you use it as your own personal data. You are not allowed in any case to use of these files for your own commercial purposes. 
+        We are simply embedding the code from a website, we dont have any right to property or ownership for these channels. This privacy notice is to announce some of the rules
+        and regulations before you start using MyTV. We recommend you read and understand these rules. If in any case you do not agree with this policy you better close this app now.
+        We have neither any commercial purpose of this section nor do we want you to miss use the copyright of the respected owner of the music.
+        This is only to provide you the easiest way and you use it as your own personal data. You are not allowed in any case to use of these files for your own commercial purposes.
     </div>
 </body>
 </html>

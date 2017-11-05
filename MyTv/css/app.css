@@ -1,8 +1,7 @@
 body {
     margin: auto;
     width: 100%;
-    padding-top: 20px;
-    background-color: #1D7A99;
+    background-color: #012d38;
     font-size: xx-large;
 }
 
@@ -17,7 +16,7 @@ body {
     color: #000;
 }
 
-img {
+#list img {
     height: 240px;
     width: 320px;
     border-radius: 20px;
@@ -35,35 +34,56 @@ img {
     border: medium none;
     border-radius: 0;
     height: 60px;
+    left: 0;
     margin: 0;
     position: fixed;
-    top: 0 !important;
-    width: 100%;
-    z-index: 1;
+    top: 0;
+    z-index: 1000;
+    width:200px;
+
 }
 
 .header1 {
-    background-color: #606060;
+    background-color: #7d7d7d;
     border: medium none;
     border-radius: 0;
     height: 60px;
+    text-align: right;
     margin: 0;
-    position: fixed;
-    top: 60px !important;
     width: 100%;
     z-index: 1;
 }
 
+    .header1 select {
+        background-color: #f9f9f9;
+        border-radius: 11px;
+        font-size: smaller;
+        height: 40px;
+        margin-right: 10px;
+        margin-top: 4px;
+        width: 150px;
+    }
+
+.header span a {
+    color: #d3d3d3;
+    display: block;
+    margin: 10px;
+    text-decoration: none;
+}
 
 input[type="button"] {
     height: 40px;
     margin: 5px;
     width: 120px;
+    border: 0 none;
+    border-radius: 25px;
 }
 
 input[type="text"] {
     height: 30px;
     width: 300px;
+    border: 0 none;
+    border-radius: 10px;
 }
 
 select {
@@ -80,19 +100,66 @@ select {
 }
 
 span {
-    color: #fff;
+    color: #d3d3d3;
 }
 
     span a {
-        color: #fff;
+        color: #d3d3d3;
         margin: 10px;
+        text-decoration: none;
     }
+
+        span a.lnk.sel {
+            color: #1f1f1f;
+            margin: 10px;
+            text-decoration: underline;
+        }
+
+.ui-btn {
+    text-decoration: none;
+}
+
+    .ui-btn:hover {
+    }
+
+.ui-btn-inner .s1 {
+    width: 90%;
+}
+
+
+.ui-btn-inner .s2 {
+    background-color: #001E20;
+    border-radius: 31px;
+    color: #aad7d8;
+    float: right;
+    margin: -56px -23px;
+    text-align: center;
+    width: 52px;
+    cursor:pointer;
+    opacity:.4;
+}
+
+    .ui-btn-inner .s2:hover {
+        background-color: darkred;
+        color: white;
+        opacity:1;
+    }
+
+#content .ui-corner-all{
+    max-width:49%;
+}
+.ui-btn-inner {
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
 
 .progress-bar {
     background-color: black;
+    height: 100%;
     margin: auto;
-    opacity: 0.45;
+    opacity: 0.76;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 100;
 }
@@ -104,4 +171,29 @@ span {
     width: 400px;
     padding: 0;
     margin: auto;
+}
+
+#list span {
+    font-size: x-large;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 73%;
+    height: 90px;
+    margin: auto;
+}
+
+#list a {
+    text-decoration: none;
+}
+
+#showvideoplayer, #showvideoplayer_wrapper {
+    margin: 0 auto;
+}
+
+sup {
+    font-size: small;
+}
+
+.ui-dialog {
+    background-color:white;
 }

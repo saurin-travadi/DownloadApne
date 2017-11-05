@@ -129,18 +129,4 @@ input[type=range]:focus::-ms-fill-upper {
     background: #367ebd;
 }
 
-#outerdiv {
-    width: 790px;
-    height: 410px;
-    overflow: hidden;
-    position: relative;
-    margin: auto;
-}
 
-#inneriframe {
-    position: absolute;
-    top: -430px;
-    left: -80px;
-    width: 1280px;
-    height: 1200px;
-}

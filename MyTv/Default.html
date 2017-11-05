@@ -2,159 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>My TV</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="/scripts/common.js"></script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>List of Shows</title>
+
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="scripts/common.js"></script>
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet">
     <link media="screen" type="text/css" href="css/app.css" rel="stylesheet">
 
-    <style>
-        .scroll-pane {
-            overflow-x: auto;
-            overflow-y: hidden;
-            width: 90%;
-            float: left;
-        }
+    <script type="text/javascript">
 
-        .scroll-content {
-            float: left;
-            width: 2440px;
-        }
+        $(document).ready(function () {
+            w3IncludeHTML();
 
-        .scroll-content-item {
-            width: 150px;
-            height: 100px;
-            float: left;
-            margin: 10px;
-            text-align: center;
-            font-size: 20px;
-        }
-
-        .scroll-bar-wrap {
-            clear: left;
-            padding: 0 4px 0 2px;
-            margin: 0 -1px -1px -1px;
-        }
-
-            .scroll-bar-wrap .ui-slider {
-                background: none;
-                border: 0;
-                height: 2em;
-                margin: 0 auto;
-            }
-
-            .scroll-bar-wrap .ui-handle-helper-parent {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                margin: 0 auto;
-            }
-
-            .scroll-bar-wrap .ui-slider-handle {
-                top: .2em;
-                height: 1.5em;
-            }
-
-                .scroll-bar-wrap .ui-slider-handle .ui-icon {
-                    margin: -8px auto 0;
-                    position: relative;
-                    top: 50%;
-                }
-    </style>
-</head>
-
-<body>
-    <div class="header">
-        <span style="float:right"><a href="ndtv24x7.html">News</a><a href="Radio.html">Radio</a><a href="movies.html">Movies</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
-    </div>
-    <div class="header1">
-        <span>
-            <select onchange="var url = '/?source='+$(this).val(); window.location = url;">
-                <option>--Select--</option>
-                <option>GetBollyStop</option>
-                <option>GetApne</option>
-                <option>GetYoDesi</option>
-            </select>
-        </span>
-    </div>
-    <br />
-    <br />
-    <div class="center" id="content">
-        <div id="accordion">
-
-        </div>
-    </div>
-
-    <script>
-        $(function () {
-
-            getChannel1();
+            showFav();
         });
 
 
-        $.event.special.hoverintent = {
-            setup: function () {
-                $(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
-            },
-            teardown: function () {
-                $(this).unbind("mouseover", jQuery.event.special.hoverintent.handler);
-            },
-            handler: function (event) {
-                var currentX, currentY, timeout,
-                  args = arguments,
-                  target = $(event.target),
-                  previousX = event.pageX,
-                  previousY = event.pageY;
-
-                function track(event) {
-                    currentX = event.pageX;
-                    currentY = event.pageY;
-                };
-
-                function clear() {
-                    target
-                      .unbind("mousemove", track)
-                      .unbind("mouseout", clear);
-                    clearTimeout(timeout);
-                }
-
-                function handler() {
-                    var prop,
-                      orig = event;
-
-                    if ((Math.abs(previousX - currentX) +
-                        Math.abs(previousY - currentY)) < 7) {
-                        clear();
-
-                        event = $.Event("hoverintent");
-                        for (prop in orig) {
-                            if (!(prop in event)) {
-                                event[prop] = orig[prop];
-                            }
-                        }
-                        // Prevent accessing the original event since the new event
-                        // is fired asynchronously and the old event is no longer
-                        // usable (#6028)
-                        delete event.originalEvent;
-
-                        target.trigger(event);
-                    } else {
-                        previousX = currentX;
-                        previousY = currentY;
-                        timeout = setTimeout(handler, 100);
-                    }
-                }
-
-                timeout = setTimeout(handler, 100);
-                target.bind({
-                    mousemove: track,
-                    mouseout: clear
-                });
-            }
-        };
-
-
     </script>
+</head>
+<body>
+    <div w3-include-html="header.html"></div>
+    <div class="header1">
+    </div>
+    <div class="center" id="content">
+        <div class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" id="div-0">
+            <div class="ui-btn-inner ui-corner-bottom ui-corner-top">
+                <a class="ui-btn ui-btn-icon-right ui-corner-top ui-btn-up-z" id="a-0" href="/">
+                    <span class="ui-btn-text s1" id="span-0">Loading</span>
+                </a>
+                <span class="s2" onclick="return resetFav(this);">X</span>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
 </body>
 </html>

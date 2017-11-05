@@ -14,7 +14,7 @@ namespace MyTVWeb
     public class GetURL : IHttpHandler
     {
         const string Apne = "http://apne.tv/Hindi-Serial";
-        const string BollyStop = "http://bollystop.com";
+        const string BollyStop = "http://bollystop.tv";
 
         public bool IsReusable
         {
@@ -28,12 +28,18 @@ namespace MyTVWeb
 
         public void ProcessRequest(HttpContext context)
         {
-            List<string> urls=new List<string>();
+            List<string> urls = new List<string>();
 
             var serial = context.Request.QueryString["s"];
+
             var day = context.Request.QueryString["d"];
+            if (day == "undefined") day = "";
+
             var url = context.Request.QueryString["url"];
+
             var format = context.Request.QueryString["f"];
+            if (format == "undefined") format = "Telly";
+
             var show = context.Request.QueryString["source"];
             if (string.IsNullOrEmpty(show)) show = "Apne";
 
@@ -43,7 +49,7 @@ namespace MyTVWeb
 
             if (show.Equals("GetYoDesi"))
             {
-                new GetYoDesi().ReadURL(url,format);
+                new GetYoDesi().ReadURL(url, format);
                 IsDM = myObj.IsDM;
             }
             else
@@ -62,20 +68,8 @@ namespace MyTVWeb
             data = data.Replace("'%SHOWS%'", "'" + HttpUtility.UrlDecode(context.Request.QueryString["s"]) + "'");
             data = data.Replace("%CHANNELS%", "");
             data = data.Replace("%DATES%", "");
-            if (urls != null && urls.Count > 0)
-            {
-                data = data.Replace("%URL%", urls[0].Trim());
-                if (urls.Count > 1)
-                    data = data.Replace("%URL1%", urls[1].Trim());
-                else
-                    data = data.Replace("%URL1%", "");
-            }
-            else
-            {
-                data = data.Replace("%URL%", "");
-                data = data.Replace("%URL1%", "");
-            }
-
+            data = data.Replace("%URL%", string.Join("|", urls));
+            data = data.Replace("%URL1%", "");
             data = data.Replace("%ISDM%", IsDM);
 
             context.Response.Write(data);

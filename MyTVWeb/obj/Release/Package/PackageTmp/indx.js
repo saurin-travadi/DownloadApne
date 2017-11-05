@@ -9,47 +9,47 @@ function MyTVScript() {
             "shows": [
               {
                   "name": "Adaalat",
-                  "url": "http://bollystop.com/Hindi-Serial/Adaalat-2"
+                  "url": "http://bollystop.tv/Hindi-Serial/Adaalat-2"
               },
               {
                   "name": "C.I.D",
-                  "url": "http://bollystop.com/Hindi-Serial/C.I.D"
+                  "url": "http://bollystop.tv/Hindi-Serial/C.I.D"
               },
               {
                   "name": "Crime Patrol",
-                  "url": "http://bollystop.com/Hindi-Serial/Crime-Patrol"
+                  "url": "http://bollystop.tv/Hindi-Serial/Crime-Patrol"
               },
               {
                   "name": "Ek duje ke vaaste",
-                  "url": "http://bollystop.com/Hindi-Serial/Ek-duje-ke-vaaste-"
+                  "url": "http://bollystop.tv/Hindi-Serial/Ek-duje-ke-vaaste-"
               },
               {
                   "name": "Kuch Rang Pyar Ke Aise Bhi",
-                  "url": "http://bollystop.com/Hindi-Serial/Kuch-Rang-Pyar-Ke-Aise-Bhi"
+                  "url": "http://bollystop.tv/Hindi-Serial/Kuch-Rang-Pyar-Ke-Aise-Bhi"
               },
               {
                   "name": "Mann Mein Vishwaas Hai",
-                  "url": "http://bollystop.com/Hindi-Serial/Mann-Mein-Vishwaas-Hai"
+                  "url": "http://bollystop.tv/Hindi-Serial/Mann-Mein-Vishwaas-Hai"
               },
               {
                   "name": "Parvarish Season 2",
-                  "url": "http://bollystop.com/Hindi-Serial/Parvarish-Season-2"
+                  "url": "http://bollystop.tv/Hindi-Serial/Parvarish-Season-2"
               },
               {
                   "name": "Power Couple",
-                  "url": "http://bollystop.com/Hindi-Serial/Power-Couple"
+                  "url": "http://bollystop.tv/Hindi-Serial/Power-Couple"
               },
               {
                   "name": "Sankat Mochan Mahabali Hanumaan",
-                  "url": "http://bollystop.com/Hindi-Serial/Sankat-Mochan-Mahabali-Hanumaan"
+                  "url": "http://bollystop.tv/Hindi-Serial/Sankat-Mochan-Mahabali-Hanumaan"
               },
               {
                   "name": "Suryaputra Karn",
-                  "url": "http://bollystop.com/Hindi-Serial/Suryaputra-Karn"
+                  "url": "http://bollystop.tv/Hindi-Serial/Suryaputra-Karn"
               },
               {
                   "name": "The Kapil Sharma Show",
-                  "url": "http://bollystop.com/Hindi-Serial/The-Kapil-Sharma-Show"
+                  "url": "http://bollystop.tv/Hindi-Serial/The-Kapil-Sharma-Show"
               }
             ]
         },
@@ -58,55 +58,55 @@ function MyTVScript() {
             "shows": [
               {
                   "name": "Chakravartin Ashoka Samrat",
-                  "url": "http://bollystop.com/Hindi-Serial/Chakravartin-Ashoka-Samrat"
+                  "url": "http://bollystop.tv/Hindi-Serial/Chakravartin-Ashoka-Samrat"
               },
             {
                 "name": "Balika Vadhu",
-                "url": "http://bollystop.com/Hindi-Serial/Balika-Vadhu"
+                "url": "http://bollystop.tv/Hindi-Serial/Balika-Vadhu"
             },
             {
                 "name": "Box Cricket League",
-                "url": "http://bollystop.com/Hindi-Serial/Box-Cricket-League"
+                "url": "http://bollystop.tv/Hindi-Serial/Box-Cricket-League"
             },
             {
                 "name": "Comedy Nights Bachao",
-                "url": "http://bollystop.com/Hindi-Serial/Comedy-Nights-Bachao"
+                "url": "http://bollystop.tv/Hindi-Serial/Comedy-Nights-Bachao"
             },
             {
                 "name": "Comedy Nights Live",
-                "url": "http://bollystop.com/Hindi-Serial/Comedy-Nights-Live"
+                "url": "http://bollystop.tv/Hindi-Serial/Comedy-Nights-Live"
             },
             {
                 "name": "Indias Got Talent Season 7",
-                "url": "http://bollystop.com/Hindi-Serial/Indias-Got-Talent-Season-7"
+                "url": "http://bollystop.tv/Hindi-Serial/Indias-Got-Talent-Season-7"
             },
             {
                 "name": "Ishq Ka Rang Safed",
-                "url": "http://bollystop.com/Hindi-Serial/Ishq-Ka-Rang-Safed"
+                "url": "http://bollystop.tv/Hindi-Serial/Ishq-Ka-Rang-Safed"
             },
             {
                 "name": "Kasam ",
-                "url": "http://bollystop.com/Hindi-Serial/Kasam-"
+                "url": "http://bollystop.tv/Hindi-Serial/Kasam-"
             },
             {
                 "name": "Krishnadasi",
-                "url": "http://bollystop.com/Hindi-Serial/Krishnadasi"
+                "url": "http://bollystop.tv/Hindi-Serial/Krishnadasi"
             },
             {
                 "name": "Naagin",
-                "url": "http://bollystop.com/Hindi-Serial/Naagin"
+                "url": "http://bollystop.tv/Hindi-Serial/Naagin"
             },
             {
                 "name": "Sasural Simar Ka",
-                "url": "http://bollystop.com/Hindi-Serial/Sasural-Simar-Ka"
+                "url": "http://bollystop.tv/Hindi-Serial/Sasural-Simar-Ka"
             },
             {
                 "name": "Shakti",
-                "url": "http://bollystop.com/Hindi-Serial/Shakti"
+                "url": "http://bollystop.tv/Hindi-Serial/Shakti"
             },
             {
                 "name": "Ishq Ka Rang Safed",
-                "url": "http://bollystop.com/Hindi-Serial/Ishq-Ka-Rang-Safed"
+                "url": "http://bollystop.tv/Hindi-Serial/Ishq-Ka-Rang-Safed"
             }
 
             ]
@@ -120,15 +120,15 @@ function MyTVScript() {
             "shows": [
             {
                 "name": "Dehleez",
-                "url": "http://bollystop.com/Hindi-Serial/Dehleez"
+                "url": "http://bollystop.tv/Hindi-Serial/Dehleez"
             },
             {
                 "name": "Yeh Rishta Kya Kehlata Hai",
-                "url": "http://bollystop.com/Hindi-Serial/Yeh-Rishta-Kya-Kehlata-Hai"
+                "url": "http://bollystop.tv/Hindi-Serial/Yeh-Rishta-Kya-Kehlata-Hai"
             },
             {
                 "name": "Yeh Hai Mohabbatein",
-                "url": "http://bollystop.com/Hindi-Serial/Yeh-Hai-Mohabbatein"
+                "url": "http://bollystop.tv/Hindi-Serial/Yeh-Hai-Mohabbatein"
             }]
         },
         {
@@ -136,15 +136,15 @@ function MyTVScript() {
             "shows": [
             {
                 "name": "Taarak Mehta Ka Ooltah Chashmah",
-                "url": "http://bollystop.com/Hindi-Serial/Taarak-Mehta-Ka-Ooltah-Chashmah"
+                "url": "http://bollystop.tv/Hindi-Serial/Taarak-Mehta-Ka-Ooltah-Chashmah"
             },
             {
                 "name": "Saheb Biwi aur Boss",
-                "url": "http://bollystop.com/Hindi-Serial/Saheb-Biwi-aur-Boss"
+                "url": "http://bollystop.tv/Hindi-Serial/Saheb-Biwi-aur-Boss"
             },
             {
                 "name": "Baal Veer",
-                "url": "http://bollystop.com/Hindi-Serial/Baal-Veer"
+                "url": "http://bollystop.tv/Hindi-Serial/Baal-Veer"
             }]
         },
         {
@@ -214,55 +214,55 @@ function MyTVScript() {
             "shows": [
               {
                   "name": "Chakravartin Ashoka Samrat",
-                  "url": "http://bollystop.com/Hindi-Serial/Chakravartin-Ashoka-Samrat"
+                  "url": "http://bollystop.tv/Hindi-Serial/Chakravartin-Ashoka-Samrat"
               },
             {
                 "name": "Balika Vadhu",
-                "url": "http://bollystop.com/Hindi-Serial/Balika-Vadhu"
+                "url": "http://bollystop.tv/Hindi-Serial/Balika-Vadhu"
             },
             {
                 "name": "Box Cricket League",
-                "url": "http://bollystop.com/Hindi-Serial/Box-Cricket-League"
+                "url": "http://bollystop.tv/Hindi-Serial/Box-Cricket-League"
             },
             {
                 "name": "Comedy Nights Bachao",
-                "url": "http://bollystop.com/Hindi-Serial/Comedy-Nights-Bachao"
+                "url": "http://bollystop.tv/Hindi-Serial/Comedy-Nights-Bachao"
             },
             {
                 "name": "Comedy Nights Live",
-                "url": "http://bollystop.com/Hindi-Serial/Comedy-Nights-Live"
+                "url": "http://bollystop.tv/Hindi-Serial/Comedy-Nights-Live"
             },
             {
                 "name": "Indias Got Talent Season 7",
-                "url": "http://bollystop.com/Hindi-Serial/Indias-Got-Talent-Season-7"
+                "url": "http://bollystop.tv/Hindi-Serial/Indias-Got-Talent-Season-7"
             },
             {
                 "name": "Ishq Ka Rang Safed",
-                "url": "http://bollystop.com/Hindi-Serial/Ishq-Ka-Rang-Safed"
+                "url": "http://bollystop.tv/Hindi-Serial/Ishq-Ka-Rang-Safed"
             },
             {
                 "name": "Kasam ",
-                "url": "http://bollystop.com/Hindi-Serial/Kasam-"
+                "url": "http://bollystop.tv/Hindi-Serial/Kasam-"
             },
             {
                 "name": "Krishnadasi",
-                "url": "http://bollystop.com/Hindi-Serial/Krishnadasi"
+                "url": "http://bollystop.tv/Hindi-Serial/Krishnadasi"
             },
             {
                 "name": "Naagin",
-                "url": "http://bollystop.com/Hindi-Serial/Naagin"
+                "url": "http://bollystop.tv/Hindi-Serial/Naagin"
             },
             {
                 "name": "Sasural Simar Ka",
-                "url": "http://bollystop.com/Hindi-Serial/Sasural-Simar-Ka"
+                "url": "http://bollystop.tv/Hindi-Serial/Sasural-Simar-Ka"
             },
             {
                 "name": "Shakti",
-                "url": "http://bollystop.com/Hindi-Serial/Shakti"
+                "url": "http://bollystop.tv/Hindi-Serial/Shakti"
             },
             {
                 "name": "Ishq Ka Rang Safed",
-                "url": "http://bollystop.com/Hindi-Serial/Ishq-Ka-Rang-Safed"
+                "url": "http://bollystop.tv/Hindi-Serial/Ishq-Ka-Rang-Safed"
             }
 
             ]
@@ -272,15 +272,15 @@ function MyTVScript() {
             "shows": [
             {
                 "name": "Dehleez",
-                "url": "http://bollystop.com/Hindi-Serial/Dehleez"
+                "url": "http://bollystop.tv/Hindi-Serial/Dehleez"
             },
             {
                 "name": "Yeh Rishta Kya Kehlata Hai",
-                "url": "http://bollystop.com/Hindi-Serial/Yeh-Rishta-Kya-Kehlata-Hai"
+                "url": "http://bollystop.tv/Hindi-Serial/Yeh-Rishta-Kya-Kehlata-Hai"
             },
             {
                 "name": "Yeh Hai Mohabbatein",
-                "url": "http://bollystop.com/Hindi-Serial/Yeh-Hai-Mohabbatein"
+                "url": "http://bollystop.tv/Hindi-Serial/Yeh-Hai-Mohabbatein"
             }]
         },
         {
@@ -288,15 +288,15 @@ function MyTVScript() {
             "shows": [
             {
                 "name": "Taarak Mehta Ka Ooltah Chashmah",
-                "url": "http://bollystop.com/Hindi-Serial/Taarak-Mehta-Ka-Ooltah-Chashmah"
+                "url": "http://bollystop.tv/Hindi-Serial/Taarak-Mehta-Ka-Ooltah-Chashmah"
             },
             {
                 "name": "Saheb Biwi aur Boss",
-                "url": "http://bollystop.com/Hindi-Serial/Saheb-Biwi-aur-Boss"
+                "url": "http://bollystop.tv/Hindi-Serial/Saheb-Biwi-aur-Boss"
             },
             {
                 "name": "Baal Veer",
-                "url": "http://bollystop.com/Hindi-Serial/Baal-Veer"
+                "url": "http://bollystop.tv/Hindi-Serial/Baal-Veer"
             }]
         }
       ]
