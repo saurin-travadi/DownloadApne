@@ -467,7 +467,7 @@ function playMovie(p) {
 }
 
 function playMovieInModal(m, source) {
-    
+
     var h = screen.height;
     var w = screen.width;
     if ($('.header1').is(':visible')) h = h - $('.header1').height();
@@ -498,17 +498,42 @@ function setJWPlayerWithURL(url, isPage) {
         $(p).append('<div id="showvideoplayer"></div>');
         $('#showvideoplayer_wrapper').remove();
 
-        jwplayer("showvideoplayer").setup({
-            file: url,
-            hlshtml: true,
-            autoStart: true,
-            primary: 'html5',
-            cookies: true,
-            width: w * 0.75,
-            height: h * 0.75,
-            aspectratio: "16:9",
-            title: "Click Play"
+        flowplayer.conf.share = false;
+        flowplayer.conf.fullscreen = true;
+        flowplayer.conf.native_fullscreen = true;
+        var container = document.getElementById("showvideoplayer");
+        var p = flowplayer(container, {
+            clip: {
+                sources: [
+                    {
+                        src: url,
+                        type: "application/x-mpegurl"
+                    }
+                ]
+            },
+            screen: {
+                width: 387, height: 231, top: 55, right: 77
+            },
+            share: false
+        }).on("ready", function (e, api) {
+            var fsbutton = container.querySelector(".fp-fullscreen");
+            container.querySelector(".fp-controls").appendChild(fsbutton);
         });
+        $('.flowplayer').height(h * 0.75);
+        $('.flowplayer').width(w * 0.75);
+
+        //$('.jw-button-container').css('width', '100');
+        //$('.jw-controlbar').css('width', '100');
+        //jwplayer("showvideoplayer").setup({
+        //    file: url,
+        //    hlshtml: true,
+        //    autoStart: true,
+        //    primary: 'html5',
+        //    cookies: true,
+        //    width: w * 0.75,
+        //    height: h * 0.75,
+        //    title: "Click Play"
+        //});
     }
 }
 
