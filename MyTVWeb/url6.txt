@@ -1,0 +1,200 @@
+#EXTINF:-1,IN|| Zee Salam
+http://212.38.189.9:25461/live/terry/terry/73610.m3u8
+#EXTINF:-1,IN|| ZEE ACTION
+http://212.38.189.9:25461/live/terry/terry/73611.m3u8
+#EXTINF:-1,IN|| STAR SPORTS 2
+http://212.38.189.9:25461/live/terry/terry/73612.m3u8
+#EXTINF:-1,IN: & Picture HD
+http://212.38.189.9:25461/live/terry/terry/73613.m3u8
+#EXTINF:-1,IN: B4U Movies
+http://212.38.189.9:25461/live/terry/terry/73614.m3u8
+#EXTINF:-1,IN: B4U Plus
+http://212.38.189.9:25461/live/terry/terry/73615.m3u8
+#EXTINF:-1,IN: COLORS HD
+http://212.38.189.9:25461/live/terry/terry/73616.m3u8
+#EXTINF:-1,IN: &TV HD
+http://212.38.189.9:25461/live/terry/terry/73617.m3u8
+#EXTINF:-1,IN: BOLLYWOOD CLASSIC
+http://212.38.189.9:25461/live/terry/terry/73618.m3u8
+#EXTINF:-1,IN: HOUSEFULL ACTION
+http://212.38.189.9:25461/live/terry/terry/73619.m3u8
+#EXTINF:-1,IN: Rishtey Europe
+http://212.38.189.9:25461/live/terry/terry/73620.m3u8
+#EXTINF:-1,IN: Star Gold HD
+http://212.38.189.9:25461/live/terry/terry/73621.m3u8
+#EXTINF:-1,IN: SONY MAX HD
+http://212.38.189.9:25461/live/terry/terry/73622.m3u8
+#EXTINF:-1,IN: Sony Sab
+http://212.38.189.9:25461/live/terry/terry/73623.m3u8
+#EXTINF:-1,IN: SONY SAB HD USA
+http://212.38.189.9:25461/live/terry/terry/73624.m3u8
+#EXTINF:-1,IN: SONY TV HD
+http://212.38.189.9:25461/live/terry/terry/73625.m3u8
+#EXTINF:-1,IN: STAR BHARAT HD
+http://212.38.189.9:25461/live/terry/terry/73626.m3u8
+#EXTINF:-1,IN: STAR PLUS HD
+http://212.38.189.9:25461/live/terry/terry/73627.m3u8
+#EXTINF:-1,IN: STAR SPORTS 1 HD
+http://212.38.189.9:25461/live/terry/terry/73628.m3u8
+#EXTINF:-1,IN: Star Sports 2 Select HD
+http://212.38.189.9:25461/live/terry/terry/73629.m3u8
+#EXTINF:-1,IN: STAR SPORTS FIRST
+http://212.38.189.9:25461/live/terry/terry/73630.m3u8
+#EXTINF:-1,IN: Star Sports 1 Select HD
+http://212.38.189.9:25461/live/terry/terry/73631.m3u8
+#EXTINF:-1,IN: TEN 1 HD
+http://212.38.189.9:25461/live/terry/terry/73632.m3u8
+#EXTINF:-1,IN: TEN 3 HD
+http://212.38.189.9:25461/live/terry/terry/73633.m3u8
+#EXTINF:-1,IN: WILLOW CRICKET
+http://212.38.189.9:25461/live/terry/terry/73634.m3u8
+#EXTINF:-1,IN: ZEE ANMOL
+http://212.38.189.9:25461/live/terry/terry/73635.m3u8
+#EXTINF:-1,IN: ZEE BOLLYWOOD
+http://212.38.189.9:25461/live/terry/terry/73636.m3u8
+#EXTINF:-1,IN: ZEE CINEMA HD
+http://212.38.189.9:25461/live/terry/terry/73637.m3u8
+#EXTINF:-1,IN: Zee Punjabi
+http://212.38.189.9:25461/live/terry/terry/73638.m3u8
+#EXTINF:-1,IN: Zee Studio HD
+http://212.38.189.9:25461/live/terry/terry/73639.m3u8
+#EXTINF:-1,IN: ZEE TV HD
+http://212.38.189.9:25461/live/terry/terry/73640.m3u8
+#EXTINF:-1,IN:ABP News
+http://212.38.189.9:25461/live/terry/terry/73641.m3u8
+#EXTINF:-1,SONY SIX
+http://212.38.189.9:25461/live/terry/terry/73642.m3u8
+#EXTINF:-1,IND: ZEE YUVA MARATHI
+http://212.38.189.9:25461/live/terry/terry/73643.m3u8
+#EXTINF:-1,IND: ZEE MARATHI HD
+http://212.38.189.9:25461/live/terry/terry/73644.m3u8
+#EXTINF:-1,IND: COLORS CINEPLEX (UK)
+http://212.38.189.9:25461/live/terry/terry/73645.m3u8
+#EXTINF:-1,IND: B4U Movies
+http://212.38.189.9:25461/live/terry/terry/73646.m3u8
+#EXTINF:-1,IND: B4U Kadak
+http://212.38.189.9:25461/live/terry/terry/73647.m3u8
+#EXTINF:-1,IND: Cinema TV
+http://212.38.189.9:25461/live/terry/terry/73648.m3u8
+#EXTINF:-1,IND: ENTER 10
+http://212.38.189.9:25461/live/terry/terry/73649.m3u8
+#EXTINF:-1,IND: MANORANJAN TV
+http://212.38.189.9:25461/live/terry/terry/73650.m3u8
+#EXTINF:-1,IND: MANORANJAN MOVIES
+http://212.38.189.9:25461/live/terry/terry/73651.m3u8
+#EXTINF:-1,IND: MAHA MOVIES
+http://212.38.189.9:25461/live/terry/terry/73652.m3u8
+#EXTINF:-1,IND: BOLLYWOOD NOW
+http://212.38.189.9:25461/live/terry/terry/73653.m3u8
+#EXTINF:-1,IND: BOLLYWOOD PREMIER
+http://212.38.189.9:25461/live/terry/terry/73654.m3u8
+#EXTINF:-1,IND: DILLAGI TV
+http://212.38.189.9:25461/live/terry/terry/73655.m3u8
+#EXTINF:-1,IND: DHAMAAL TV
+http://212.38.189.9:25461/live/terry/terry/73656.m3u8
+#EXTINF:-1,IND: Jhanjar Music
+http://212.38.189.9:25461/live/terry/terry/73657.m3u8
+#EXTINF:-1,IND: DIL SE
+http://212.38.189.9:25461/live/terry/terry/73658.m3u8
+#EXTINF:-1,IND: PITAARA
+http://212.38.189.9:25461/live/terry/terry/73659.m3u8
+#EXTINF:-1,IND: LIVING FOODZ
+http://212.38.189.9:25461/live/terry/terry/73660.m3u8
+#EXTINF:-1,IND: FOOD FOOD
+http://212.38.189.9:25461/live/terry/terry/73661.m3u8
+#EXTINF:-1,IND: DSPORTS 1
+http://212.38.189.9:25461/live/terry/terry/73662.m3u8
+#EXTINF:-1,IND: DSPORTS
+http://212.38.189.9:25461/live/terry/terry/73663.m3u8
+#EXTINF:-1,IND: DD SPORTS
+http://212.38.189.9:25461/live/terry/terry/73664.m3u8
+#EXTINF:-1,IND: Romedy Now
+http://212.38.189.9:25461/live/terry/terry/73665.m3u8
+#EXTINF:-1,IND: Movies Now
+http://212.38.189.9:25461/live/terry/terry/73666.m3u8
+#EXTINF:-1,IND: MNX
+http://212.38.189.9:25461/live/terry/terry/73667.m3u8
+#EXTINF:-1,IND: &PRIVE
+http://212.38.189.9:25461/live/terry/terry/73668.m3u8
+#EXTINF:-1,IND: &FLIX
+http://212.38.189.9:25461/live/terry/terry/73669.m3u8
+#EXTINF:-1,IND: ABP NEWS
+http://212.38.189.9:25461/live/terry/terry/73670.m3u8
+#EXTINF:-1,IND: ZEE NEWS
+http://212.38.189.9:25461/live/terry/terry/73671.m3u8
+#EXTINF:-1,IND: REPUBLIC BHARAT NEWS
+http://212.38.189.9:25461/live/terry/terry/73672.m3u8
+#EXTINF:-1,IND: AAJ TAK NEWS
+http://212.38.189.9:25461/live/terry/terry/73673.m3u8
+#EXTINF:-1,IND: NEWS 18 INDIA
+http://212.38.189.9:25461/live/terry/terry/73674.m3u8
+#EXTINF:-1,IND: NDTV INDIA
+http://212.38.189.9:25461/live/terry/terry/73675.m3u8
+#EXTINF:-1,IND: INDIA TV NEWS
+http://212.38.189.9:25461/live/terry/terry/73676.m3u8
+#EXTINF:-1,IN: SONY MAX UK
+http://212.38.189.9:25461/live/terry/terry/73677.m3u8
+#EXTINF:-1,IN: SAB TV UK
+http://212.38.189.9:25461/live/terry/terry/73678.m3u8
+#EXTINF:-1,IN: Rishtey UK
+http://212.38.189.9:25461/live/terry/terry/73679.m3u8
+#EXTINF:-1,IN: Rishtey Cine UK
+http://212.38.189.9:25461/live/terry/terry/73680.m3u8
+#EXTINF:-1,IN: PTC PUNJABI UK
+http://212.38.189.9:25461/live/terry/terry/73681.m3u8
+#EXTINF:-1,UKA |  ARY Family
+http://212.38.189.9:25461/live/terry/terry/73682.m3u8
+#EXTINF:-1,IN: COLORS UK
+http://212.38.189.9:25461/live/terry/terry/73683.m3u8
+#EXTINF:-1,IN: Brit Asia TV UK
+http://212.38.189.9:25461/live/terry/terry/73684.m3u8
+#EXTINF:-1,IN: B4U Movies UK
+http://212.38.189.9:25461/live/terry/terry/73685.m3u8
+#EXTINF:-1,IN: ZEE TV  HD
+http://212.38.189.9:25461/live/terry/terry/73686.m3u8
+#EXTINF:-1,IN: ZEE CINEMA HD
+http://212.38.189.9:25461/live/terry/terry/73687.m3u8
+#EXTINF:-1,IN: & TV-HD
+http://212.38.189.9:25461/live/terry/terry/73688.m3u8
+#EXTINF:-1,IN: & Pictures-HD
+http://212.38.189.9:25461/live/terry/terry/73689.m3u8
+#EXTINF:-1,IN: STAR PLUS UK HD
+http://212.38.189.9:25461/live/terry/terry/73690.m3u8
+#EXTINF:-1,IN: Star GOLD UK HD
+http://212.38.189.9:25461/live/terry/terry/73691.m3u8
+#EXTINF:-1,IN: Star BHARAT HD
+http://212.38.189.9:25461/live/terry/terry/73692.m3u8
+#EXTINF:-1,IN: SONY TV UK HD
+http://212.38.189.9:25461/live/terry/terry/73693.m3u8
+#EXTINF:-1,IN: SONY SAB HD
+http://212.38.189.9:25461/live/terry/terry/73694.m3u8
+#EXTINF:-1,IN: Sony MAX UK HD
+http://212.38.189.9:25461/live/terry/terry/73695.m3u8
+#EXTINF:-1,IN: COLORS TV HD
+http://212.38.189.9:25461/live/terry/terry/73696.m3u8
+#EXTINF:-1,IN: STAR SPORT 2
+http://212.38.189.9:25461/live/terry/terry/73697.m3u8
+#EXTINF:-1,IN: STAR SPORT 1
+http://212.38.189.9:25461/live/terry/terry/73698.m3u8
+#EXTINF:-1,IN: SONY TEN 3 HD
+http://212.38.189.9:25461/live/terry/terry/73699.m3u8
+#EXTINF:-1,IN: SONY TEN 2 HD
+http://212.38.189.9:25461/live/terry/terry/73700.m3u8
+#EXTINF:-1,IN: SONY TEN 1 HD
+http://212.38.189.9:25461/live/terry/terry/73701.m3u8
+#EXTINF:-1,IN: Zing Music UK
+http://212.38.189.9:25461/live/terry/terry/73702.m3u8
+#EXTINF:-1,IN: Zee Bangla
+http://212.38.189.9:25461/live/terry/terry/73703.m3u8
+#EXTINF:-1,IN: Utv India
+http://212.38.189.9:25461/live/terry/terry/73704.m3u8
+#EXTINF:-1,IN: Sony Max 2 UK
+http://212.38.189.9:25461/live/terry/terry/73705.m3u8
+#EXTINF:-1,IN: Music India
+http://212.38.189.9:25461/live/terry/terry/73706.m3u8
+#EXTINF:-1,IN: Mtv India
+http://212.38.189.9:25461/live/terry/terry/73707.m3u8
+#EXTINF:-1,IN: E 24 India
+http://212.38.189.9:25461/live/terry/terry/73708.m3u8
+#EXTINF:-1,IN: 9X Jalwa India
+http://212.38.189.9:25461/live/terry/terry/73709.m3u8

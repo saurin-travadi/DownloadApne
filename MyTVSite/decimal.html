@@ -1,0 +1,198 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Decimal</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet">
+    <style>
+		.red {
+			background-color:red;
+			font-size:medium;
+		}
+		.green {
+			background-color:green;
+			font-size:medium;
+		}
+		table {
+			margin-top:15px;
+			width:100%;
+		}
+        .container {
+            width: 690px;
+			margin: auto;
+			position:0;
+            margin-top: 50px;
+            border: 5px solid grey;
+            height: 450px;
+            border-radius: 40px;
+            text-align: center;
+			float:left;
+        }
+
+        .next {
+            height: 65px !important;
+            width: 65px;
+            display: inline;
+        }
+
+        .response {
+            height: 65px;
+            margin-top: 10px;
+            width: 65px;
+        }
+
+        .none {
+            display: none;
+        }
+
+        span {
+            margin-top: 30px;
+            margin-left: 60px;
+            font-size: 120px !important;
+        }
+
+        input[type="text"] {
+            width: 80% !important;
+            height: 70px !important;
+            font-size: 40px !important;
+            text-align: center;
+        }
+
+        @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+            span {
+                font-size: 90px !important;
+            }
+
+            input[type="text"] {
+                font-size: 24px !important;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+		var result=[];
+        $(document).ready(function () {
+			
+			
+            if (isSupportedDevice()) {
+                getQue();
+
+                $('#next').mouseup(function () {
+                    getQue();
+                });
+
+                $('.answer').mouseup(function (e) {
+					$('#correct').hide();
+					$('#incorrect').hide();
+				
+					var ans = eval($('#s1').html() + ($('#o1').text()=='='?'==':$('#o1').text()) + $('#s2').html());
+					var userResponse=false;
+					if (
+						eval(ans) && $(this).val()=='CORRECT'
+						||
+						!eval(ans) && $(this).val()=='NOT CORRECT'
+					){
+						userResponse=true;
+						$('#correct').show();
+					}
+					else
+						$('#incorrect').show();
+				
+					//store the result
+					var p=result.pop();
+					p.Ans=$(this).val();
+					p.Res=userResponse;
+					result.push(p);
+					
+					showResults();
+                });
+            }
+            else {
+                $('.container').remove();
+            }
+        });
+
+        function isSupportedDevice() {
+            if (screen.width > 1600) {
+                alert('USE ONLY SMALLER DEVICES LIKE iPad OR LAPTOP.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function getQue() {
+			$('#correct').hide();
+            $('#incorrect').hide();
+			
+            $('#s1').html((eval(getRnd(7, 20))/eval(getDecimal())).toFixed(3));
+            $('#o1').html(getOperator(0, 2));
+            $('#s2').html((eval(getRnd(8, 15))/eval(getDecimal())).toFixed(3));
+
+			var eq=$('#s1').html()+$('#o1').html()+$('#s2').html();
+			result.push({'Eq':eq,'Ans':'','Res':false});
+			
+			showResults();
+            $('#ans').focus();
+        }
+
+        function getRnd(min, max) {
+            var random = Math.floor(Math.random() * (max - min + 1)) + min;
+            return random;
+        }
+
+        function getOperator(min, max) {
+            var ops = ['>', '<', '='];
+            var opindex = getRnd(min, max);
+            var operator = ops[opindex];
+            return operator;
+        }
+    
+		function getDecimal(){
+            var ops = ['5', '10', '15', '25'];
+            var opindex = getRnd(0, 3);
+            var operand = ops[opindex];
+            return operand;		
+		}
+		
+		function showResults(){
+			var html='<table>';
+			result.forEach(function(e){
+				var cls='class='+(e.Res?'green':'red');
+				html+='<tr '+ cls +'><td>'+e.Eq + ' is ' + e.Ans + '</td></tr>';  
+			});
+			html+='</table>'
+			$('#div-1').html(html);
+		}
+	</script>
+</head>
+<body>
+    <div class="header1">
+
+    </div>
+    <div style="clear:both" id="list">
+        <div id="div-0" class="container">
+
+            <span id="s1"></span>
+            <span id="o1"></span>
+            <span id="s2"></span>
+            <br />
+            <span>is</span>
+            <br />
+			<input type='button' value='CORRECT' class='answer' />
+            <input type='button' value='NOT CORRECT' class='answer' />
+			<br />
+            <input id="next" type="image" src="Next.png" class="response" />
+            <input id="correct" type="image" src="correct.png" class="response" />
+            <input id="incorrect" type="image" src="incorrect.png" class="response"/>
+        </div>
+		<div id="div-1" class="container" style="float:right;width:250px;overflow-y:auto">
+			<p>Results</p>
+		</div>
+    </div>
+</body>
+</html>

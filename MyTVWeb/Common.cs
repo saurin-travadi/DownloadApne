@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Caching;
 
 namespace MyTVWeb
 {
     public abstract class BaseClass
     {
         protected MyWebClient web = new MyWebClient();
+        public string show;
 
         public string IsDM { get; set; }
 
@@ -29,148 +32,96 @@ namespace MyTVWeb
             return new MyWebClient().IsMediaMP4(url);
         }
 
-        public List<string> ReadURL(string videoPageURL, string format)
+        public virtual List<string> ReadURL(string videoPageURL, string format, bool embed)
         {
-            //Read MP4
-            if (format == "video")
-                return ReadDownloadLink(videoPageURL);
-
-            if (format == "savebox")
-                return ReadSaveBox(videoPageURL);
-
             var returnURL = ReadSerialPage(videoPageURL, format);
 
+            if (embed)
+            {
+                IsDM = "true";
+                return returnURL;
+            }
+            else
+            {
+                return foo(returnURL, videoPageURL, format);
+            }
+        }
+
+        public virtual string ReadVideoURL(string videoURL) { return null; }
+
+        public string ReadFrame(string page)
+        {
+            List<string> returnUrl = new List<string>();
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(web.GetData(page).ToString());
+
+            var node = doc.DocumentNode.SelectNodes("//iframe");
+            if (node == null)
+                return "";
+
+            foreach (var n in node)
+            {
+                if (!n.Attributes["src"].Value.Contains("ads") && !n.Attributes["src"].Value.Contains("facebook"))
+                {
+                    var url = n.Attributes["src"].Value;
+                    return url;
+                }
+            }
+
+            return "";
+        }
+
+
+        public List<string> foo(List<string> returnURL, string videoPageURL, string format)
+        {
+
             IsDM = "true";
-            if (format == "watchapne" || format == "playapne" || format == "tunelink")
+            if (format == "watchapne" || format == "playapne" || format == "newapne" || format == "tunelink")
             {
                 var tempURL = returnURL[0];
                 returnURL.Clear();
 
-                if (format == "watchapne")
-                    returnURL.Add(ReadWatchApnePage(tempURL));
-                else if (format == "playapne")
+                if (format == "playapne")
                     returnURL.Add(ReadApnePage(tempURL, videoPageURL));
-                else if (format == "tunelink")
-                    returnURL.Add(ReadTuneLink(tempURL, videoPageURL));
+                else if (format == "newapne")
+                    returnURL.Add(ReadNewApnePage(tempURL, videoPageURL));
 
                 if (returnURL != null && returnURL.Count != 0)
                     return returnURL;
             }
-            else
-            {
-                //telly, flash, daily
-                if (format == "telly") IsDM = "false";
-
-                var tempURL = new List<string>();
-                returnURL.ForEach(e => tempURL.Add(ReadTellyPage(e)));
-                if (tempURL != null && tempURL.Count != 0)
-                    return tempURL;
-            }
             return null;
-        }
-
-        private List<string> ReadSaveBox(string url)
-        {
-            IsDM = "false";
-            var urls = ReadSerialPage(url, "savebox");
-            if (urls != null && urls.Count > 0)
-            {
-                IsDM = "true";
-                return urls;
-                //if (IsMediaMP4(urls[0]))
-                //    return urls;
-                //else
-                //{
-                //    IsDM = "true";
-                //    var u2 = ReadOpenLoad(urls[0]);
-                //    return new string[] { urls[0], u2 }.ToList();
-                //}
-            }
-
-            return null;
-        }
-
-        private List<string> ReadDownloadLink(string url)
-        {
-            IsDM = "false";
-            return ReadSerialPage(url, "download");
-        }
-
-        private string ReadTellyPage(string url)
-        {
-            var strHTML = web.GetData(url);
-
-            strHTML = web.GetData(url.Replace("http://apne.tv/redirector.php?r=", ""), url);
-            var regex = new Regex(@"source.*m3u8", RegexOptions.Multiline);
-            return regex.Match(strHTML.ToString()).Value.Replace("source:", "").Replace("\"", "").Trim();
-        }
-
-
-        private string ReadWatchApnePage(string url)
-        {
-            IsDM = "true";
-            var strHTML = web.GetData(url);
-
-            Regex regex = new Regex(@"<iframe>.*</iframe>", RegexOptions.IgnoreCase);
-            var text = regex.Match(strHTML.ToString()).Value;
-            return text.ToLower().Replace("<iframe src=", "").Replace("'", "");
         }
 
         private string ReadApnePage(string url, string refererPage)
         {
-            IsDM = "true";
             var strHTML = web.GetData(url, refererPage);
-
-            Regex regex = new Regex(@"http:.*mp4", RegexOptions.IgnoreCase);
+            Regex regex = new Regex(@"https:.*html", RegexOptions.IgnoreCase);
             var text = regex.Match(strHTML.ToString()).Value;
-            return text.ToLower().Replace("<iframe src=", "").Replace("'", "");
+
+            web.GetData(text, url, "", "videoapne.co");
+            return "";
+
         }
 
-        private string ReadTuneLink(string url, string refererPage)
+        private string ReadNewApnePage(string url, string refererPage)
         {
             IsDM = "true";
             var strHTML = web.GetData(url, refererPage);
 
-            Regex regex = new Regex(@"iframe.*iframe", RegexOptions.IgnoreCase);
-            var text = regex.Match(strHTML.ToString()).Value;
-            text = text.Substring(text.IndexOf("src='") + 5, 100);
-            text = text.Substring(0, text.IndexOf("'"));
+            Regex regex = new Regex(@"iframe.*http.*""", RegexOptions.IgnoreCase);
+            var text = regex.Matches(strHTML.ToString())[0].Value.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)[1];
+            text = text.Replace("src=", "").Replace("\"", "");
+
+            var html = web.GetData(text, "http://hindistopss.com");
+
+            regex = new Regex(@"file.*"",", RegexOptions.Singleline);
+            text = regex.Match(html.ToString()).Value.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries)[0];
+            text = text.Replace("file:", "").Replace("\"", "").Replace(" ", "");
+
             return text;
         }
 
-
-        private string ReadOpenLoad(string url)
-        {
-            var arrEncrypt = new char[] { 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm' }.ToList();
-            var arrDecrypt = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' }.ToList();
-
-
-            var doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(new MyWebClient().GetData(url).ToString());
-            var text = doc.DocumentNode.SelectSingleNode("//*[contains(@id,'hiddenurl')]").InnerText;
-
-            /*
-            var strHTML = new Common().GetData(url);
-            //<span id="hiddenurl">XAZ-m61-p8f~1470792817~73.211.0.0~tBTXYxri</span>
-            Regex regex = new Regex(@"<span id=""hiddenurl"">.*</span>", RegexOptions.IgnoreCase);
-            var text = regex.Match(strHTML.ToString()).Value;
-            text = text.Replace(@"""", "'").Replace("<span id='hiddenurl'>", "").Replace("</span>", "");
-            */
-
-            var tempArr = text.ToCharArray().ToList().ConvertAll(c =>
-            {
-                var index = arrEncrypt.FindIndex(f => f.Equals(c));
-                if (index > -1)
-                    return arrDecrypt[index];
-                return c;
-            });
-
-
-            return "https://openload.co/stream/" + string.Join("", tempArr).Trim() + "?mime=true";
-
-        }
-
-        private List<string> ReadSerialPage(string pageURL, string type)
+        public virtual List<string> ReadSerialPage(string pageURL, string type)
         {
             var doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(web.GetData(pageURL).ToString());
@@ -202,12 +153,14 @@ namespace MyTVWeb
     }
 
 
+    [Serializable]
     public class Serial
     {
         public string Source { get; set; }
         public List<Channel> Channel { get; set; }
     }
 
+    [Serializable]
     public class Channel
     {
         public string Name { get; set; }
@@ -216,20 +169,20 @@ namespace MyTVWeb
         public string ImageURL { get; set; }
     }
 
+    [Serializable]
     public class Show
     {
         public string Name { get; set; }
         public string URL { get; set; }
+        public string ImageURL { get; set; }
     }
 
     public class GetApne : BaseClass
     {
-        private MyWebClient web = new MyWebClient();
-
         public override Serial GetShows()
         {
             web = new MyWebClient();
-            return GetShows("http://apne.tv", "http://apne.tv");
+            return GetShows("http://apnetv.co", "http://apnetv.co");
         }
 
         public override Serial GetShows(string pageUrl, string referer)
@@ -262,6 +215,11 @@ namespace MyTVWeb
             return serial;
         }
 
+        public Serial GetShowsRSS(string pageUrl, string referer)
+        {
+            return null;
+        }
+
         public override List<string> GetDates(string pageUrl)
         {
             var doc = new HtmlDocument();
@@ -279,32 +237,74 @@ namespace MyTVWeb
             doc.LoadHtml(new MyWebClient().GetData(pageURL).ToString());
             var dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'date_episodes')]");
 
-            foreach (var date in dates)
+            for (int i = 0; i < dates.Count; i++)
             {
-                var d = date.SelectSingleNode("span").InnerHtml;
-                if (day.Equals(d))
+                var date = dates[0];
+                var d = date.InnerText;
+                if (d.Contains(day) || (day.Equals("") && i == 0))
                 {
                     var videoPageURL = date.Attributes["href"].Value;
-                    return ReadURL(videoPageURL, format.ToLower());
+                    videoPageURL = videoPageURL.Replace("https", "http");
+                    return ReadURL(videoPageURL, format.ToLower(), false);
                 }
             }
 
             return null;
         }
 
+        public override List<string> ReadSerialPage(string pageURL, string type)
+        {
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(web.GetData(pageURL).ToString());
+            var shows = doc.DocumentNode.SelectNodes("//*[contains(@class,'bottom_episode_list')]/ul/li");
 
+            var url = new List<string>();
+            foreach (var show in shows)
+            {
+                if (show.SelectSingleNode("a").InnerText.ToLower().Contains(type))
+                {
+                    url.Add(show.SelectSingleNode("a").Attributes["href"].Value);
+                }
+            }
 
-
-
+            return url;
+        }
     }
 
     public class GetBollyStop : BaseClass
     {
-
         public override Serial GetShows()
         {
             web = new MyWebClient();
-            return GetShows("http://bollystop.tv/", "http://bollystop.tv/");
+            return GetShows("http://bollystop.cc/", "http://bollystop.cc/");
+        }
+
+        public Serial GetShowsRSS(string pageUrl, string referer)
+        {
+            var channel = new Channel();
+            channel.Shows = new List<Show>();
+
+            var doc = new HtmlDocument();
+            var str = web.GetData(pageUrl, referer).ToString();
+            doc.LoadHtml(str);
+
+            channel.Name = doc.DocumentNode.SelectNodes("//*[contains(@class,'news-box hot')]/h2/a")[0].Attributes["title"].Value;
+            var list = doc.DocumentNode.SelectNodes("//*[contains(@class,'serials_div')]")[0];
+            foreach (var node in list.SelectNodes("div[contains(@class,'four-col')]"))
+            {
+                var show = new Show();
+                var title = node.SelectSingleNode("a[contains(@class,'serial_title')]");
+                show.Name = title.InnerText;
+                show.URL = title.Attributes["href"].Value;
+
+                var img = node.SelectSingleNode("a[contains(@class,'serial_img')]/img");
+                show.ImageURL = img.Attributes["src"].Value;
+
+                channel.Shows.Add(show);
+            }
+
+
+            return new Serial() { Source = "", Channel = new List<Channel>() { channel } };
         }
 
         public override Serial GetShows(string pageUrl, string referer)
@@ -376,7 +376,8 @@ namespace MyTVWeb
                 if (day.Equals(d) || (day.Equals("") && i == 0))
                 {
                     var videoPageURL = dates[i + 1].SelectSingleNode("a").Attributes["href"].Value;
-                    return ReadURL(videoPageURL, format.ToLower());
+
+                    return ReadURL(videoPageURL, format.ToLower(), false);
                 }
             }
 
@@ -384,195 +385,304 @@ namespace MyTVWeb
         }
     }
 
-    public class GetYoDesi : BaseClass
+    public class GetDesiRulez : BaseClass
     {
-        private MyWebClient web = new MyWebClient();
+        string baseURL;
+        public GetDesiRulez()
+        {
+            web = new MyWebClient();
+            baseURL = "http://www.desirulez.cc/";
+        }
 
         public override Serial GetShows()
         {
-            web = new MyWebClient();
-            return GetShows("http://www.yodesi.net", "");
-        }
-
-        public override Serial GetShows(string pageUrl, string referer)
-        {
-            var objSerial = new Serial();
-            var serial = new Serial();
-
-            var doc = new HtmlDocument();
-            var str = web.GetData(pageUrl, referer).ToString();
-            doc.LoadHtml(str);
-            //var list = doc.DocumentNode.SelectNodes("//nav/ul/li/a");
-            var list = doc.DocumentNode.SelectNodes("//*[contains(@class,'menu-item')]/a");
-            var objChannel = new List<Channel>();
-            foreach (var node in list)
+            if (HttpContext.Current.Cache["DesiRulezShows"] != null)
+                return HttpContext.Current.Cache["DesiRulezShows"] as Serial;
+            else
             {
-                var text = node.InnerHtml.ToLower();
-                if (!(text.Contains("home") || text.Contains("other channels")))
+                var objSerial = new Serial();
+                var serial = new Serial();
+
+                var doc = new HtmlDocument();
+                var str = web.GetData(baseURL).ToString();
+                doc.LoadHtml(str);
+                var list = doc.DocumentNode.SelectSingleNode("//*[contains(@id,'cat41')]");
+                var nodes = list.SelectNodes("div[contains(@class,'forumbitBody')]/ol/li");
+                var objChannel = new List<Channel>();
+                foreach (var node in nodes)
                 {
+                    var a = node.SelectSingleNode("div/div/div/div/div/h2/a");
+                    var title = a.InnerText;
+                    var href = a.Attributes["href"];
+
                     var channel = new Channel();
                     channel.Shows = new List<Show>();
-                    channel.Name = node.InnerText;
-                    channel.ChannelURL = node.Attributes["href"].Value;
+                    channel.Name = title;
 
-                    objChannel.Add(channel);
+                    var lst = node.SelectNodes("div/div/div/div/div/div/ol/div/div");
+                    if (lst != null)
+                    {
+                        lst.ToList().ForEach(each =>
+                        {
+                            var sh = each.SelectNodes("div/ul/li/a");
+                            if (sh != null)
+                            {
+                                sh.ToList().ForEach(e =>
+                                {
+                                    channel.Shows.Add(new Show() { Name = e.InnerText, URL = e.Attributes["href"].Value });
+                                });
+                            }
+                        });
+                        try
+                        {
+                            var img = node.SelectSingleNode("div/div/div/div/p/img");
+                            channel.ImageURL = img.Attributes["src"].Value;
+                        }
+                        catch { }
+
+                        objChannel.Add(channel);
+                    }
                 }
+
+                serial.Channel = objChannel;
+                HttpContext.Current.Cache.Add("DesiRulezShows", serial, null, System.DateTime.Now.AddHours(2), TimeSpan.Zero, CacheItemPriority.Normal, null);
+
+                return serial;
             }
-
-            GetShowDetails(objChannel);
-
-            serial.Channel = objChannel;
-
-            return serial;
-        }
-
-        private void GetShowDetails(List<Channel> objChannel)
-        {
-            objChannel.ForEach(e =>
-            {
-                var str = web.GetData(e.ChannelURL, "").ToString();
-                var doc = new HtmlDocument();
-
-                doc.LoadHtml(str);
-                var showList = doc.DocumentNode.SelectNodes("//*[contains(@class,'latestPost-content')]/a");
-                foreach (var showNode in showList)
-                {
-                    e.Shows.Add(new Show() { Name = showNode.Attributes["title"].Value, URL = showNode.Attributes["href"].Value });
-                }
-            });
         }
 
         public override List<string> GetDates(string pageUrl)
         {
-            var doc = new HtmlDocument();
+            var doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(web.GetData(pageUrl).ToString());
-            var dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'date_episodes')]");
-            if (dates != null)
-                return dates.ToList().ConvertAll(e => string.Format("'{0}'", e.SelectSingleNode("span").InnerHtml));
-
-            return null;
+            var dates = doc.DocumentNode.SelectNodes("//h3[contains(@class,'threadtitle')]");
+            return dates.ToList().ConvertAll(e => e.SelectSingleNode("a").InnerText);
         }
 
         public override List<string> ReadDatePage(string pageURL, string day, string format)
         {
             var doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(new MyWebClient().GetData(pageURL).ToString());
-            var dates = doc.DocumentNode.SelectNodes("//*[contains(@class,'date_episodes')]");
-
-            foreach (var date in dates)
+            doc.LoadHtml(web.GetData(pageURL).ToString());
+            var dates = doc.DocumentNode.SelectNodes("//h3[contains(@class,'threadtitle')]");
+            for (int i = 0; i < dates.Count; i++)
             {
-                var d = date.SelectSingleNode("span").InnerHtml;
-                if (day.Equals(d))
+                var date = dates[i];
+                var d = date.SelectSingleNode("a").InnerText;
+                if (day.Equals(d) || (day.Equals("") && i == 0))
+                {
+                    var videoPageURL = date.SelectSingleNode("a").Attributes["href"].Value;
+                    return ReadURL(videoPageURL, format.ToLower());
+                }
+            }
+
+            return null;
+        }
+
+        private List<string> ReadURL(string videoPageURL, string format)
+        {
+            var urls = new List<string>();
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(web.GetData(videoPageURL).ToString());
+            var formatNode = doc.DocumentNode.SelectSingleNode("//blockquote[contains(@class,'postcontent restore')]/div");
+            if (formatNode == null)
+                return new List<string>();
+
+            var selectedNodes = formatNode.ChildNodes.Where(w => !w.Name.Equals("br") && !w.Name.Equals("#text") && !w.Name.Equals("font"));
+            var interestedNodes = false;
+            foreach (var node in selectedNodes)
+            {
+                if (node.Name.Equals("b"))
+                {
+                    if (node.InnerText.ToLower().Contains(format))
+                        interestedNodes = true;
+                    else
+                        interestedNodes = false;
+                }
+                else if (interestedNodes && node.Name.Equals("a"))
+                {
+                    urls.Add(node.Attributes["href"].Value);
+                }
+            }
+
+            return urls;
+        }
+
+        public override List<string> ReadURL(string videoPageURL, string format, bool embed)
+        {
+            format = format.ToLower();
+            var url = new List<string>();
+            var temp = ReadFrame(videoPageURL);
+            if (temp == "")
+                return new List<string>();
+
+            if (format.Contains("tvlogy"))
+            {
+                var uri = new Uri(temp);
+                var id = (uri.Query.Split('='))[1];
+
+                var urlVideo = uri.Scheme + "://" + uri.Host + "/hls/" + id + "/" + id + ".m3u8";
+                url.Add(urlVideo);
+            }
+            else if (format.Contains("dailymotion"))
+            {
+                var strHTML = web.GetData(temp).ToString();
+
+                Regex regex = new Regex(@"src.*m3u8", RegexOptions.IgnoreCase);
+                var text = regex.Match(strHTML.ToString()).Value;
+                url.Add(text.Substring(6));
+            }
+
+            return url;
+        }
+
+    }
+
+    public class YoDesi : BaseClass
+    {
+        string baseURL;
+        public YoDesi()
+        {
+            web = new MyWebClient();
+            baseURL = "http://www.yodesitv.info/";
+        }
+
+        public override Serial GetShows()
+        {
+            //if (HttpContext.Current.Cache["YoDesiShows"] != null)
+            //    return HttpContext.Current.Cache["YoDesiShows"] as Serial;
+            //else
+            {
+                var objSerial = new Serial();
+                var serial = new Serial();
+
+                var doc = new HtmlDocument();
+                var str = web.GetData(baseURL).ToString();
+                doc.LoadHtml(str);
+                var titles = doc.DocumentNode.SelectNodes("//div[contains(@class,'home-channel-title')]").ToList().ConvertAll(c => c.InnerText.Replace("\t", "").Replace("\n", ""));
+                var nodes = doc.DocumentNode.SelectNodes("//div[contains(@class,'one_sixth column-last')]/a").ToList().ConvertAll(c => c.Attributes["href"].Value);
+
+                var objChannel = new List<Channel>();
+                for (int cnt = 0; cnt < titles.Count; cnt++)
+                {
+                    doc.LoadHtml(web.GetData(nodes[cnt]).ToString());
+                    var shows = doc.DocumentNode.SelectSingleNode("//div[contains(@id,'tab-0-title-1')]").SelectNodes("div/p/a").ToList().ConvertAll(c => new Show() { URL = c.Attributes["href"].Value, Name = c.InnerText.Replace("\t", "").Replace("\n", "") });
+
+                    var channel = new Channel();
+                    channel.Shows = new List<Show>();
+                    channel.Name = titles[cnt];
+                    channel.Shows.AddRange(shows);
+
+                    objChannel.Add(channel);
+                }
+
+                serial.Channel = objChannel;
+                HttpContext.Current.Cache.Add("YoDesiShows", serial, null, System.DateTime.Now.AddHours(2), TimeSpan.Zero, CacheItemPriority.Normal, null);
+
+                return serial;
+            }
+        }
+
+        public override List<string> GetDates(string pageUrl)
+        {
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(web.GetData(pageUrl).ToString());
+            var dates = doc.DocumentNode.SelectNodes("//div[contains(@class,'post-image')]");
+            return dates.ToList().ConvertAll(e => e.Attributes["title"].Value);
+        }
+
+        public override List<string> ReadDatePage(string pageURL, string day, string format)
+        {
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(web.GetData(pageURL).ToString());
+            var dates = doc.DocumentNode.SelectNodes("//a[contains(@class,'post-image')]");
+            for (int i = 0; i < dates.Count; i++)
+            {
+                var date = dates[i];
+                var d = date.Attributes["title"].Value;
+                if (day.Equals(d) || (day.Equals("") && i == 0))
                 {
                     var videoPageURL = date.Attributes["href"].Value;
                     return ReadURL(videoPageURL, format.ToLower());
                 }
             }
 
-            return null;
+            return new List<string>();
         }
 
-        public new List<string> ReadURL(string videoPageURL, string format)
+        private List<string> ReadURL(string videoPageURL, string format)
         {
-            var str = web.GetData(videoPageURL, "").ToString();
+            IsDM = "true";
+            var url = new List<string>();
 
-            return null;
-        }
-
-
-
-    }
-
-    public class MyWebClient
-    {
-        private string m_ResponseURL;
-        private string m_QueryAndPath;
-
-        public CookieContainer ckContainer = null;
-        public String ResponseURL { get { return m_ResponseURL; } }
-        public String QueryNPath { get { return m_QueryAndPath; } }
-
-        public StringBuilder GetData(string url, string referer = "", string postData = "", string host = "")
-        {
-            HttpWebRequest req = WebRequest.CreateHttp(url);
-            req.UserAgent = "Mozilla/5.0 (Windows NT 10.0; rv:47.0) Gecko/20100101 Firefox/47.0";
-            req.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
-            if (host != "" && req.Host == "")
-                req.Host = host;
-
-            if (ckContainer != null)
-                req.CookieContainer = ckContainer;
-
-            if (referer != "")
-                req.Referer = referer;
-
-            if (postData != "")
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(web.GetData(videoPageURL).ToString());
+            var formatNode = doc.DocumentNode.SelectNodes("//div[contains(@class,'buttons btn_green')]/span");
+            if (formatNode != null && formatNode.Where(w => w.InnerText.ToLower().Contains(format)).Count() > 0)
             {
-                req.Method = "POST";
-                req.ContentType = "application/x-www-form-urlencoded";
-                var bytes = ASCIIEncoding.ASCII.GetBytes(postData);
-                req.ContentLength = bytes.Length;
-                req.GetRequestStream().Write(bytes, 0, bytes.Length);
+                var node = formatNode.Where(w => w.InnerText.ToLower().Contains(format)).First();
+                var next = node.ParentNode.NextSibling.NextSibling;
+                //if (embed)
+                return next.SelectNodes("a").ToList().ConvertAll(c => c.Attributes["href"].Value);
+                //else
+                //{
+                //    return GetVideoURL(next.SelectNodes("a").ToList().ConvertAll(c => c.Attributes["href"].Value));
+                //}
             }
+            return url;
+        }
 
-            HttpWebResponse res = req.GetResponse() as HttpWebResponse;
-            if (ckContainer == null) ckContainer = new CookieContainer();
+        public override List<string> ReadURL(string videoPageURL, string format, bool embed)
+        {
+            format = format.ToLower();
+            var url = new List<string>();
+            var temp = ReadFrame(videoPageURL);
 
-            ckContainer.Add(res.Cookies);
-            m_ResponseURL = res.ResponseUri.AbsoluteUri;
-            m_QueryAndPath = res.ResponseUri.PathAndQuery;
-
-            if (!string.IsNullOrEmpty(res.Headers["Transfer-Encoding"]) && res.Headers["Transfer-Encoding"] == "chunked")
+            if (format.Contains("vkprime"))
             {
-                StringBuilder sb = new StringBuilder();
-                Byte[] buf = new byte[8192];
-                Stream resStream = res.GetResponseStream();
-                int count = 0;
-                do
+                var strHTML = web.GetData(temp).ToString();
+
+                var doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(strHTML);
+                var domain = doc.DocumentNode.SelectSingleNode("//div[contains(@id,'vplayer')]/img").Attributes["src"].Value;
+
+                //var brow = new WebBrow() { URL = "https://beautifier.io", DATA = strHTML };
+                //brow.GetVideo();
+
+                Regex regex = new Regex(@"eval.*vplayer", RegexOptions.IgnoreCase);
+                var text = regex.Match(strHTML.ToString()).Value;
+                var parts = text.Split('|').Reverse().ToList();
+                var ind = parts.FindIndex(f => f.Equals("sources"));
+                if (ind > 0)
                 {
-                    count = resStream.Read(buf, 0, buf.Length);
-                    if (count != 0)
-                    {
-                        sb.Append(Encoding.UTF8.GetString(buf, 0, count));
-                    }
-                } while (count > 0);
-                return sb;
-            }
-
-            using (Stream stream = res.GetResponseStream())
-            {
-                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-                return new StringBuilder(reader.ReadToEnd());
-            }
-        }
-
-        public bool IsMediaMP4(string url)
-        {
-            HttpWebResponse response = null;
-            var isMediaMP4 = true;
-
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "HEAD";
-            try
-            {
-                response = (HttpWebResponse)request.GetResponse();
-                if (isMediaMP4)
-                    isMediaMP4 = response.ContentType.ToLower().Contains("mp4");
-            }
-            catch
-            {
-                isMediaMP4 = false;
-            }
-            finally
-            {
-                if (response != null)
-                {
-                    response.Close();
+                    var id = parts[ind + 1];
+                    var host = new Uri(domain).Host;
+                    var scheme = new Uri(domain).Scheme;
+                    url.Add(scheme + "://" + host + "/" + id + "/v.mp4");
                 }
+                else
+                    url.Add("");
             }
+            else
+                url.Add("");
 
-            return isMediaMP4;
+            return url;
         }
 
+        private List<string> GetVideoURL(List<string> pageURL)
+        {
+            Regex regex = new Regex(@"iframe.*http.*html", RegexOptions.IgnoreCase);
+            return pageURL.ConvertAll(page =>
+            {
+                var pagesource = web.GetData(page).ToString();
+                var text = regex.Match(pagesource.ToString()).Value;
+                text = text.Split(new string[] { "src" }, StringSplitOptions.RemoveEmptyEntries)[1];
+                return text.Replace("='", "");
+            });
+        }
+
+        public override string ReadVideoURL(string videoURL)
+        {
+            return "abc";
+        }
     }
 }

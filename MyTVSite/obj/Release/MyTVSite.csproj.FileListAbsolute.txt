@@ -1,0 +1,6 @@
+D:\Projects\GitHub\DownloadApne\MyTVSite\bin\MyTVSite.dll.config
+D:\Projects\GitHub\DownloadApne\MyTVSite\bin\MyTVSite.dll
+D:\Projects\GitHub\DownloadApne\MyTVSite\bin\MyTVSite.pdb
+D:\Projects\GitHub\DownloadApne\MyTVSite\obj\Release\MyTVSite.csprojResolveAssemblyReference.cache
+D:\Projects\GitHub\DownloadApne\MyTVSite\obj\Release\MyTVSite.dll
+D:\Projects\GitHub\DownloadApne\MyTVSite\obj\Release\MyTVSite.pdb

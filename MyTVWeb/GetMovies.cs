@@ -41,7 +41,7 @@ namespace MyTVWeb
             {
                 data = objMovie.GetMovie(context.Request.QueryString["m"]);
             }
-            json = json.Replace("'%MOVIE%'", new JavaScriptSerializer().Serialize(data));
+            json = json.Replace("'%MOVIE%'", new JavaScriptSerializer().Serialize(data).Replace('\u0026','&'));
             json = json.Replace("%COOKIE%", "");
 
             context.Response.AddHeader("Content-Type", "application/json\n\n");
@@ -51,6 +51,87 @@ namespace MyTVWeb
         }
     }
 
+    public class One23MkvHindi : MoviesBase
+    {
+        public One23MkvHindi()
+        {
+            RootURL = "https://123mkv.win/";
+        }
+
+        public override List<Movie> GetMovies()
+        {
+            var _movies = new List<Movie>();
+            var doc = new HtmlDocument();
+
+            if (string.IsNullOrEmpty(PageNumber)) PageNumber = "1";
+            var url = RootURL + "category/hindi-movies/page/" + PageNumber + "/";
+            doc.LoadHtml(new MyWebClient().GetData(url).ToString());
+
+            var thumbs = doc.DocumentNode.SelectNodes("//a[@class='post-image post-image-left']");
+            if (thumbs != null)
+            {
+                thumbs.ToList().ForEach(aEle =>
+                {
+                    _movies.Add(new Movie()
+                    {
+                        MovieName = aEle.Attributes["title"].Value,
+                        MovieURL = aEle.Attributes["href"].Value,
+                        MovieImage = aEle.SelectSingleNode("div/img").Attributes["src"].Value,
+                        Success = true
+                    });
+                });
+            }
+
+            return _movies;
+        }
+
+        public override List<Movie> GetMovie(string url)
+        {
+            try
+            {
+                var doc = new HtmlDocument();
+                doc.LoadHtml(new MyWebClient().GetData(url).ToString());
+                var frms = doc.DocumentNode.SelectNodes("//form");
+                foreach (var f in frms)
+                {
+                    if (f.Attributes["action"].Value.ToLower().Contains("start-downloading"))
+                    {
+                        var fname = "";
+                        var fsip = "";
+                        if (f.NextSibling.Attributes["name"].Value.ToLower().Equals("fname"))
+                            fname = f.NextSibling.Attributes["value"].Value;
+
+                        if (f.NextSibling.NextSibling.Attributes["name"].Value.ToLower().Equals("fsip"))
+                            fsip = f.NextSibling.NextSibling.Attributes["value"].Value;
+
+                        var helper = new MyWebClient();
+                        var src = helper.GetData(this.RootURL + "start-downloading/", "", string.Format("fname={0}&fsip={1}", fname, fsip));
+
+                        doc.LoadHtml(src.ToString());
+                        var metas = doc.DocumentNode.SelectNodes("//meta");
+                        foreach (var m in metas)
+                        {
+                            if (m.Attributes["content"] != null)
+                            {
+                                var c = (m.Attributes["content"].Value ?? "").ToLower();
+                                if (c.Contains("download.php"))
+                                {
+                                    var u = c.Substring(c.IndexOf("url=") + 4);
+                                    return new List<Movie>() { new Movie() { MovieURL = u, CookieString = "" } };
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return new List<Movie>() { new Movie() { MovieURL = "", CookieString = "" } };
+            }
+            catch
+            {
+                return new List<Movie>();
+            }
+        }
+    }
 
     public class WatchOnlineMovies : MoviesBase
     {
@@ -75,7 +156,7 @@ namespace MyTVWeb
                 url = RootURL + "/?s=" + Search;
 
             doc.LoadHtml(new MyWebClient().GetData(url).ToString());
-            var thumbs = doc.DocumentNode.SelectNodes("//div[@class='boxtitle']");
+            var thumbs = doc.DocumentNode.SelectNodes("//a[@class='boxtitle']");
             if (thumbs != null)
             {
                 thumbs.ToList().ForEach(e =>
@@ -155,6 +236,110 @@ namespace MyTVWeb
         }
 
     }
+
+    public class DesiRulez : MoviesBase
+    {
+        public DesiRulez()
+        {
+            RootURL = "http://www.desirulez.cc/2015-to-2018-online.html";
+        }
+
+
+        public override List<Movie> GetMovies()
+        {
+            var _movies = new List<Movie>();
+            var doc = new HtmlDocument();
+
+            var url = RootURL;
+            if (PageNumber == null)
+                PageNumber = "1";
+
+            url = string.Format("http://www.desirulez.cc/2015-to-2018-online-{0}.html", PageNumber);
+
+            doc.LoadHtml(new MyWebClient().GetData(url).ToString());
+            var list = doc.DocumentNode.SelectNodes("//div[contains(@class, 'inner')]/h3[@class='threadtitle']/a[@class='title']");
+            if (list != null)
+            {
+                list.ToList().ForEach(e =>
+                {
+                    if (!(PageNumber == "1" && e.InnerText.Contains("Posting Rules")))
+                    {
+                        _movies.Add(new Movie()
+                        {
+                            MovieName = e.InnerText,
+                            MovieURL = e.Attributes["href"].Value,
+                            MovieImage = "icon.png",
+                            Success = true
+                        });
+                    }
+                });
+            }
+
+            return _movies;
+        }
+
+        public override List<Movie> GetMovie(string url)
+        {
+            try
+            {
+                var helper = new MyWebClient();
+                helper.GetData(this.RootURL);
+                var src = helper.GetData(url, "http://www.watchonlinemovies.com.pk/", "", this.RootURL).ToString();
+
+                var html = new HtmlAgilityPack.HtmlDocument();
+                html.LoadHtml(src);
+                var elements = html.DocumentNode.SelectNodes("//iframe");
+                foreach (var e in elements)
+                {
+                    var m = GetM(e.Attributes["src"].Value);
+                    if (m != null)
+                        return new List<Movie>() { m };
+                }
+
+                return new List<Movie>() { new Movie() { MovieURL = "", CookieString = "" } };
+            }
+            catch
+            {
+                return new List<Movie>();
+            }
+        }
+
+        private Movie GetM(string url)
+        {
+            var helper = new MyWebClient();
+            if (!url.ToLower().Contains(".mp4"))
+            {
+                var src = helper.GetData(url).ToString();
+                var html = new HtmlAgilityPack.HtmlDocument();
+                html.LoadHtml(src);
+                var elements = html.DocumentNode.SelectNodes("//script");
+                foreach (var e in elements)
+                {
+                    if (e.InnerText.ToLower().Contains(".mp4"))
+                    {
+                        var regexSrc = new Regex("http.*mp4", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+                        var m = regexSrc.Matches(e.InnerText);
+
+                        var cookies = helper.ckContainer.GetCookies(new Uri(RootURL));
+                        var cookieString = "";
+                        for (int i = 0; i < cookies.Count; i++)
+                        {
+                            if (cookieString != "")
+                                cookieString += "^";
+                            cookieString += string.Format("{0}={1};expires={2};path={3}", cookies[0].Name, cookies[0].Value, cookies[0].Expires, cookies[0].Path);
+                        }
+
+                        return new Movie() { MovieURL = m[0].Value, CookieString = cookieString, Success = true };
+
+                    }
+                }
+            }
+
+            return null;
+        }
+
+    }
+
 
     public class Join4Films : MoviesBase
     {

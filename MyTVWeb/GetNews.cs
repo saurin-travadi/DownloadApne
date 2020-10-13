@@ -62,12 +62,14 @@ namespace MyTVWeb
         public override List<Movie> GetMovies()
         {
             var _movies = new List<Movie>();
-            _movies.Add(new Movie() { MovieName = "NDTV_24x7", MovieURL = "http://ndtvstream-lh.akamaihd.net/i/ndtv_24x7_1@300633/master.m3u8" });
+            _movies.Add(new Movie() { MovieName = "NDTV_24x7", MovieURL = GetNDTV_24x7() });
             _movies.Add(new Movie() { MovieName = "NDTV_India", MovieURL = "http://ndtvstream-lh.akamaihd.net/i/ndtv_india_1@300634/master.m3u8" });
             _movies.Add(new Movie() { MovieName = "Zee_News", MovieURL = GetZee_News() });
+            _movies.Add(new Movie() { MovieName = "Times_NOW", MovieURL = "" });
             _movies.Add(new Movie() { MovieName = "India_TV", MovieURL = "http://indiatvnews-lh.akamaihd.net/i/ITV_1@199237/master.m3u8" });
-            _movies.Add(new Movie() { MovieName = "Aaj_Tak", MovieURL = "https://livestream-f.akamaihd.net/i/13995833_4198957_lsijln6ykug6m0w7ywm_1@364446/master.m3u8?__b__=678&dw=100&hdnea=st=1492964102~exp=1492965902~acl=/i/13995833_4198957_lsijln6ykug6m0w7ywm_1@364446/*~hmac=2355d479c005aa3267b0dbf379ee325816e4ecaa322c527cd490ee40cf06a2ce&__a__=off" });
-            _movies.Add(new Movie() { MovieName = "Aaj_Tak_TEZ", MovieURL = "https://livestream.com/accounts/13995833/events/4198957/player?width=560&height=315&autoPlay=true&mute=false" });
+            _movies.Add(new Movie() { MovieName = "Aaj_Tak", MovieURL = "https://mobiletak-vh.akamaihd.net/i/mobiletv/video/2018_05/vod_26_may_18_pmmodionsilverspoon_2048_,164,410,996,.mp4.csmil/master.m3u8" });
+            //_movies.Add(new Movie() { MovieName = "Aaj_Tak_TEZ", MovieURL = "https://livestream.com/accounts/13995833/events/4198957/player?width=560&height=315&autoPlay=true&mute=false" });
+            _movies.Add(new Movie() { MovieName = "Republic", MovieURL = "https://republicalive1-a.akamaihd.net/d78729de527e4b078b546385b060dc9b/ap-southeast-1/5384493731001/profile_2/chunklist.m3u8?hdnea=st=1526470012~exp=9007200781211003~acl=/d78729de527e4b078b546385b060dc9b/*/profile_2/chunklist.m3u8*~hmac=55a003108cba261962b84db2ef5173d1b0b700c4e82f36e6663ade4d9532b3bc" });
 
             return _movies;
         }
@@ -76,12 +78,11 @@ namespace MyTVWeb
         {
             try
             {
-                var doc = new HtmlDocument();
-                doc.LoadHtml(webClient.GetData("http://zeenews.india.com/live-tv").ToString());
-                var frame = doc.DocumentNode.SelectSingleNode("//iframe[@id='frmYT']").Attributes["src"].Value;
+                //var doc = new HtmlDocument();
+                //doc.LoadHtml(webClient.GetData("http://zeenews.india.com/live-tv").ToString());
+                //var frame = doc.DocumentNode.SelectSingleNode("//iframe[@id='frmYT']").Attributes["src"].Value;
 
-                var html = webClient.GetData(frame).ToString();
-
+                var html = webClient.GetData("http://zeenews.dittotv.com/?header=no").ToString();
                 var regex = new Regex(@"file:.*,", RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
                 var obj = regex.Match(html.ToString()).Value;
                 obj = obj.Replace("file:", "");
@@ -91,7 +92,29 @@ namespace MyTVWeb
             }
             catch
             {
-                return "http://dittotvnews.live-s.cdn.bitgravity.com/cdn-live/_definst_/dittotvnews/secure/zee_news_iwpl.smil/playlist.m3u8?e=1493437114&h=1a5b01671a7efc6fc87ccafb7109490a";
+                return "http://dittotvnews.live-s.cdn.bitgravity.com/cdn-live/_definst_/dittotvnews/secure/zee_news_iwpl.smil/playlist.m3u8?e=1525740123&h=a0301ecd2d573852b7968e4e7d64a84e";
+            }
+        }
+
+        private string GetNDTV_24x7()
+        {
+            try
+            {
+                var html = webClient.GetData("https://www.ndtv.com/video/live/channel/ndtv24x7").ToString();
+
+                var regex = new Regex("html5playerdata.*.m3u8", RegexOptions.Singleline);
+                html = regex.Match(html).Value;
+                html = html + "\"}";
+                html = html.Replace("html5playerdata=", "");
+
+                dynamic obj = JsonConvert.DeserializeObject(html);
+                var media = obj.media.Value;
+
+                return media.Trim();
+            }
+            catch
+            {
+                return "https://ndtvstream-lh.akamaihd.net/i/ndtv_24x7_1@300633/master.m3u8";
             }
         }
     }
@@ -100,7 +123,7 @@ namespace MyTVWeb
     {
         public NDTV_24x7()
         {
-            base.RootURL = "http://www.ndtv.com/video";
+            base.RootURL = "https://www.ndtv.com/video/list/channel/ndtv-24x7";
         }
 
         public override List<Movie> GetMovies()
@@ -108,23 +131,23 @@ namespace MyTVWeb
             var _movies = new List<Movie>();
             var doc = new HtmlDocument();
 
-            doc.LoadHtml(new MyWebClient().GetData(RootURL).ToString());
+            if (PageNumber == null)
+                PageNumber = "1";
+
+            var url = string.Format("{0}/page/{1}", RootURL, PageNumber);
+            doc.LoadHtml(new MyWebClient().GetData(url).ToString());
             var thumbs = doc.DocumentNode.SelectNodes("//*[contains(@class,'thumbnail')]");
             if (thumbs != null)
             {
                 thumbs.ToList().ForEach(e =>
                 {
-                    var aEle = e.SelectSingleNode("a");
-                    if (!_movies.Exists(x => x.MovieName == aEle.SelectSingleNode("img").Attributes["alt"].Value))
+                    _movies.Add(new Movie()
                     {
-                        _movies.Add(new Movie()
-                        {
-                            MovieName = aEle.SelectSingleNode("img").Attributes["alt"].Value,
-                            MovieURL = aEle.Attributes["href"].Value,
-                            MovieImage = aEle.SelectSingleNode("img").Attributes["src"].Value,
-                            Success = true
-                        });
-                    }
+                        MovieName = e.SelectSingleNode("a/picture/source/img").Attributes["title"].Value,
+                        MovieURL = e.SelectSingleNode("a").Attributes["href"].Value,
+                        MovieImage = e.SelectSingleNode("a/picture/source/img").Attributes["src"].Value,
+                        Success = true
+                    });
                 });
             }
 
@@ -139,8 +162,7 @@ namespace MyTVWeb
                 var movies = new List<Movie>();
 
                 var src = helper.GetData(url).ToString();
-
-                var regex = new Regex(@"media.*mp4", RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+                var regex = new Regex(@"media.*m3u8", RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
                 var obj = regex.Match(src.ToString()).Value;
                 obj = obj.Replace(@"\/\/", "//");
                 obj = obj.Replace("\\", "");
@@ -162,7 +184,7 @@ namespace MyTVWeb
         public string Source { get; set; }
         public NDTV_India()
         {
-            base.RootURL = "https://khabar.ndtv.com/videos";
+            base.RootURL = "https://www.ndtv.com/video/list/channel/ndtv-india";
         }
 
         public override List<Movie> GetMovies()
@@ -170,23 +192,23 @@ namespace MyTVWeb
             var _movies = new List<Movie>();
             var doc = new HtmlDocument();
 
-            doc.LoadHtml(new MyWebClient().GetData(RootURL).ToString());
-            var thumbs = doc.DocumentNode.SelectNodes("//div[@class='vid_live']/ul/li");
+            if (PageNumber == null)
+                PageNumber = "1";
+
+            var url = string.Format("{0}/page/{1}", RootURL, PageNumber);
+            doc.LoadHtml(new MyWebClient().GetData(url).ToString());
+            var thumbs = doc.DocumentNode.SelectNodes("//*[contains(@class,'thumbnail')]");
             if (thumbs != null)
             {
                 thumbs.ToList().ForEach(e =>
                 {
-                    var aEle = e.SelectSingleNode("a");
-                    if (!_movies.Exists(x => x.MovieName == e.Attributes["title"].Value))
+                    _movies.Add(new Movie()
                     {
-                        _movies.Add(new Movie()
-                        {
-                            MovieName = e.Attributes["title"].Value,
-                            MovieURL = aEle.Attributes["href"].Value,
-                            MovieImage = aEle.SelectSingleNode("img").Attributes["src"].Value,
-                            Success = true
-                        });
-                    }
+                        MovieName = e.SelectSingleNode("a/picture/source/img").Attributes["title"].Value,
+                        MovieURL = e.SelectSingleNode("a").Attributes["href"].Value,
+                        MovieImage = e.SelectSingleNode("a/picture/source/img").Attributes["src"].Value,
+                        Success = true
+                    });
                 });
             }
 
@@ -201,12 +223,13 @@ namespace MyTVWeb
                 var movies = new List<Movie>();
 
                 var src = helper.GetData(url).ToString();
-
-                //http:\/\/ndtvod.bc.cdn.bitgravity.com\/23372\/ndtv\/07052017_n_PrimeShowWTP_500323_306449_320.mp4
-                var regex = new Regex(@"__filename=.*mp4", RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+                var regex = new Regex(@"media.*m3u8", RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
                 var obj = regex.Match(src.ToString()).Value;
-                obj = obj.Replace("__filename='", "").Trim();
-                movies.Add(new Movie() { Success = true, MovieURL = @"https:\\ndtvod.bc-ssl.cdn.bitgravity.com\23372\ndtv\" + obj, IsVideoURL = 1, Embed = true });
+                obj = obj.Replace(@"\/\/", "//");
+                obj = obj.Replace("\\", "");
+                obj = obj.Replace("\"", "'");
+                obj = obj.Replace("media':'", "");
+                movies.Add(new Movie() { Success = true, MovieURL = obj, IsVideoURL = 1, Embed = true });
 
                 return movies;
             }
@@ -229,23 +252,22 @@ namespace MyTVWeb
             var _movies = new List<Movie>();
             var doc = new HtmlDocument();
 
-            doc.LoadHtml(new MyWebClient().GetData(RootURL+"/video").ToString());
-            var thumbs = doc.DocumentNode.SelectNodes("//*[contains(@class,'video-div')]");
+            if (PageNumber == null)
+                PageNumber = "1";
+
+            doc.LoadHtml(new MyWebClient().GetData(RootURL + "/video/page/" + PageNumber).ToString());
+            var thumbs = doc.DocumentNode.SelectNodes("//*[contains(@class,'i-list')]");
             if (thumbs != null)
             {
                 thumbs.ToList().ForEach(e =>
                 {
-                    if (e.ParentNode.SelectSingleNode("p") != null)
+                    _movies.Add(new Movie()
                     {
-                        var aEle = e.SelectSingleNode("a");
-                        _movies.Add(new Movie()
-                        {
-                            MovieName = e.ParentNode.SelectSingleNode("p/a").InnerText,
-                            MovieURL = aEle.Attributes["href"].Value,
-                            MovieImage = aEle.SelectSingleNode("img").Attributes["src"].Value,
-                            Success = true
-                        });
-                    }
+                        MovieName = (e.SelectSingleNode("div/a/h3")).InnerHtml,
+                        MovieURL = e.SelectSingleNode("div/a").Attributes["href"].Value,
+                        MovieImage = e.SelectSingleNode("div/a/div/img").Attributes["src"].Value,
+                        Success = true
+                    });
                 });
             }
 
@@ -259,7 +281,7 @@ namespace MyTVWeb
                 var helper = new MyWebClient();
                 var movies = new List<Movie>();
 
-                var src = helper.GetData(this.RootURL+ url.Trim()).ToString();
+                var src = helper.GetData(this.RootURL + url.Trim()).ToString();
 
                 var regex = new Regex(@"embedUrl.*m3u8", RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
                 var obj = regex.Match(src.ToString()).Value;
@@ -348,7 +370,7 @@ namespace MyTVWeb
                     if (obj.response.debate != null)
                         vidURL = obj.response.debate.videoUrl;
                 }
-                else if(vid[1]=="video")
+                else if (vid[1] == "video")
                 {
                     str = helper.GetData(string.Format("http://api-test.timesnow.tv/services/consumption.php?id={0}&pf=1", vid[3])).ToString();
                     dynamic obj = JsonConvert.DeserializeObject(str);
@@ -387,7 +409,7 @@ namespace MyTVWeb
             {
                 thumbs.ToList().ForEach(e =>
                 {
-                    if (e.SelectSingleNode("img")!=null && !_movies.Exists(x => x.MovieName == e.SelectSingleNode("img").Attributes["alt"].Value))
+                    if (e.SelectSingleNode("img") != null && !_movies.Exists(x => x.MovieName == e.SelectSingleNode("img").Attributes["alt"].Value))
                     {
                         _movies.Add(new Movie()
                         {

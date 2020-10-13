@@ -1,0 +1,166 @@
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1733.png",B4U Movies
+http://reds.ppdn.tn/iptv/ch1733?code=460134681098246&key=19490
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1732.png",B4U Music
+http://reds.ppdn.tn/iptv/ch1732?code=460134681098246&key=27166
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1701.png",Sony Ent. TV Asia
+http://reds.ppdn.tn/iptv/ch1701?code=460134681098246&key=55727
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1717.png",SAB TV
+http://reds.ppdn.tn/iptv/ch1717?code=460134681098246&key=60772
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1702.png",Sony Ent. Max Asia
+http://reds.ppdn.tn/iptv/ch1702?code=460134681098246&key=59957
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1790.png",Sony Ent. Max2 Asia
+http://reds.ppdn.tn/iptv/ch1790?code=460134681098246&key=21449
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1791.png",Sony Ent. PIX Asia
+http://reds.ppdn.tn/iptv/ch1791?code=460134681098246&key=23566
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1792.png",Sony Ent. ROX Asia
+http://reds.ppdn.tn/iptv/ch1792?code=460134681098246&key=36287
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1793.png",Sony Ent. MIX Asia
+http://reds.ppdn.tn/iptv/ch1793?code=460134681098246&key=14106
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1794.png",Sony Ent. ESPN Asia
+http://reds.ppdn.tn/iptv/ch1794?code=460134681098246&key=30587
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1795.png",Sony Ent. BBC EARTH
+http://reds.ppdn.tn/iptv/ch1795?code=460134681098246&key=35838
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1703.png",Star Life ok
+http://reds.ppdn.tn/iptv/ch1703?code=460134681098246&key=18862
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1704.png",Star Gold
+http://reds.ppdn.tn/iptv/ch1704?code=460134681098246&key=14186
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1948.png",Star Hbarat
+http://reds.ppdn.tn/iptv/ch1948?code=460134681098246&key=49008
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1706.png",Star Plus
+http://reds.ppdn.tn/iptv/ch1706?code=460134681098246&key=28076
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1753.png",Zee Classic
+http://reds.ppdn.tn/iptv/ch1753?code=460134681098246&key=52515
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1705.png",Zee Action
+http://reds.ppdn.tn/iptv/ch1705?code=460134681098246&key=53062
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1708.png",Zee Cinema
+http://reds.ppdn.tn/iptv/ch1708?code=460134681098246&key=38482
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1709.png",Zee TV
+http://reds.ppdn.tn/iptv/ch1709?code=460134681098246&key=31710
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1740.png",Ary News
+http://reds.ppdn.tn/iptv/ch1740?code=460134681098246&key=42733
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1949.png",New Vision
+http://reds.ppdn.tn/iptv/ch1949?code=460134681098246&key=14082
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1707.png",JUS Punjabi
+http://reds.ppdn.tn/iptv/ch1707?code=460134681098246&key=18897
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1950.png",Ben TV
+http://reds.ppdn.tn/iptv/ch1950?code=460134681098246&key=44197
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1976.png",Madani TV
+http://reds.ppdn.tn/iptv/ch1976?code=460134681098246&key=13456
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1710.png",Ary digital
+http://reds.ppdn.tn/iptv/ch1710?code=460134681098246&key=42776
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1754.png",Rishtey
+http://reds.ppdn.tn/iptv/ch1754?code=460134681098246&key=36045
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1755.png",Rishtey cine
+http://reds.ppdn.tn/iptv/ch1755?code=460134681098246&key=54151
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1718.png",PTV Punjabi
+http://reds.ppdn.tn/iptv/ch1718?code=460134681098246&key=52555
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1725.png",PTV Prime
+http://reds.ppdn.tn/iptv/ch1725?code=460134681098246&key=12792
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1726.png",PTV Global
+http://reds.ppdn.tn/iptv/ch1726?code=460134681098246&key=36966
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1757.png",GMA Pinoy
+http://reds.ppdn.tn/iptv/ch1757?code=460134681098246&key=19374
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1758.png",GMA Life
+http://reds.ppdn.tn/iptv/ch1758?code=460134681098246&key=23718
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1759.png",GMA News
+http://reds.ppdn.tn/iptv/ch1759?code=460134681098246&key=32210
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1711.png",Geo Tez
+http://reds.ppdn.tn/iptv/ch1711?code=460134681098246&key=44277
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1712.png",Geo TV
+http://reds.ppdn.tn/iptv/ch1712?code=460134681098246&key=47206
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1713.png",Geo News
+http://reds.ppdn.tn/iptv/ch1713?code=460134681098246&key=33669
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1765.png",ATN Bangla
+http://reds.ppdn.tn/iptv/ch1765?code=460134681098246&key=17343
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1760.png",And Tv.
+http://reds.ppdn.tn/iptv/ch1760?code=460134681098246&key=57980
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1764.png",Ahle el beit
+http://reds.ppdn.tn/iptv/ch1764?code=460134681098246&key=10448
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1763.png",Hum Tv
+http://reds.ppdn.tn/iptv/ch1763?code=460134681098246&key=60245
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1762.png",A Plus
+http://reds.ppdn.tn/iptv/ch1762?code=460134681098246&key=26400
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1761.png",See TV
+http://reds.ppdn.tn/iptv/ch1761?code=460134681098246&key=51831
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1951.png",Ktv
+http://reds.ppdn.tn/iptv/ch1951?code=460134681098246&key=55786
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1953.png",Islam Channel
+http://reds.ppdn.tn/iptv/ch1953?code=460134681098246&key=26672
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1952.png",Peace TV
+http://reds.ppdn.tn/iptv/ch1952?code=460134681098246&key=60946
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1954.png",Proppeler
+http://reds.ppdn.tn/iptv/ch1954?code=460134681098246&key=54595
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1955.png",British Muslim
+http://reds.ppdn.tn/iptv/ch1955?code=460134681098246&key=30804
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1956.png",Humasal
+http://reds.ppdn.tn/iptv/ch1956?code=460134681098246&key=20329
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1957.png",Kanshi
+http://reds.ppdn.tn/iptv/ch1957?code=460134681098246&key=34399
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1958.png",Ahlu bait
+http://reds.ppdn.tn/iptv/ch1958?code=460134681098246&key=22813
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1959.png",Eman Asia
+http://reds.ppdn.tn/iptv/ch1959?code=460134681098246&key=63537
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1960.png",Gospel
+http://reds.ppdn.tn/iptv/ch1960?code=460134681098246&key=10625
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1961.png",Olive Tv
+http://reds.ppdn.tn/iptv/ch1961?code=460134681098246&key=41121
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1962.png",Channel 44
+http://reds.ppdn.tn/iptv/ch1962?code=460134681098246&key=18151
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1963.png",Safeer Tv
+http://reds.ppdn.tn/iptv/ch1963?code=460134681098246&key=24306
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1756.png",Duniya News
+http://reds.ppdn.tn/iptv/ch1756?code=460134681098246&key=55222
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1748.png",Noor Asia
+http://reds.ppdn.tn/iptv/ch1748?code=460134681098246&key=33252
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1747.png",TV99 
+http://reds.ppdn.tn/iptv/ch1747?code=460134681098246&key=27184
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1745.png",Takbeer
+http://reds.ppdn.tn/iptv/ch1745?code=460134681098246&key=43180
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1744.png",Madani Asia
+http://reds.ppdn.tn/iptv/ch1744?code=460134681098246&key=54075
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1743.png",Brit TV Asia
+http://reds.ppdn.tn/iptv/ch1743?code=460134681098246&key=14756
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1742.png",MATV Asia
+http://reds.ppdn.tn/iptv/ch1742?code=460134681098246&key=40097
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1741.png",News18 Asia
+http://reds.ppdn.tn/iptv/ch1741?code=460134681098246&key=41513
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1714.png",Time now
+http://reds.ppdn.tn/iptv/ch1714?code=460134681098246&key=63541
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1041.png",Colors
+http://reds.ppdn.tn/iptv/ch1041?code=460134681098246&key=36934
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1715.png",ABP news
+http://reds.ppdn.tn/iptv/ch1715?code=460134681098246&key=54226
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1716.png",Aajtak
+http://reds.ppdn.tn/iptv/ch1716?code=460134681098246&key=33221
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1719.png",NDTV 24-7
+http://reds.ppdn.tn/iptv/ch1719?code=460134681098246&key=22098
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1720.png",Aasth TV
+http://reds.ppdn.tn/iptv/ch1720?code=460134681098246&key=41579
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1721.png",Channel I
+http://reds.ppdn.tn/iptv/ch1721?code=460134681098246&key=23617
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1722.png",Iqra bangla
+http://reds.ppdn.tn/iptv/ch1722?code=460134681098246&key=14458
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1723.png",Venus
+http://reds.ppdn.tn/iptv/ch1723?code=460134681098246&key=64729
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1724.png",Samaa TV
+http://reds.ppdn.tn/iptv/ch1724?code=460134681098246&key=55885
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1727.png",Zing
+http://reds.ppdn.tn/iptv/ch1727?code=460134681098246&key=11191
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1728.png",NTV
+http://reds.ppdn.tn/iptv/ch1728?code=460134681098246&key=60868
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1729.png",DM Digital
+http://reds.ppdn.tn/iptv/ch1729?code=460134681098246&key=50617
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1730.png",Bangla TV
+http://reds.ppdn.tn/iptv/ch1730?code=460134681098246&key=30196
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1749.png",Ariana Afgan
+http://reds.ppdn.tn/iptv/ch1749?code=460134681098246&key=17991
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1750.png",Payam e Afgan
+http://reds.ppdn.tn/iptv/ch1750?code=460134681098246&key=21793
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1731.png",CCTV news
+http://reds.ppdn.tn/iptv/ch1731?code=460134681098246&key=33773
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1607.png",Net Vietnam
+http://reds.ppdn.tn/iptv/ch1607?code=460134681098246&key=46692
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1610.png",VTV4 tv
+http://reds.ppdn.tn/iptv/ch1610?code=460134681098246&key=55385
+#EXTINF:0 group-title="Hindi/Asia"tvg-logo="http://logo.ddnb.tn/logochanel/1609.png",Thai Tv
+http://reds.ppdn.tn/iptv/ch1609?code=460134681098246&key=51320

@@ -1,0 +1,2206 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Google.Apis.CloudMachineLearningEngine.v1</name>
+    </assembly>
+    <members>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService">
+            <summary>The CloudMachineLearningEngine Service.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.Version">
+            <summary>The API version.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.DiscoveryVersionUsed">
+            <summary>The discovery version used to generate this service.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.#ctor">
+            <summary>Constructs a new service.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.#ctor(Google.Apis.Services.BaseClientService.Initializer)">
+            <summary>Constructs a new service.</summary>
+            <param name="initializer">The service initializer.</param>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.Features">
+            <summary>Gets the service supported features.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.Name">
+            <summary>Gets the service name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.BaseUri">
+            <summary>Gets the service base URI.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.BasePath">
+            <summary>Gets the service base path.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.Scope">
+            <summary>Available OAuth 2.0 scopes for use with the Cloud Machine Learning Engine.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.Scope.CloudPlatform">
+            <summary>View and manage your data across Google Cloud Platform services</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineService.Projects">
+            <summary>Gets the Projects resource.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1">
+            <summary>A base abstract class for CloudMachineLearningEngine requests.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new CloudMachineLearningEngineBaseServiceRequest instance.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.Xgafv">
+            <summary>V1 error format.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.XgafvEnum">
+            <summary>V1 error format.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.XgafvEnum.Value1">
+            <summary>v1 error format</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.XgafvEnum.Value2">
+            <summary>v2 error format</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.AccessToken">
+            <summary>OAuth access token.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.Alt">
+            <summary>Data format for response.</summary>
+            [default: json]
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.AltEnum">
+            <summary>Data format for response.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.AltEnum.Json">
+            <summary>Responses with Content-Type of application/json</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.AltEnum.Media">
+            <summary>Media download with context-dependent Content-Type</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.AltEnum.Proto">
+            <summary>Responses with Content-Type of application/x-protobuf</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.BearerToken">
+            <summary>OAuth bearer token.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.Callback">
+            <summary>JSONP</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.Fields">
+            <summary>Selector specifying which fields to include in a partial response.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.Key">
+            <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            Required unless you provide an OAuth 2.0 token.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.OauthToken">
+            <summary>OAuth 2.0 token for the current user.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.Pp">
+            <summary>Pretty-print response.</summary>
+            [default: true]
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.PrettyPrint">
+            <summary>Returns response with indentations and line breaks.</summary>
+            [default: true]
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.QuotaUser">
+            <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+            assigned to a user, but should not exceed 40 characters.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.UploadType">
+            <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.UploadProtocol">
+            <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest`1.InitParameters">
+            <summary>Initializes CloudMachineLearningEngine parameter list.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource">
+            <summary>The "projects" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.service">
+            <summary>The service which this resource belongs to.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.Jobs">
+            <summary>Gets the Jobs resource.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource">
+            <summary>The "jobs" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.service">
+            <summary>The service which this resource belongs to.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.Cancel(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CancelJobRequest,System.String)">
+            <summary>Cancels a running job.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="name">Required. The name of the job to cancel.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CancelRequest">
+            <summary>Cancels a running job.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CancelRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CancelJobRequest,System.String)">
+            <summary>Constructs a new Cancel request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CancelRequest.Name">
+            <summary>Required. The name of the job to cancel.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CancelRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CancelRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CancelRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CancelRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CancelRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CancelRequest.InitParameters">
+            <summary>Initializes Cancel parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job,System.String)">
+            <summary>Creates a training or a batch prediction job.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="parent">Required. The project name.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CreateRequest">
+            <summary>Creates a training or a batch prediction job.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CreateRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job,System.String)">
+            <summary>Constructs a new Create request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CreateRequest.Parent">
+            <summary>Required. The project name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CreateRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CreateRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CreateRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CreateRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CreateRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.CreateRequest.InitParameters">
+            <summary>Initializes Create parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.Get(System.String)">
+            <summary>Describes a job.</summary>
+            <param name="name">Required. The name of the job to get the description of.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetRequest">
+            <summary>Describes a job.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Get request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetRequest.Name">
+            <summary>Required. The name of the job to get the description of.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetRequest.InitParameters">
+            <summary>Initializes Get parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetIamPolicy(System.String)">
+            <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            and does not have a policy set.</summary>
+            <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+            documentation for the appropriate value for this field.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetIamPolicyRequest">
+            <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            and does not have a policy set.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetIamPolicyRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new GetIamPolicy request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetIamPolicyRequest.Resource">
+            <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+            documentation for the appropriate value for this field.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetIamPolicyRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetIamPolicyRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetIamPolicyRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.GetIamPolicyRequest.InitParameters">
+            <summary>Initializes GetIamPolicy parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.List(System.String)">
+             <summary>Lists the jobs in the project.
+            
+             If there are no jobs that match the request parameters, the list request returns an empty response body:
+             {}.</summary>
+             <param name="parent">Required. The name of the project for which to list jobs.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.ListRequest">
+             <summary>Lists the jobs in the project.
+            
+             If there are no jobs that match the request parameters, the list request returns an empty response body:
+             {}.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.ListRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.ListRequest.Parent">
+            <summary>Required. The name of the project for which to list jobs.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.ListRequest.Filter">
+            <summary>Optional. Specifies the subset of jobs to retrieve. You can filter on the value of one or
+            more attributes of the job object. For example, retrieve jobs with a job identifier that starts with
+            'census': gcloud ml-engine jobs list --filter='jobId:census*' List all failed jobs with names that
+            start with 'rnn': gcloud ml-engine jobs list --filter='jobId:rnn* AND state:FAILED' For more
+            examples, see the guide to monitoring jobs.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.ListRequest.PageToken">
+             <summary>Optional. A page token to request the next page of results.
+            
+             You get the token from the `next_page_token` field of the response from the previous call.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.ListRequest.PageSize">
+             <summary>Optional. The number of jobs to retrieve per "page" of results. If there are more remaining
+             results than this number, the response message will contain a valid value in the `next_page_token`
+             field.
+            
+             The default value is 20, and the maximum page size is 100.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.SetIamPolicy(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest,System.String)">
+            <summary>Sets the access control policy on the specified resource. Replaces any existing
+            policy.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+            documentation for the appropriate value for this field.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.SetIamPolicyRequest">
+            <summary>Sets the access control policy on the specified resource. Replaces any existing
+            policy.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.SetIamPolicyRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest,System.String)">
+            <summary>Constructs a new SetIamPolicy request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.SetIamPolicyRequest.Resource">
+            <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+            documentation for the appropriate value for this field.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.SetIamPolicyRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.SetIamPolicyRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.SetIamPolicyRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.SetIamPolicyRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.SetIamPolicyRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.SetIamPolicyRequest.InitParameters">
+            <summary>Initializes SetIamPolicy parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.TestIamPermissions(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest,System.String)">
+             <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+             exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            
+             Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+             not for authorization checking. This operation may "fail open" without warning.</summary>
+             <param name="body">The body of the request.</param>
+             <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+             documentation for the appropriate value for this field.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.TestIamPermissionsRequest">
+             <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+             exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            
+             Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+             not for authorization checking. This operation may "fail open" without warning.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.TestIamPermissionsRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest,System.String)">
+            <summary>Constructs a new TestIamPermissions request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.TestIamPermissionsRequest.Resource">
+            <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+            documentation for the appropriate value for this field.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.TestIamPermissionsRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.TestIamPermissionsRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.TestIamPermissionsRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.TestIamPermissionsRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.TestIamPermissionsRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.JobsResource.TestIamPermissionsRequest.InitParameters">
+            <summary>Initializes TestIamPermissions parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.Locations">
+            <summary>Gets the Locations resource.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource">
+            <summary>The "locations" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.service">
+            <summary>The service which this resource belongs to.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.Get(System.String)">
+            <summary>Get the complete list of CMLE capabilities in a location, along with their location-specific
+            properties.</summary>
+            <param name="name">Required. The name of the location.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.GetRequest">
+            <summary>Get the complete list of CMLE capabilities in a location, along with their location-specific
+            properties.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.GetRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Get request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.GetRequest.Name">
+            <summary>Required. The name of the location.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.GetRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.GetRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.GetRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.GetRequest.InitParameters">
+            <summary>Initializes Get parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.List(System.String)">
+            <summary>List all locations that provides at least one type of CMLE capability.</summary>
+            <param name="parent">Required. The name of the project for which available locations are to be listed (since some
+            locations might be whitelisted for specific projects).</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.ListRequest">
+            <summary>List all locations that provides at least one type of CMLE capability.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.ListRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.ListRequest.Parent">
+            <summary>Required. The name of the project for which available locations are to be listed (since
+            some locations might be whitelisted for specific projects).</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.ListRequest.PageToken">
+             <summary>Optional. A page token to request the next page of results.
+            
+             You get the token from the `next_page_token` field of the response from the previous call.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.ListRequest.PageSize">
+             <summary>Optional. The number of locations to retrieve per "page" of results. If there are more
+             remaining results than this number, the response message will contain a valid value in the
+             `next_page_token` field.
+            
+             The default value is 20, and the maximum page size is 100.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.LocationsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.Models">
+            <summary>Gets the Models resource.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource">
+            <summary>The "models" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.service">
+            <summary>The service which this resource belongs to.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.Versions">
+            <summary>Gets the Versions resource.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource">
+            <summary>The "versions" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.service">
+            <summary>The service which this resource belongs to.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version,System.String)">
+             <summary>Creates a new version of a model from a trained TensorFlow model.
+            
+             If the version created in the cloud by this call is the first deployed version of the specified
+             model, it will be made the default version of the model. When you add a version to a model that
+             already has one or more versions, the default version does not automatically change. If you want a
+             new version to be the default, you must call [projects.models.versions.setDefault](/ml-
+             engine/reference/rest/v1/projects.models.versions/setDefault).</summary>
+             <param name="body">The body of the request.</param>
+             <param name="parent">Required. The name of the model.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.CreateRequest">
+             <summary>Creates a new version of a model from a trained TensorFlow model.
+            
+             If the version created in the cloud by this call is the first deployed version of the specified
+             model, it will be made the default version of the model. When you add a version to a model that
+             already has one or more versions, the default version does not automatically change. If you want a
+             new version to be the default, you must call [projects.models.versions.setDefault](/ml-
+             engine/reference/rest/v1/projects.models.versions/setDefault).</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.CreateRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version,System.String)">
+            <summary>Constructs a new Create request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.CreateRequest.Parent">
+            <summary>Required. The name of the model.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.CreateRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.CreateRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.CreateRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.CreateRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.CreateRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.CreateRequest.InitParameters">
+            <summary>Initializes Create parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.Delete(System.String)">
+             <summary>Deletes a model version.
+            
+             Each model can have multiple versions deployed and in use at any given time. Use this method to
+             remove a single version.
+            
+             Note: You cannot delete the version that is set as the default version of the model unless it is the
+             only remaining version.</summary>
+             <param name="name">Required. The name of the version. You can get the names of all the versions of a model by
+             calling [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.DeleteRequest">
+             <summary>Deletes a model version.
+            
+             Each model can have multiple versions deployed and in use at any given time. Use this method to
+             remove a single version.
+            
+             Note: You cannot delete the version that is set as the default version of the model unless it is the
+             only remaining version.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.DeleteRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Delete request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.DeleteRequest.Name">
+            <summary>Required. The name of the version. You can get the names of all the versions of a model
+            by calling [projects.models.versions.list](/ml-
+            engine/reference/rest/v1/projects.models.versions/list).</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.DeleteRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.DeleteRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.DeleteRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.DeleteRequest.InitParameters">
+            <summary>Initializes Delete parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.Get(System.String)">
+             <summary>Gets information about a model version.
+            
+             Models can have multiple versions. You can call [projects.models.versions.list](/ml-
+             engine/reference/rest/v1/projects.models.versions/list) to get the same information that this method
+             returns for all of the versions of a model.</summary>
+             <param name="name">Required. The name of the version.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.GetRequest">
+             <summary>Gets information about a model version.
+            
+             Models can have multiple versions. You can call [projects.models.versions.list](/ml-
+             engine/reference/rest/v1/projects.models.versions/list) to get the same information that this method
+             returns for all of the versions of a model.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.GetRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Get request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.GetRequest.Name">
+            <summary>Required. The name of the version.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.GetRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.GetRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.GetRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.GetRequest.InitParameters">
+            <summary>Initializes Get parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.List(System.String)">
+             <summary>Gets basic information about all the versions of a model.
+            
+             If you expect that a model has many versions, or if you need to handle only a limited number of
+             results at a time, you can request that the list be retrieved in batches (called pages).
+            
+             If there are no versions that match the request parameters, the list request returns an empty
+             response body: {}.</summary>
+             <param name="parent">Required. The name of the model for which to list the version.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.ListRequest">
+             <summary>Gets basic information about all the versions of a model.
+            
+             If you expect that a model has many versions, or if you need to handle only a limited number of
+             results at a time, you can request that the list be retrieved in batches (called pages).
+            
+             If there are no versions that match the request parameters, the list request returns an empty
+             response body: {}.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.ListRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.ListRequest.Parent">
+            <summary>Required. The name of the model for which to list the version.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.ListRequest.PageToken">
+             <summary>Optional. A page token to request the next page of results.
+            
+             You get the token from the `next_page_token` field of the response from the previous
+             call.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.ListRequest.PageSize">
+             <summary>Optional. The number of versions to retrieve per "page" of results. If there are more
+             remaining results than this number, the response message will contain a valid value in the
+             `next_page_token` field.
+            
+             The default value is 20, and the maximum page size is 100.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.ListRequest.Filter">
+            <summary>Optional. Specifies the subset of versions to retrieve.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.Patch(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version,System.String)">
+             <summary>Updates the specified Version resource.
+            
+             Currently the only supported field to update is `description`.</summary>
+             <param name="body">The body of the request.</param>
+             <param name="name">Required. The name of the model.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.PatchRequest">
+             <summary>Updates the specified Version resource.
+            
+             Currently the only supported field to update is `description`.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.PatchRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version,System.String)">
+            <summary>Constructs a new Patch request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.PatchRequest.Name">
+            <summary>Required. The name of the model.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.PatchRequest.UpdateMask">
+             <summary>Required. Specifies the path, relative to `Version`, of the field to update. Must be
+             present and non-empty.
+            
+             For example, to change the description of a version to "foo", the `update_mask` parameter would
+             be specified as `description`, and the `PATCH` request body would specify the new value, as
+             follows: { "description": "foo" }
+            
+             Currently the only supported update mask is`description`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.PatchRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.PatchRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.PatchRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.PatchRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.PatchRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.PatchRequest.InitParameters">
+            <summary>Initializes Patch parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.SetDefault(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SetDefaultVersionRequest,System.String)">
+             <summary>Designates a version to be the default for the model.
+            
+             The default version is used for prediction requests made against the model that don't specify a
+             version.
+            
+             The first version to be created for a model is automatically set as the default. You must make any
+             subsequent changes to the default version setting manually using this method.</summary>
+             <param name="body">The body of the request.</param>
+             <param name="name">Required. The name of the version to make the default for the model. You can get the names of all
+             the versions of a model by calling [projects.models.versions.list](/ml-
+             engine/reference/rest/v1/projects.models.versions/list).</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.SetDefaultRequest">
+             <summary>Designates a version to be the default for the model.
+            
+             The default version is used for prediction requests made against the model that don't specify a
+             version.
+            
+             The first version to be created for a model is automatically set as the default. You must make any
+             subsequent changes to the default version setting manually using this method.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.SetDefaultRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SetDefaultVersionRequest,System.String)">
+            <summary>Constructs a new SetDefault request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.SetDefaultRequest.Name">
+            <summary>Required. The name of the version to make the default for the model. You can get the
+            names of all the versions of a model by calling [projects.models.versions.list](/ml-
+            engine/reference/rest/v1/projects.models.versions/list).</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.SetDefaultRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.SetDefaultRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.SetDefaultRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.SetDefaultRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.SetDefaultRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.VersionsResource.SetDefaultRequest.InitParameters">
+            <summary>Initializes SetDefault parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.Create(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model,System.String)">
+             <summary>Creates a model which will later contain one or more versions.
+            
+             You must add at least one version before you can request predictions from the model. Add versions by
+             calling [projects.models.versions.create](/ml-
+             engine/reference/rest/v1/projects.models.versions/create).</summary>
+             <param name="body">The body of the request.</param>
+             <param name="parent">Required. The project name.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.CreateRequest">
+             <summary>Creates a model which will later contain one or more versions.
+            
+             You must add at least one version before you can request predictions from the model. Add versions by
+             calling [projects.models.versions.create](/ml-
+             engine/reference/rest/v1/projects.models.versions/create).</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.CreateRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model,System.String)">
+            <summary>Constructs a new Create request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.CreateRequest.Parent">
+            <summary>Required. The project name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.CreateRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.CreateRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.CreateRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.CreateRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.CreateRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.CreateRequest.InitParameters">
+            <summary>Initializes Create parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.Delete(System.String)">
+             <summary>Deletes a model.
+            
+             You can only delete a model if there are no versions in it. You can delete versions by calling
+             [projects.models.versions.delete](/ml-
+             engine/reference/rest/v1/projects.models.versions/delete).</summary>
+             <param name="name">Required. The name of the model.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.DeleteRequest">
+             <summary>Deletes a model.
+            
+             You can only delete a model if there are no versions in it. You can delete versions by calling
+             [projects.models.versions.delete](/ml-
+             engine/reference/rest/v1/projects.models.versions/delete).</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.DeleteRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Delete request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.DeleteRequest.Name">
+            <summary>Required. The name of the model.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.DeleteRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.DeleteRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.DeleteRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.DeleteRequest.InitParameters">
+            <summary>Initializes Delete parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.Get(System.String)">
+            <summary>Gets information about a model, including its name, the description (if set), and the default
+            version (if at least one version of the model has been deployed).</summary>
+            <param name="name">Required. The name of the model.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetRequest">
+            <summary>Gets information about a model, including its name, the description (if set), and the default
+            version (if at least one version of the model has been deployed).</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Get request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetRequest.Name">
+            <summary>Required. The name of the model.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetRequest.InitParameters">
+            <summary>Initializes Get parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetIamPolicy(System.String)">
+            <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            and does not have a policy set.</summary>
+            <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+            documentation for the appropriate value for this field.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetIamPolicyRequest">
+            <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            and does not have a policy set.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetIamPolicyRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new GetIamPolicy request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetIamPolicyRequest.Resource">
+            <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+            documentation for the appropriate value for this field.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetIamPolicyRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetIamPolicyRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetIamPolicyRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.GetIamPolicyRequest.InitParameters">
+            <summary>Initializes GetIamPolicy parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.List(System.String)">
+             <summary>Lists the models in a project.
+            
+             Each project can contain multiple models, and each model can have multiple versions.
+            
+             If there are no models that match the request parameters, the list request returns an empty response
+             body: {}.</summary>
+             <param name="parent">Required. The name of the project whose models are to be listed.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.ListRequest">
+             <summary>Lists the models in a project.
+            
+             Each project can contain multiple models, and each model can have multiple versions.
+            
+             If there are no models that match the request parameters, the list request returns an empty response
+             body: {}.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.ListRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.ListRequest.Parent">
+            <summary>Required. The name of the project whose models are to be listed.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.ListRequest.PageSize">
+             <summary>Optional. The number of models to retrieve per "page" of results. If there are more
+             remaining results than this number, the response message will contain a valid value in the
+             `next_page_token` field.
+            
+             The default value is 20, and the maximum page size is 100.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.ListRequest.Filter">
+            <summary>Optional. Specifies the subset of models to retrieve.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.ListRequest.PageToken">
+             <summary>Optional. A page token to request the next page of results.
+            
+             You get the token from the `next_page_token` field of the response from the previous call.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.Patch(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model,System.String)">
+             <summary>Updates a specific model resource.
+            
+             Currently the only supported fields to update are `description` and `default_version.name`.</summary>
+             <param name="body">The body of the request.</param>
+             <param name="name">Required. The project name.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.PatchRequest">
+             <summary>Updates a specific model resource.
+            
+             Currently the only supported fields to update are `description` and `default_version.name`.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.PatchRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model,System.String)">
+            <summary>Constructs a new Patch request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.PatchRequest.Name">
+            <summary>Required. The project name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.PatchRequest.UpdateMask">
+             <summary>Required. Specifies the path, relative to `Model`, of the field to update.
+            
+             For example, to change the description of a model to "foo" and set its default version to
+             "version_1", the `update_mask` parameter would be specified as `description`,
+             `default_version.name`, and the `PATCH` request body would specify the new value, as follows: {
+             "description": "foo", "defaultVersion": { "name":"version_1" } }
+            
+             Currently the supported update masks are `description` and `default_version.name`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.PatchRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.PatchRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.PatchRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.PatchRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.PatchRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.PatchRequest.InitParameters">
+            <summary>Initializes Patch parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.SetIamPolicy(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest,System.String)">
+            <summary>Sets the access control policy on the specified resource. Replaces any existing
+            policy.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+            documentation for the appropriate value for this field.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.SetIamPolicyRequest">
+            <summary>Sets the access control policy on the specified resource. Replaces any existing
+            policy.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.SetIamPolicyRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest,System.String)">
+            <summary>Constructs a new SetIamPolicy request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.SetIamPolicyRequest.Resource">
+            <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+            documentation for the appropriate value for this field.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.SetIamPolicyRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.SetIamPolicyRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.SetIamPolicyRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.SetIamPolicyRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.SetIamPolicyRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.SetIamPolicyRequest.InitParameters">
+            <summary>Initializes SetIamPolicy parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.TestIamPermissions(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest,System.String)">
+             <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+             exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            
+             Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+             not for authorization checking. This operation may "fail open" without warning.</summary>
+             <param name="body">The body of the request.</param>
+             <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+             documentation for the appropriate value for this field.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.TestIamPermissionsRequest">
+             <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+             exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            
+             Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+             not for authorization checking. This operation may "fail open" without warning.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.TestIamPermissionsRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest,System.String)">
+            <summary>Constructs a new TestIamPermissions request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.TestIamPermissionsRequest.Resource">
+            <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+            documentation for the appropriate value for this field.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.TestIamPermissionsRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.TestIamPermissionsRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.TestIamPermissionsRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.TestIamPermissionsRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.TestIamPermissionsRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.ModelsResource.TestIamPermissionsRequest.InitParameters">
+            <summary>Initializes TestIamPermissions parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.Operations">
+            <summary>Gets the Operations resource.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource">
+            <summary>The "operations" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.service">
+            <summary>The service which this resource belongs to.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.Cancel(System.String)">
+            <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort
+            to cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it
+            returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to
+            check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+            successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+            Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+            <param name="name">The name of the operation resource to be cancelled.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.CancelRequest">
+            <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort
+            to cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it
+            returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to
+            check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+            successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+            Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.CancelRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Cancel request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.CancelRequest.Name">
+            <summary>The name of the operation resource to be cancelled.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.CancelRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.CancelRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.CancelRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.CancelRequest.InitParameters">
+            <summary>Initializes Cancel parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.Delete(System.String)">
+            <summary>Deletes a long-running operation. This method indicates that the client is no longer interested
+            in the operation result. It does not cancel the operation. If the server doesn't support this method, it
+            returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+            <param name="name">The name of the operation resource to be deleted.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.DeleteRequest">
+            <summary>Deletes a long-running operation. This method indicates that the client is no longer interested
+            in the operation result. It does not cancel the operation. If the server doesn't support this method, it
+            returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.DeleteRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Delete request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.DeleteRequest.Name">
+            <summary>The name of the operation resource to be deleted.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.DeleteRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.DeleteRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.DeleteRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.DeleteRequest.InitParameters">
+            <summary>Initializes Delete parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.Get(System.String)">
+            <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            operation result at intervals as recommended by the API service.</summary>
+            <param name="name">The name of the operation resource.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.GetRequest">
+            <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            operation result at intervals as recommended by the API service.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.GetRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Get request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.GetRequest.Name">
+            <summary>The name of the operation resource.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.GetRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.GetRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.GetRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.GetRequest.InitParameters">
+            <summary>Initializes Get parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.List(System.String)">
+             <summary>Lists operations that match the specified filter in the request. If the server doesn't support
+             this method, it returns `UNIMPLEMENTED`.
+            
+             NOTE: the `name` binding allows API services to override the binding to use different resource name
+             schemes, such as `users/operations`. To override the binding, API services can add a binding such as
+             `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
+             name includes the operations collection id, however overriding users must ensure the name binding is the
+             parent resource, without the operations collection id.</summary>
+             <param name="name">The name of the operation's parent resource.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.ListRequest">
+             <summary>Lists operations that match the specified filter in the request. If the server doesn't support
+             this method, it returns `UNIMPLEMENTED`.
+            
+             NOTE: the `name` binding allows API services to override the binding to use different resource name
+             schemes, such as `users/operations`. To override the binding, API services can add a binding such as
+             `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
+             name includes the operations collection id, however overriding users must ensure the name binding is the
+             parent resource, without the operations collection id.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.ListRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.ListRequest.Name">
+            <summary>The name of the operation's parent resource.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.ListRequest.Filter">
+            <summary>The standard list filter.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.ListRequest.PageToken">
+            <summary>The standard list page token.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.ListRequest.PageSize">
+            <summary>The standard list page size.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.OperationsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.GetConfig(System.String)">
+            <summary>Get the service account information associated with your project. You need this information in
+            order to grant the service account persmissions for the Google Cloud Storage location where you put your
+            model training code for training the model with Google Cloud Machine Learning.</summary>
+            <param name="name">Required. The project name.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.GetConfigRequest">
+            <summary>Get the service account information associated with your project. You need this information in
+            order to grant the service account persmissions for the Google Cloud Storage location where you put your
+            model training code for training the model with Google Cloud Machine Learning.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.GetConfigRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new GetConfig request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.GetConfigRequest.Name">
+            <summary>Required. The project name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.GetConfigRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.GetConfigRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.GetConfigRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.GetConfigRequest.InitParameters">
+            <summary>Initializes GetConfig parameter list.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.Predict(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictRequest,System.String)">
+             <summary>Performs prediction on the data in the request. Cloud ML Engine implements a custom `predict` verb
+             on top of an HTTP POST method. For details of the request and response format, see the **guide to the
+             [predict request format](/ml-engine/docs/v1/predict-request)**.</summary>
+             <param name="body">The body of the request.</param>
+             <param name="name">Required. The resource name of a model or a version.
+            
+             Authorization: requires the `predict` permission on the specified resource.</param>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.PredictRequest">
+            <summary>Performs prediction on the data in the request. Cloud ML Engine implements a custom `predict` verb
+            on top of an HTTP POST method. For details of the request and response format, see the **guide to the
+            [predict request format](/ml-engine/docs/v1/predict-request)**.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.PredictRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictRequest,System.String)">
+            <summary>Constructs a new Predict request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.PredictRequest.Name">
+             <summary>Required. The resource name of a model or a version.
+            
+             Authorization: requires the `predict` permission on the specified resource.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.PredictRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.PredictRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.PredictRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.PredictRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.PredictRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="M:Google.Apis.CloudMachineLearningEngine.v1.ProjectsResource.PredictRequest.InitParameters">
+            <summary>Initializes Predict parameter list.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody">
+             <summary>Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't
+             be represented as JSON, such as raw binary or an HTML page.
+            
+             This message can be used both in streaming and non-streaming API methods in the request as well as the response.
+            
+             It can be used as a top-level request field, which is convenient if one wants to extract parameters from either
+             the URL or HTTP template into the request fields and also want access to the raw HTTP body.
+            
+             Example:
+            
+             message GetResourceRequest { // A unique request id. string request_id = 1;
+            
+             // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; }
+            
+             service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+             UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); }
+            
+             Example with streaming methods:
+            
+             service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
+             UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); }
+            
+             Use of this type only changes how the request and response bodies are handled, all other features will continue
+             to work unchanged.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody.ContentType">
+            <summary>The HTTP Content-Type string representing the content type of the body.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody.Data">
+            <summary>HTTP body binary data.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody.Extensions">
+            <summary>Application specific response metadata. Must be set in the first response for streaming
+            APIs.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AutoScaling">
+            <summary>Options for automatically scaling a model.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AutoScaling.MinNodes">
+             <summary>Optional. The minimum number of nodes to allocate for this model. These nodes are always up,
+             starting from the time the model is deployed, so the cost of operating this model will be at least `rate` *
+             `min_nodes` * number of hours since last billing cycle, where `rate` is the cost per node-hour as documented
+             in [pricing](https://cloud.google.com/ml-engine/pricing#prediction_pricing), even if no predictions are
+             performed. There is additional cost for each prediction performed.
+            
+             Unlike manual scaling, if the load gets too heavy for the nodes that are up, the service will automatically
+             add nodes to handle the increased load as well as scale back as traffic drops, always maintaining at least
+             `min_nodes`. You will be charged for the time in which additional nodes are used.
+            
+             If not specified, `min_nodes` defaults to 0, in which case, when traffic to a model stops (and after a cool-
+             down period), nodes will be shut down and no charges will be incurred until traffic to the model
+             resumes.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1AutoScaling.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CancelJobRequest">
+            <summary>Request message for the CancelJob method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1CancelJobRequest.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Capability.AvailableAccelerators">
+            <summary>Available accelerators for the capability.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Capability.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Config.TpuServiceAccount">
+            <summary>The service account Cloud ML uses to run on TPU node.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Config.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1GetConfigResponse">
+            <summary>Returns service account information associated with a project.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1GetConfigResponse.ServiceAccount">
+            <summary>The service account Cloud ML uses to access resources in the project.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1GetConfigResponse.ServiceAccountProject">
+            <summary>The project number for `service_account`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1GetConfigResponse.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutput">
+            <summary>Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput
+            object that is returned on successful completion of a training job with hyperparameter tuning includes a list of
+            HyperparameterOutput objects, one for each successful trial.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutput.AllMetrics">
+            <summary>All recorded object metrics for this trial. This field is not currently populated.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutput.FinalMetric">
+            <summary>The final objective metric seen for this trial.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutput.Hyperparameters">
+            <summary>The hyperparameters given to this trial.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutput.IsTrialStoppedEarly">
+            <summary>True if the trial is stopped early.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutput.TrialId">
+            <summary>The trial id for these results.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutput.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric">
+            <summary>An observed value of a metric.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.ObjectiveValue">
+            <summary>The objective value at this training step.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.TrainingStep">
+            <summary>The global training step for this metric.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterSpec">
+            <summary>Represents a set of hyperparameters to optimize.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterSpec.EnableTrialEarlyStopping">
+            <summary>Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterSpec.Goal">
+             <summary>Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`.
+            
+             Defaults to `MAXIMIZE`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterSpec.HyperparameterMetricTag">
+            <summary>Optional. The Tensorflow summary tag name to use for optimizing trials. For current versions of
+            Tensorflow, this tag name should exactly match what is shown in Tensorboard, including all scopes.  For
+            versions of Tensorflow prior to 0.12, this should be only the tag passed to tf.Summary. By default,
+            "training/hptuning/metric" will be used.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterSpec.MaxParallelTrials">
+             <summary>Optional. The number of training trials to run concurrently. You can reduce the time it takes to
+             perform hyperparameter tuning by adding trials in parallel. However, each trail only benefits from the
+             information gained in completed trials. That means that a trial does not get access to the results of trials
+             running at the same time, which could reduce the quality of the overall optimization.
+            
+             Each trial will use the same scale tier and machine types.
+            
+             Defaults to one.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterSpec.MaxTrials">
+             <summary>Optional. How many training trials should be attempted to optimize the specified hyperparameters.
+            
+             Defaults to one.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterSpec.Params__">
+            <summary>Required. The set of parameters to tune.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterSpec.ResumePreviousJobId">
+            <summary>Optional. The prior hyperparameter tuning job id that users hope to continue with. The job id will
+            be used to find the corresponding vizier study guid and resume the study.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1HyperparameterSpec.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job">
+            <summary>Represents a training or prediction job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.CreateTime">
+            <summary>Output only. When the job was created.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.EndTime">
+            <summary>Output only. When the job processing was completed.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.ErrorMessage">
+            <summary>Output only. The details of a failure or a cancellation.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.JobId">
+            <summary>Required. The user-specified id of the job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.PredictionInput">
+            <summary>Input parameters to create a prediction job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.PredictionOutput">
+            <summary>The current prediction job result.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.StartTime">
+            <summary>Output only. When the job processing was started.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.State">
+            <summary>Output only. The detailed state of a job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.TrainingInput">
+            <summary>Input parameters to create a training job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.TrainingOutput">
+            <summary>The current training job result.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListJobsResponse">
+            <summary>Response message for the ListJobs method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListJobsResponse.Jobs">
+            <summary>The list of jobs.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListJobsResponse.NextPageToken">
+            <summary>Optional. Pass this token as the `page_token` field of the request for a subsequent call.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListJobsResponse.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListLocationsResponse.Locations">
+            <summary>Locations where at least one type of CMLE capability is available.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListLocationsResponse.NextPageToken">
+            <summary>Optional. Pass this token as the `page_token` field of the request for a subsequent call.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListLocationsResponse.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListModelsResponse">
+            <summary>Response message for the ListModels method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListModelsResponse.Models">
+            <summary>The list of models.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListModelsResponse.NextPageToken">
+            <summary>Optional. Pass this token as the `page_token` field of the request for a subsequent call.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListModelsResponse.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListVersionsResponse">
+            <summary>Response message for the ListVersions method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListVersionsResponse.NextPageToken">
+            <summary>Optional. Pass this token as the `page_token` field of the request for a subsequent call.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListVersionsResponse.Versions">
+            <summary>The list of versions.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ListVersionsResponse.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Location.Capabilities">
+            <summary>Capabilities available in the location.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Location.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ManualScaling">
+            <summary>Options for manually scaling a model.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ManualScaling.Nodes">
+            <summary>The number of nodes to allocate for this model. These nodes are always up, starting from the time
+            the model is deployed, so the cost of operating this model will be proportional to `nodes` * number of hours
+            since last billing cycle plus the cost for each prediction performed.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ManualScaling.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model">
+             <summary>Represents a machine learning solution.
+            
+             A model can have multiple versions, each of which is a deployed, trained model ready to receive prediction
+             requests. The model itself is just a container.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model.DefaultVersion">
+             <summary>Output only. The default version of the model. This version will be used to handle prediction
+             requests that do not specify a version.
+            
+             You can change the default version by calling [projects.methods.versions.setDefault](/ml-
+             engine/reference/rest/v1/projects.models.versions/setDefault).</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model.Description">
+            <summary>Optional. The description specified for the model when it was created.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model.Name">
+             <summary>Required. The name specified for the model when it was created.
+            
+             The model name must be unique within the project it is created in.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model.OnlinePredictionLogging">
+            <summary>Optional. If true, enables StackDriver Logging for online prediction. Default is false.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model.Regions">
+            <summary>Optional. The list of regions where the model is going to be deployed. Currently only one region
+            per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for ML Engine
+            services. Note: *   No matter where a model is deployed, it can always be accessed by users from anywhere,
+            both for online and batch prediction. *   The region for a batch prediction job is set by the region field
+            when submitting the batch prediction job and does not take its value from this field.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Model.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1OperationMetadata">
+            <summary>Represents the metadata of the long-running operation.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1OperationMetadata.CreateTime">
+            <summary>The time the operation was submitted.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1OperationMetadata.EndTime">
+            <summary>The time operation processing completed.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1OperationMetadata.IsCancellationRequested">
+            <summary>Indicates whether a request to cancel this operation has been made.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1OperationMetadata.ModelName">
+            <summary>Contains the name of the model associated with the operation.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1OperationMetadata.OperationType">
+            <summary>The operation type.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1OperationMetadata.ProjectNumber">
+            <summary>Contains the project number associated with the operation.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1OperationMetadata.StartTime">
+            <summary>The time operation processing started.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1OperationMetadata.Version">
+            <summary>Contains the version associated with the operation.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1OperationMetadata.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ParameterSpec">
+            <summary>Represents a single hyperparameter to optimize.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ParameterSpec.CategoricalValues">
+            <summary>Required if type is `CATEGORICAL`. The list of possible categories.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ParameterSpec.DiscreteValues">
+            <summary>Required if type is `DISCRETE`. A list of feasible points. The list should be in strictly
+            increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list
+            should not contain more than 1,000 values.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ParameterSpec.MaxValue">
+            <summary>Required if typeis `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This
+            value should be integers if type is `INTEGER`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ParameterSpec.MinValue">
+            <summary>Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`.
+            This value should be integers if type is INTEGER.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ParameterSpec.ParameterName">
+            <summary>Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec
+            message. E.g., "learning_rate".</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ParameterSpec.ScaleType">
+            <summary>Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical
+            parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g.,
+            `UNIT_LINEAR_SCALE`).</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ParameterSpec.Type">
+            <summary>Required. The type of the parameter.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1ParameterSpec.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictRequest">
+            <summary>Request for predictions to be issued against a trained model.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictRequest.HttpBody">
+            <summary> Required. The prediction request body.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictRequest.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput">
+            <summary>Represents input parameters for a prediction job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.BatchSize">
+            <summary>Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of
+            records in memory before invoking one Tensorflow prediction call internally. So take the record size and
+            memory available into consideration when setting this parameter.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.DataFormat">
+            <summary>Required. The format of the input data files.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.InputPaths">
+            <summary>Required. The Google Cloud Storage location of the input data files. May contain
+            wildcards.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.MaxWorkerCount">
+            <summary>Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not
+            specified.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.ModelName">
+             <summary>Use this field if you want to use the default version for the specified model. The string must use
+             the following format:
+            
+             `"projects/[YOUR_PROJECT]/models/[YOUR_MODEL]"`</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.OutputPath">
+            <summary>Required. The output Google Cloud Storage location.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.Region">
+            <summary>Required. The Google Compute Engine region to run the prediction job in. See the available regions
+            for ML Engine services.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.RuntimeVersion">
+            <summary>Optional. The Google Cloud ML runtime version to use for this batch prediction. If not set, Google
+            Cloud ML will pick the runtime version used during the CreateVersion request for this model version, or
+            choose the latest stable version when model version information is not available such as when the model is
+            specified by uri.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.SignatureName">
+             <summary>Optional. The name of the signature defined in the SavedModel to use for this job. Please refer to
+             [SavedModel](https://tensorflow.github.io/serving/serving_basic.html) for information about how to use
+             signatures.
+            
+             Defaults to [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/saved_model/si
+             gnature_constants) , which is "serving_default".</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.Uri">
+            <summary>Use this field if you want to specify a Google Cloud Storage path for the model to use.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.VersionName">
+             <summary>Use this field if you want to specify a version of the model to use. The string is formatted the
+             same way as `model_version`, with the addition of the version information:
+            
+             `"projects/[YOUR_PROJECT]/models/YOUR_MODEL/versions/[YOUR_VERSION]"`</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionInput.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionOutput">
+            <summary>Represents results of a prediction job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionOutput.ErrorCount">
+            <summary>The number of data instances which resulted in errors.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionOutput.NodeHours">
+            <summary>Node hours used by the batch prediction job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionOutput.OutputPath">
+            <summary>The output Google Cloud Storage location provided at the job creation time.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionOutput.PredictionCount">
+            <summary>The number of generated predictions.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1PredictionOutput.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SetDefaultVersionRequest">
+            <summary>Request message for the SetDefaultVersion request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1SetDefaultVersionRequest.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput">
+            <summary>Represents input parameters for a training job. When using the gcloud command to submit your training
+            job, you can specify the input parameters as command-line arguments and/or in a YAML configuration file
+            referenced from the --config command-line argument. For details, see the guide to submitting a training
+            job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.Args">
+            <summary>Optional. Command line arguments to pass to the program.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.Hyperparameters">
+            <summary>Optional. The set of Hyperparameters to tune.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.JobDir">
+            <summary>Optional. A Google Cloud Storage path in which to store training outputs and other data needed for
+            training. This path is passed to your TensorFlow program as the '--job-dir' command-line argument. The
+            benefit of specifying this field is that Cloud ML validates the path for use in training.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.MasterType">
+             <summary>Optional. Specifies the type of virtual machine to use for your training job's master worker.
+            
+             The following types are supported:
+            
+             standard
+            
+             A basic machine configuration suitable for training simple models with small to moderate datasets.
+            
+             large_model
+            
+             A machine with a lot of memory, specially suited for parameter servers when your model is large (having many
+             hidden layers or layers with very large numbers of nodes).
+            
+             complex_model_s
+            
+             A machine suitable for the master and workers of the cluster when your model requires more computation than
+             the standard machine can handle satisfactorily.
+            
+             complex_model_m
+            
+             A machine with roughly twice the number of cores and roughly double the memory of complex_model_s.
+            
+             complex_model_l
+            
+             A machine with roughly twice the number of cores and roughly double the memory of complex_model_m.
+            
+             standard_gpu
+            
+             A machine equivalent to standard that also includes a single NVIDIA Tesla K80 GPU. See more about
+            
+             using GPUs for training your model.
+            
+             complex_model_m_gpu
+            
+             A machine equivalent to complex_model_m that also includes four NVIDIA Tesla K80 GPUs.
+            
+             complex_model_l_gpu
+            
+             A machine equivalent to complex_model_l that also includes eight NVIDIA Tesla K80 GPUs.
+            
+             standard_p100
+            
+             A machine equivalent to standard that also includes a single NVIDIA Tesla P100 GPU. The availability of
+             these GPUs is in the Beta launch stage.
+            
+             complex_model_m_p100
+            
+             A machine equivalent to complex_model_m that also includes four NVIDIA Tesla P100 GPUs. The availability of
+             these GPUs is in the Beta launch stage.
+            
+             You must set this value when `scaleTier` is set to `CUSTOM`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.PackageUris">
+            <summary>Required. The Google Cloud Storage location of the packages with the training program and any
+            additional dependencies. The maximum number of package URIs is 100.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.ParameterServerCount">
+             <summary>Optional. The number of parameter server replicas to use for the training job. Each replica in the
+             cluster will be of the type specified in `parameter_server_type`.
+            
+             This value can only be used when `scale_tier` is set to `CUSTOM`.If you set this value, you must also set
+             `parameter_server_type`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.ParameterServerType">
+             <summary>Optional. Specifies the type of virtual machine to use for your training job's parameter server.
+            
+             The supported values are the same as those described in the entry for `master_type`.
+            
+             This value must be present when `scaleTier` is set to `CUSTOM` and `parameter_server_count` is greater than
+             zero.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.PythonModule">
+            <summary>Required. The Python module name to run after installing the packages.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.PythonVersion">
+            <summary>Optional. The version of Python used in training. If not set, the default version is '2.7'. Python
+            '3.5' is available when `runtime_version` is set to '1.4' and above. Python '2.7' works with all supported
+            runtime versions.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.Region">
+            <summary>Required. The Google Compute Engine region to run the training job in. See the available regions
+            for ML Engine services.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.RuntimeVersion">
+            <summary>Optional. The Google Cloud ML runtime version to use for training.  If not set, Google Cloud ML
+            will choose the latest stable version.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.ScaleTier">
+            <summary>Required. Specifies the machine types, the number of replicas for workers and parameter
+            servers.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.WorkerCount">
+             <summary>Optional. The number of worker replicas to use for the training job. Each replica in the cluster
+             will be of the type specified in `worker_type`.
+            
+             This value can only be used when `scale_tier` is set to `CUSTOM`. If you set this value, you must also set
+             `worker_type`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.WorkerType">
+             <summary>Optional. Specifies the type of virtual machine to use for your training job's worker nodes.
+            
+             The supported values are the same as those described in the entry for `masterType`.
+            
+             This value must be present when `scaleTier` is set to `CUSTOM` and `workerCount` is greater than
+             zero.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingInput.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingOutput">
+            <summary>Represents results of a training job. Output only.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingOutput.CompletedTrialCount">
+            <summary>The number of hyperparameter tuning trials that completed successfully. Only set for hyperparameter
+            tuning jobs.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingOutput.ConsumedMLUnits">
+            <summary>The amount of ML units consumed by the job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingOutput.IsHyperparameterTuningJob">
+            <summary>Whether this job is a hyperparameter tuning job.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingOutput.Trials">
+            <summary>Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1TrainingOutput.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version">
+             <summary>Represents a version of the model.
+            
+             Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have
+             multiple versions. You can get information about all of the versions of a given model by calling
+             [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.AutoScaling">
+            <summary>Automatically scale the number of nodes used to serve the model in response to increases and
+            decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or
+            you will start seeing increases in latency and 429 response codes.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.CreateTime">
+            <summary>Output only. The time the version was created.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.DeploymentUri">
+             <summary>Required. The Google Cloud Storage location of the trained model used to create the version. See
+             the [overview of model deployment](/ml-engine/docs/concepts/deployment-overview) for more information.
+            
+             When passing Version to [projects.models.versions.create](/ml-
+             engine/reference/rest/v1/projects.models.versions/create) the model service uses the specified location as
+             the source of the model. Once deployed, the model version is hosted by the prediction service, so this
+             location is useful only as a historical record. The total number of model files can't exceed 1000.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.Description">
+            <summary>Optional. The description specified for the version when it was created.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.ErrorMessage">
+            <summary>Output only. The details of a failure or a cancellation.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.Framework">
+            <summary>The ML framework used to train this version of the model. If not specified, defaults to
+            `TENSORFLOW`</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.IsDefault">
+             <summary>Output only. If true, this version will be used to handle prediction requests that do not specify a
+             version.
+            
+             You can change the default version by calling [projects.methods.versions.setDefault](/ml-
+             engine/reference/rest/v1/projects.models.versions/setDefault).</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.LastUseTime">
+            <summary>Output only. The time the version was last used for prediction.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.ManualScaling">
+            <summary>Manually select the number of nodes to use for serving the model. You should generally use
+            `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more
+            predictable billing. Beware that latency and error rates will increase if the traffic exceeds that
+            capability of the system to serve it based on the selected number of nodes.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.Name">
+             <summary>Required.The name specified for the version when it was created.
+            
+             The version name must be unique within the model it is created in.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.RuntimeVersion">
+            <summary>Optional. The Google Cloud ML runtime version to use for this deployment. If not set, Google Cloud
+            ML will choose a version.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.State">
+            <summary>Output only. The state of a version.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Version.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1AuditConfig">
+             <summary>Specifies the audit configuration for a service. The configuration determines which permission types
+             are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
+             AuditLogConfigs.
+            
+             If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
+             used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+             AuditLogConfig are exempted.
+            
+             Example Policy with multiple AuditConfigs:
+            
+             { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
+             "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
+             }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
+             "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+            
+             For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
+             from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1AuditConfig.AuditLogConfigs">
+            <summary>The configuration for logging of each type of permission. Next ID: 4</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1AuditConfig.Service">
+            <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+            `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1AuditConfig.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1AuditLogConfig">
+             <summary>Provides the configuration for logging a type of permissions. Example:
+            
+             { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+             "log_type": "DATA_WRITE", } ] }
+            
+             This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+             logging.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1AuditLogConfig.ExemptedMembers">
+            <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
+            format of Binding.members.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1AuditLogConfig.LogType">
+            <summary>The log type that this config enables.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1AuditLogConfig.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Binding">
+            <summary>Associates `members` with a `role`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Binding.Members">
+             <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
+             following values:
+            
+             * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
+             account.
+            
+             * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
+             account or a service account.
+            
+             * `user:{emailid}`: An email address that represents a specific Google account. For example,
+             `alice@gmail.com` or `joe@example.com`.
+            
+             * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
+             app@appspot.gserviceaccount.com`.
+            
+             * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+            
+             * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+             `google.com` or `example.com`.
+            
+             </summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Binding.Role">
+            <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+            Required</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Binding.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Policy">
+             <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
+             for Cloud Platform resources.
+            
+             A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the
+             members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
+             permissions defined by IAM.
+            
+             **Example**
+            
+             { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
+             "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
+             "members": ["user:sean@example.com"] } ] }
+            
+             For a description of IAM and its features, see the [IAM developer's
+             guide](https://cloud.google.com/iam/docs).</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Policy.AuditConfigs">
+            <summary>Specifies cloud audit logging configuration for this policy.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Policy.Bindings">
+            <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
+            error.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Policy.ETag">
+             <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
+             a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+             read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+             in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+             `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+            
+             If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
+             blindly.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1Policy.Version">
+            <summary>Deprecated.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest">
+            <summary>Request message for `SetIamPolicy` method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest.Policy">
+            <summary>REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to
+            a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
+            might reject them.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest.UpdateMask">
+            <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
+            will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
+            field is only used by Cloud IAM.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1SetIamPolicyRequest.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest">
+            <summary>Request message for `TestIamPermissions` method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest.Permissions">
+            <summary>The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or
+            'storage.*') are not allowed. For more information see [IAM
+            Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsRequest.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsResponse">
+            <summary>Response message for `TestIamPermissions` method.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsResponse.Permissions">
+            <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleIamV1TestIamPermissionsResponse.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningListOperationsResponse">
+            <summary>The response message for Operations.ListOperations.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningListOperationsResponse.NextPageToken">
+            <summary>The standard List next-page token.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningListOperationsResponse.Operations">
+            <summary>A list of operations that matches the specified filter in the request.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningListOperationsResponse.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation">
+            <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation.Done">
+            <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
+            completed, and either `error` or `response` is available.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation.Error">
+            <summary>The error result of the operation in case of failure or cancellation.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation.Metadata">
+            <summary>Service-specific metadata associated with the operation.  It typically contains progress
+            information and common metadata such as create time. Some services might not provide such metadata.  Any
+            method that returns a long-running operation should document the metadata type, if any.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation.Name">
+            <summary>The server-assigned name, which is only unique within the same service that originally returns it.
+            If you use the default HTTP mapping, the `name` should have the format of
+            `operations/some/unique/name`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation.Response">
+            <summary>The normal response of the operation in case of success.  If the original method returns no data on
+            success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
+            `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
+            the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
+            is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleLongrunningOperation.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty">
+             <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+             typical example is to use it as the request or the response type of an API method. For instance:
+            
+             service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+            
+             The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleProtobufEmpty.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleRpcStatus">
+             <summary>The `Status` type defines a logical error model that is suitable for different programming
+             environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
+             is designed to be:
+            
+             - Simple to use and understand for most users - Flexible enough to meet unexpected needs
+            
+             # Overview
+            
+             The `Status` message contains three pieces of data: error code, error message, and error details. The error code
+             should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
+             message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
+             If a localized user-facing error message is needed, put the localized message in the error details or localize
+             it in the client. The optional error details may contain arbitrary information about the error. There is a
+             predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
+            
+             # Language mapping
+            
+             The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
+             format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
+             be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
+             to some error codes in C.
+            
+             # Other uses
+            
+             The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
+             to provide a consistent developer experience across different environments.
+            
+             Example uses of this error model include:
+            
+             - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
+             normal response to indicate the partial errors.
+            
+             - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
+             reporting.
+            
+             - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
+             directly inside batch response, one for each error sub-response.
+            
+             - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
+             those operations should be represented directly using the `Status` message.
+            
+             - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
+             stripping needed for security/privacy reasons.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleRpcStatus.Code">
+            <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleRpcStatus.Details">
+            <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+            to use.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleRpcStatus.Message">
+            <summary>A developer-facing error message, which should be in English. Any user-facing error message should
+            be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        </member>
+        <member name="P:Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleRpcStatus.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+    </members>
+</doc>

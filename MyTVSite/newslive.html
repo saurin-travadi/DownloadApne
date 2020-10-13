@@ -1,0 +1,54 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>List of Shows</title>
+
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="/scripts/common.js"></script>
+
+    <!--<script type="text/javascript" src="http://zeenews.dittotv.com/jwplayer.js"></script>
+    <script type="text/javascript">
+        jwplayer.key = "XtWFuCK/ytTi7a/eN1uvsRtq6MpIHJTm1hiLbQ==";
+    </script>
+    <script type="text/javascript">
+        var TICKER_DELAY = 8;
+        var SLIDER_DELAY = 3000;
+        var SLIDER_SPEED = 500;
+    </script>-->
+
+    <link rel="stylesheet" href="//releases.flowplayer.org/7.0.4/skin/skin.css">
+    <script src="http://tvlogy.online/flowplayer/flowplayer.js"></script>
+    <script src="//releases.flowplayer.org/hlsjs/flowplayer.hlsjs.min.js"></script>
+
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet" />
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            getNewsLive(unescape(getUrlVars()["n"]));
+
+            $(document).on('mousedown', '.lnk', function (e) {
+                $('.lnk').removeClass('sel');
+                setJWPlayerWithURL($(this).attr('rel'), 0);
+                $(this).addClass('sel')
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div class="header">
+        <span id="menuspan" style=""><a href="index.html">Shows</a><a href="beta.html">Shows<sup>(Beta)</sup></a><a href="news.html">News</a><a href="Radio.html">Radio</a><a href="movies.html">Movies</a><a href="crick.html">Cricket</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
+    </div>
+    <div class="header1">
+        <span>
+            <!-- Link to be added -->
+        </span>
+    </div>
+    <div id='showvideoplayer'></div>
+    <iframe id='id6' src="#" frameborder="0" style="display:none;margin:0 auto;width:900px;height:600px" allowfullscreen></iframe>
+</body>
+</html>

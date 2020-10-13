@@ -23,15 +23,9 @@ namespace MyTVWeb
 
         public void ProcessRequest(HttpContext context)
         {
-            BaseClass myObj = new GetApne();
-
-            var show = context.Request.QueryString["source"] ?? "GetBollyStop";
-            if (show.Equals("GetBollyStop"))
-                myObj = new GetBollyStop();
-            else if (show.Equals("GetApne"))
-                myObj = new GetApne();
-            else
-                myObj = new GetYoDesi();
+            var show = context.Request.QueryString["source"] ?? "YoDesi";
+            var type = Type.GetType("MyTVWeb." + show);
+            BaseClass myObj = Activator.CreateInstance(type) as BaseClass;
 
             var data = "";
             var objSerials = new List<Serial>();

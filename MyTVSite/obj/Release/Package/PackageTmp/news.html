@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Watch Show</title>
+
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="scripts/common.js"></script>
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet">
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ShowProgress('content');
+
+            var source = unescape(getUrlVars()["source"]);
+            $('select').val(source);
+
+            getNewsChannle();
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <span id="menuspan" style=""><a href="index.html">Shows</a><a href="beta.html">Shows<sup>(Beta)</sup></a><a href="news.html">News</a><a href="Radio.html">Radio</a><a href="movies.html">Movies</a><a href="crick.html">Cricket</a><a href="terms.html">Terms</a><a href="policy.html">Policy</a></span>
+    </div>
+    <div class="header1">
+    </div>
+    <div class="center" id="content">
+        <div class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" id="div-0">
+            <div class="ui-btn-inner ui-corner-bottom ui-corner-top">
+                <a class="ui-btn ui-btn-icon-right ui-corner-top ui-btn-up-z" id="a-0" href="/">
+                    <span class="ui-btn-text s1" id="span-0">Loading</span>
+                </a>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+
+
+</body>
+</html>

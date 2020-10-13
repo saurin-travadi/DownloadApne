@@ -1,4 +1,5 @@
 ﻿using Jurassic.Library;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,8 +14,9 @@ namespace MyTVWeb
 {
     public class GetURL : IHttpHandler
     {
-        const string Apne = "http://apne.tv/Hindi-Serial";
+        const string Apne = "http://apnetv.co/Hindi-Serial";
         const string BollyStop = "http://bollystop.tv";
+        const string DesiRulez = "http://desirulez.cc";
 
         public bool IsReusable
         {
@@ -31,33 +33,25 @@ namespace MyTVWeb
             List<string> urls = new List<string>();
 
             var serial = context.Request.QueryString["s"];
-
             var day = context.Request.QueryString["d"];
-            if (day == "undefined") day = "";
+            if (day == "undefined" || string.IsNullOrEmpty(day)) day = "";
 
             var url = context.Request.QueryString["url"];
+            var show = context.Request.QueryString["source"];
+            if (string.IsNullOrEmpty(show)) show = "YoDesi";
 
             var format = context.Request.QueryString["f"];
-            if (format == "undefined") format = "Telly";
+            if (format == "undefined" || string.IsNullOrEmpty(format))
+                format = "Dailymotion";
 
-            var show = context.Request.QueryString["source"];
-            if (string.IsNullOrEmpty(show)) show = "Apne";
 
-            BaseClass myObj = new GetApne();
-            if (show.Equals("GetBollyStop"))
-                myObj = new GetBollyStop();
+            var type = Type.GetType("MyTVWeb." + show);
+            BaseClass myObj = Activator.CreateInstance(type) as BaseClass;
+            myObj.show = serial;
 
-            if (show.Equals("GetYoDesi"))
-            {
-                new GetYoDesi().ReadURL(url, format);
-                IsDM = myObj.IsDM;
-            }
-            else
-            {
-                var rootURL = show == "GetApne" ? string.Format("{0}/{1}", Apne, serial) : url;
-                urls = myObj.ReadDatePage(rootURL, day, format);
-                IsDM = myObj.IsDM;
-            }
+            var rootURL = show == "GetApne" ? string.Format("{0}/{1}", Apne, serial) : url;
+            urls = myObj.ReadDatePage(rootURL, day, format);
+            IsDM = myObj.IsDM;
 
             context.Response.AddHeader("Content-Type", "application/json\n\n");
             context.Response.Buffer = true;

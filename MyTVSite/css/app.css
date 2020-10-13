@@ -1,0 +1,218 @@
+body {
+    margin: auto;
+    width: 100%;
+    background-color: #012d38;
+    font-size: xx-large;
+}
+
+.cal {
+    background: url(http://mytvweb.azurewebsites.net/assets/calendar.png) no-repeat;
+}
+
+.calText {
+    width: 80%;
+    border: none;
+    padding-top: 100px;
+    color: #000;
+}
+
+#list img {
+    height: 240px;
+    width: 320px;
+    border-radius: 20px;
+}
+
+.center {
+    margin: auto;
+    /*width: 90%;*/
+    /*padding: 10px;*/
+    clear: both;
+}
+
+.header {
+    background-color: #1f1f1f;
+    border: medium none;
+    border-radius: 0;
+    /*height: 60px;*/
+    left: 0;
+    margin: 0;
+    /*position: fixed;*/
+    /*top: 0;*/
+    z-index: 1000;
+    /*width: 200px;*/
+}
+
+.header1 {
+    background-color: #7d7d7d;
+    border: medium none;
+    border-radius: 0;
+    height: 60px;
+    text-align: right;
+    margin: 0;
+    /*width: 100%;*/
+    z-index: 1;
+}
+
+    .header1 select {
+        background-color: #f9f9f9;
+        border-radius: 11px;
+        font-size: smaller;
+        height: 40px;
+        margin-right: 10px;
+        margin-top: 4px;
+        width: 150px;
+    }
+
+.header span a {
+    color: #d3d3d3;
+    /*display: block;*/
+    /*margin: 10px;*/
+    text-decoration: none;
+}
+
+input[type="button"] {
+    height: 40px;
+    margin: 5px;
+    width: 120px;
+    border: 0 none;
+    border-radius: 25px;
+}
+
+input[type="text"] {
+    height: 30px;
+    width: 300px;
+    border: 0 none;
+    border-radius: 10px;
+}
+
+select {
+    font-size: xx-large;
+}
+
+.ui-div-item {
+    float: left;
+    margin: auto;
+    max-width: 600px;
+    min-width: 320px;
+    padding: 0;
+    width: 50%;
+}
+
+span {
+    font-size: x-large;
+    color:white;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 73%;
+    height: 90px;
+    margin: auto;
+}
+
+    span a {
+        color: #d3d3d3;
+        margin: 10px;
+        text-decoration: none;
+    }
+
+        span a.lnk.sel {
+            color: #1f1f1f;
+            margin: 10px;
+            text-decoration: underline;
+        }
+
+.ui-btn {
+    text-decoration: none;
+}
+
+    
+.ui-btn-inner .s1 {
+    width: 90%;
+}
+
+
+.ui-btn-inner .s2 {
+    background-color: #001E20;
+    border-radius: 31px;
+    color: #aad7d8;
+    float: right;
+    text-align: center;
+    width: 35px;
+    height:31px;
+    cursor: pointer;
+    opacity: .4;
+    margin-top: -50px;
+    margin-right: -14px;
+}
+
+.ui-btn-inner .s2:hover {
+    background-color: darkred;
+    color: white;
+    opacity: 1;
+}
+
+#content .ui-corner-all {
+    /*max-width: 33%;*/
+    float: left;
+    /*width: 30%;*/
+    padding: 10px;
+}
+
+.ui-btn-inner {
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.progress-bar {
+    background-color: black;
+    height: 100%;
+    margin: auto;
+    opacity: 0.76;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.progress-bar-img {
+    background-image: url("/spinner.gif");
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 400px;
+    padding: 0;
+    margin: auto;
+}
+
+#list span {
+    font-size: x-large;
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 73%;
+    height: 90px;
+    margin: auto;
+}
+
+#list a {
+    text-decoration: none;
+}
+
+#showvideoplayer, #showvideoplayer_wrapper {
+    margin: 0 auto;
+}
+
+sup {
+    font-size: small;
+}
+
+.ui-dialog {
+    background-color: white;
+}
+
+    .ui-dialog .ui-dialog-titlebar {
+        padding: 0 !important;
+    }
+
+.flowplayer {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}

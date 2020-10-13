@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            showFav();
+            $(".draggable").draggable({
+                axis: "xy",
+                stop: function (event, ui) {
+
+
+                    var totalWidth = $('#content').width();
+                    var totalHeight = screen.availHeight;
+                    var itemWidth = $('.ui-btn').width();
+                    var itemHeight = $('.ui-btn').height();
+
+                    var top = ui.position.top;
+                }
+            });
+        });
+
+    </script>
+}
+
+<div class="jumbotron">
+    <h2>YOUR PICK</h2>
+    <div class="row">
+        <div class="col-md-4" id="div-0">
+            <p>
+                <a class="btn btn-default ui-btn-inner" id="a-0" href="/">
+                    <span class="ui-btn-text s1" id="span-0">Loading</span>&raquo;
+                    <span class="s2" onclick="return resetFav(this);">X</span>
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+

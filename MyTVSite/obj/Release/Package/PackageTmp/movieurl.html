@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="/scripts/common.js"></script>
+
+    <link rel="stylesheet" href="//releases.flowplayer.org/7.0.4/skin/skin.css">
+    <script src="http://tvlogy.online/flowplayer/flowplayer.js"></script>
+    <script src="//releases.flowplayer.org/hlsjs/flowplayer.hlsjs.min.js"></script>
+
+    <!--<script type="text/javascript" src="http://zeenews.dittotv.com/jwplayer.js"></script>
+    <script type="text/javascript">
+        jwplayer.key = "XtWFuCK/ytTi7a/eN1uvsRtq6MpIHJTm1hiLbQ==";
+    </script>
+    <script type="text/javascript">
+        var TICKER_DELAY = 8;
+        var SLIDER_DELAY = 3000;
+        var SLIDER_SPEED = 500;
+    </script>-->
+
+    <script>
+
+        $(document).ready(function () {
+            w3IncludeHTML();
+
+            window.setTimeout(function () {
+                playMovie();
+            }, 1000);
+        });
+
+        $(document).on('mousedown', '.vid', function () {
+            setJWPlayerWithURL($(this).attr('rel'), 0);
+        });
+
+    </script>
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet" />
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div w3-include-html="header.html"></div>
+    <div class="header1"></div>
+    <div id="showvideoplayer"></div>
+</body>
+</html>

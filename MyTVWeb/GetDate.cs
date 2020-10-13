@@ -21,18 +21,15 @@ namespace MyTVWeb
 
         public void ProcessRequest(HttpContext context)
         {
-            BaseClass myObj = new GetApne();
-
             var url = context.Request.QueryString["url"];
-            var show = context.Request.QueryString["source"] ?? "GetBollyStop";
-            if (show.Equals("GetBollyStop"))
-                myObj = new GetBollyStop();
+            var show = context.Request.QueryString["source"] ?? "GetDesiRulez";
+            if (string.IsNullOrEmpty(url)) url = string.Format("http://apne.tv/Hindi-Serial/{0}", show);
 
-            if(string.IsNullOrEmpty(url))
-                url = string.Format("http://apne.tv/Hindi-Serial/{0}", show);
+            var type = Type.GetType("MyTVWeb." + show);
+            BaseClass myObj = Activator.CreateInstance(type) as BaseClass;
 
+            myObj.show = context.Request.QueryString["s"];
             var dates = myObj.GetDates(url);
-
             var scriptFile = Path.Combine(context.Server.MapPath("."), "script.rjs");
             var data = File.ReadAllText(scriptFile);
 
@@ -48,7 +45,7 @@ namespace MyTVWeb
             context.Response.Flush();
         }
 
-    
+
 
     }
 }

@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>List of Shows</title>
+
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="/scripts/common.js"></script>
+
+    <link rel="stylesheet" href="//releases.flowplayer.org/7.0.4/skin/skin.css">
+    <script src="http://tvlogy.online/flowplayer/flowplayer.js"></script>
+    <script src="//releases.flowplayer.org/hlsjs/flowplayer.hlsjs.min.js"></script>
+
+    <!--<script type="text/javascript" src="http://zeenews.dittotv.com/jwplayer.js"></script>
+    <script type="text/javascript">
+        jwplayer.key = "XtWFuCK/ytTi7a/eN1uvsRtq6MpIHJTm1hiLbQ==";
+    </script>
+    <script type="text/javascript">
+        var TICKER_DELAY = 8;
+        var SLIDER_DELAY = 3000;
+        var SLIDER_SPEED = 500;
+    </script>-->
+    
+    <link media="screen" type="text/css" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" rel="stylesheet" />
+    <link media="screen" type="text/css" href="css/app.css" rel="stylesheet" />
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var source = unescape(getUrlVars()["source"]);
+            $('select').val(source);
+
+            play();
+            w3IncludeHTML();
+        });
+
+        function play() {
+            var videos = [
+				'https://youtu.be/NpteuFNT-KA',
+				'http://178.162.199.131:8088/live/webcriclqa112/playlist.m3u8?id=93036&wowzasessionid=3070450150&pk=b2579bf0407de07637f90ba3fe5ea1577b353c850c0696cd756470c514ceac86',
+				'http://178.162.199.131:8088/live/webcriclqa112/playlist.m3u8?id=93036&pk=b2579bf0407de07637f90ba3fe5ea1577b353c850c0696cd756470c514ceac86',
+				'http://80.82.78.22:8088/cast4u/star123/playlist.m3u8?id=2089&wowzasessionid=7872607495&pk=955485bfb1513d9e67e7653b66f7f1ec4c203e4addc0e6b7e8fc28e525bb91ac',
+				'http://80.82.78.75:8088/cast4u/skys2/playlist.m3u8?id=21&pk=955485bfb1513d9e67e7653b66f7f1ec4c203e4addc0e6b7e8fc28e525bb91ac',
+				'http://80.82.70.194:8088/cast4u/star123/playlist.m3u8?id=2089&pk=955485bfb1513d9e67e7653b66f7f1ec4c203e4addc0e6b7e8fc28e525bb91ac&wowzasessionid=3258525242',
+				'http://80.82.78.23:8088/cast4u/spch25p/playlist.m3u8?id=3224&wowzasessionid=3606846625&pk=955485bfb1513d9e67e7653b66f7f1ec4c203e4addc0e6b7e8fc28e525bb91ac',
+				'http://80.82.64.55:8088/cast4u/spch25p/playlist.m3u8?id=3224&wowzasessionid=357635315&pk=955485bfb1513d9e67e7653b66f7f1ec4c203e4addc0e6b7e8fc28e525bb91ac',
+				'http://80.82.78.29:8088/cast4u/star123/playlist.m3u8?id=2089&wowzasessionid=530781147&pk=955485bfb1513d9e67e7653b66f7f1ec4c203e4addc0e6b7e8fc28e525bb91ac',
+				'http://2235.janjuaplayer.com:8088/live/wwwyerer/playlist.m3u8?id=75264&wowzasessionid=000705532&pk=b2579bf0407de07637f90ba3fe5ea1577b353c850c0696cd756470c514ceac86',
+				'http://89.248.168.205:8088/live/wwwstars3/playlist.m3u8?id=27554&wowzasessionid=759769176&pk=b2579bf0407de07637f90ba3fe5ea1577b353c850c0696cd756470c514ceac86',
+				'http://89.248.172.146:8088/live/wwwstars3/playlist.m3u8?id=27554&wowzasessionid=327060618&pk=b2579bf0407de07637f90ba3fe5ea1577b353c850c0696cd756470c514ceac86',	
+				'http://89.248.168.205:8088/live/wwwstars3/playlist.m3u8?id=27554&wowzasessionid=031975272&pk=b2579bf0407de07637f90ba3fe5ea1577b353c850c0696cd756470c514ceac86',
+				
+		        'http://89.248.168.176:8088/live/tensportshsyer/playlist.m3u8?id=28160&pk=b2579bf0407de07637f90ba3fe5ea1577b353c850c0696cd756470c514ceac86',
+                'http://94.102.51.78:8088/live/tensportshsyer/playlist.m3u8?id=28160&pk=b2579bf0407de07637f90ba3fe5ea1577b353c850c0696cd756470c514ceac86',
+		        'http://smumcdnems02.cdnsrv.jio.com/jiotv.live.cdn.jio.com/Six_HD/Six_HD.m3u8',
+                'http://smumcdnems02.cdnsrv.jio.com/jiotv.live.cdn.jio.com/Ten_3/Ten_3.m3u8',
+                'http://sbbsrcdnems05.cdnsrv.jio.com/jiotv.live.cdn.jio.com/Ten_HD/Ten_HD_600-1516886636000.ts',
+                '/cricket.html'
+            ];
+
+            var sel = $('select')[0]
+            var ind = sel.selectedIndex;
+            if (ind != 0) { 
+                if (sel.value.indexOf('HighLights') >= 0 || sel.value.indexOf('Google') >= 0 ) {
+                    window.location=videos[ind - 1];
+                }
+                else {
+                    setJWPlayerWithURL(videos[ind - 1], 0);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div w3-include-html="header.html"></div>
+    <div class="header1">
+        <span>
+            <select onchange="var url = 'crick.html?source='+$(this).val(); window.location = url;">
+                <option selected="selected">--Select--</option>
+                <option>Youtube</option>
+				<option>Sky Sports 1</option>
+				<option>Sky Sports 2</option>
+				<option>Sky Sports 3</option>
+				<option>Sky Sports 4</option>
+				<option>Sky Sports 5</option>
+				<option>Sky Sports 6</option>
+				<option>Sky Sports 7</option>
+				<option>Sky Sports 8</option>
+				<option>Sky Sports 9</option>
+				<option>Sky Sports 10</option>
+				<option>Sky Sports 11</option>
+				<option>Sky Sports 12</option>
+				
+				<option>Ten Sports 1</option>
+                <option>Ten Sports 2</option>
+                <option>Six</option>
+                <option>Ten3</option>
+                <option>Ten4</option>
+                <option>HighLights</option>
+            </select>
+        </span>
+    </div>
+    <div id='showvideoplayer' style="display:inline"></div>
+
+</body>
+</html>
